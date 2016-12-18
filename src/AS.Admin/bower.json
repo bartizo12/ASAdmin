@@ -1,0 +1,38 @@
+{
+  "name": "asadmin",
+  "version": "1.0.0",
+  "description": "AS Admin bower packages",
+  "main": "",
+  "authors": [
+    "Nazmi Altun"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "bootstrap": "^3.3.7",
+    "bootstrap3-dialog": "^1.35.3",
+    "ckeditor": "^4.6.0",
+    "admin-lte": "^2.3.8",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.43",
+    "fancybox": "^2.1.5",
+    "font-awesome": "^4.7.0",
+    "html5shiv": "^3.7.3",
+    "respond": "^1.4.2",
+    "iCheck": "^1.0.2",
+    "moment": "^2.17.0",
+    "pace": "^1.0.2",
+    "bootstrap-select" : "^1.12.1"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+
+  ],
+  "resolutions": {
+    "jquery": ">= 1.9.0",
+    "bootstrap": ">= 3.1.0"
+  }
+}

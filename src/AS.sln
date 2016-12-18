@@ -1,0 +1,175 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1C7BC468-3C49-4D6E-99A9-920FDDB5BEA4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{5967EA60-36E2-4534-A3DF-FDF660304485}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{CF55057C-F467-4A49-A855-B3717DC34884}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AS.Infrastructure", "AS.Infrastructure\AS.Infrastructure.csproj", "{DD4D1B13-1517-48AD-A744-039015ACD0EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AS.Domain.Interfaces", "AS.Domain.Interfaces\AS.Domain.Interfaces.csproj", "{C2BBC3DB-DAFF-4B76-9BBA-C625700FAC86}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{FE048B5B-9713-4469-BB72-C8B586BC9553}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AS.Services.Interfaces", "AS.Services.Interfaces\AS.Services.Interfaces.csproj", "{1F48BAC1-26D9-4C1B-A266-BEF43CD524E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AS.Services", "AS.Services\AS.Services.csproj", "{320002ED-B61D-454D-A106-BEDB45A2BF26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AS.Domain.Entities", "AS.Domain.Entities\AS.Domain.Entities.csproj", "{2EFB678C-5F10-4A5D-A5E0-FF365350163B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AS.Infrastructure.Mappings", "AS.Infrastructure.Mappings\AS.Infrastructure.Mappings.csproj", "{F4BD1DB6-7ED8-4B11-A44A-514B7BF41ECD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{B473EEFF-2416-440B-AF86-5E548D7B4179}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AS.Admin", "AS.Admin\AS.Admin.csproj", "{A55428E2-9E8E-47FE-96D7-C6DEAD183582}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E3C56570-30A1-424F-99A8-D6EBC6E59601}"
+	ProjectSection(SolutionItems) = preProject
+		ASRuleSet.ruleset = ASRuleSet.ruleset
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AS.Infrastructure.Web", "AS.Infrastructure.Web\AS.Infrastructure.Web.csproj", "{202A7AB8-09F8-4529-8C12-4E43EFA31D82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AS.Infrastructure.Tests", "AS.Infrastructure.Tests\AS.Infrastructure.Tests.csproj", "{55A8D17C-D95D-4C16-9034-D0654CAE643D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AS.Jobs", "AS.Jobs\AS.Jobs.csproj", "{4347DDFC-6C40-4C83-82D3-9F6F772E6651}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AS.Services.Tests", "AS.Services.Tests\AS.Services.Tests.csproj", "{1BE073F8-C885-449B-B3CC-9AD751B7AF23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AS.Domain.Settings", "AS.Domain.Settings\AS.Domain.Settings.csproj", "{7FEFB0C2-FAC3-4EAA-AD56-AC2ADC31DF9C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD4D1B13-1517-48AD-A744-039015ACD0EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD4D1B13-1517-48AD-A744-039015ACD0EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD4D1B13-1517-48AD-A744-039015ACD0EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD4D1B13-1517-48AD-A744-039015ACD0EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2BBC3DB-DAFF-4B76-9BBA-C625700FAC86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2BBC3DB-DAFF-4B76-9BBA-C625700FAC86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2BBC3DB-DAFF-4B76-9BBA-C625700FAC86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2BBC3DB-DAFF-4B76-9BBA-C625700FAC86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F48BAC1-26D9-4C1B-A266-BEF43CD524E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F48BAC1-26D9-4C1B-A266-BEF43CD524E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F48BAC1-26D9-4C1B-A266-BEF43CD524E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F48BAC1-26D9-4C1B-A266-BEF43CD524E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{320002ED-B61D-454D-A106-BEDB45A2BF26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{320002ED-B61D-454D-A106-BEDB45A2BF26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{320002ED-B61D-454D-A106-BEDB45A2BF26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{320002ED-B61D-454D-A106-BEDB45A2BF26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EFB678C-5F10-4A5D-A5E0-FF365350163B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EFB678C-5F10-4A5D-A5E0-FF365350163B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EFB678C-5F10-4A5D-A5E0-FF365350163B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EFB678C-5F10-4A5D-A5E0-FF365350163B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4BD1DB6-7ED8-4B11-A44A-514B7BF41ECD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4BD1DB6-7ED8-4B11-A44A-514B7BF41ECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4BD1DB6-7ED8-4B11-A44A-514B7BF41ECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4BD1DB6-7ED8-4B11-A44A-514B7BF41ECD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A55428E2-9E8E-47FE-96D7-C6DEAD183582}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A55428E2-9E8E-47FE-96D7-C6DEAD183582}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A55428E2-9E8E-47FE-96D7-C6DEAD183582}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A55428E2-9E8E-47FE-96D7-C6DEAD183582}.Release|Any CPU.Build.0 = Release|Any CPU
+		{202A7AB8-09F8-4529-8C12-4E43EFA31D82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{202A7AB8-09F8-4529-8C12-4E43EFA31D82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{202A7AB8-09F8-4529-8C12-4E43EFA31D82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{202A7AB8-09F8-4529-8C12-4E43EFA31D82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55A8D17C-D95D-4C16-9034-D0654CAE643D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55A8D17C-D95D-4C16-9034-D0654CAE643D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55A8D17C-D95D-4C16-9034-D0654CAE643D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55A8D17C-D95D-4C16-9034-D0654CAE643D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4347DDFC-6C40-4C83-82D3-9F6F772E6651}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4347DDFC-6C40-4C83-82D3-9F6F772E6651}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4347DDFC-6C40-4C83-82D3-9F6F772E6651}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4347DDFC-6C40-4C83-82D3-9F6F772E6651}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BE073F8-C885-449B-B3CC-9AD751B7AF23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BE073F8-C885-449B-B3CC-9AD751B7AF23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BE073F8-C885-449B-B3CC-9AD751B7AF23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BE073F8-C885-449B-B3CC-9AD751B7AF23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FEFB0C2-FAC3-4EAA-AD56-AC2ADC31DF9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FEFB0C2-FAC3-4EAA-AD56-AC2ADC31DF9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FEFB0C2-FAC3-4EAA-AD56-AC2ADC31DF9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FEFB0C2-FAC3-4EAA-AD56-AC2ADC31DF9C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DD4D1B13-1517-48AD-A744-039015ACD0EB} = {CF55057C-F467-4A49-A855-B3717DC34884}
+		{C2BBC3DB-DAFF-4B76-9BBA-C625700FAC86} = {5967EA60-36E2-4534-A3DF-FDF660304485}
+		{1F48BAC1-26D9-4C1B-A266-BEF43CD524E5} = {FE048B5B-9713-4469-BB72-C8B586BC9553}
+		{320002ED-B61D-454D-A106-BEDB45A2BF26} = {FE048B5B-9713-4469-BB72-C8B586BC9553}
+		{2EFB678C-5F10-4A5D-A5E0-FF365350163B} = {5967EA60-36E2-4534-A3DF-FDF660304485}
+		{F4BD1DB6-7ED8-4B11-A44A-514B7BF41ECD} = {CF55057C-F467-4A49-A855-B3717DC34884}
+		{A55428E2-9E8E-47FE-96D7-C6DEAD183582} = {B473EEFF-2416-440B-AF86-5E548D7B4179}
+		{202A7AB8-09F8-4529-8C12-4E43EFA31D82} = {CF55057C-F467-4A49-A855-B3717DC34884}
+		{55A8D17C-D95D-4C16-9034-D0654CAE643D} = {1C7BC468-3C49-4D6E-99A9-920FDDB5BEA4}
+		{4347DDFC-6C40-4C83-82D3-9F6F772E6651} = {FE048B5B-9713-4469-BB72-C8B586BC9553}
+		{1BE073F8-C885-449B-B3CC-9AD751B7AF23} = {1C7BC468-3C49-4D6E-99A9-920FDDB5BEA4}
+		{7FEFB0C2-FAC3-4EAA-AD56-AC2ADC31DF9C} = {5967EA60-36E2-4534-A3DF-FDF660304485}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\EntLibContrib.Data.MySql.5.0.505.0\lib\NET35
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 13
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://nazmialtun.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = AS.Infrastructure\\AS.Infrastructure.csproj
+		SccProjectTopLevelParentUniqueName1 = AS.sln
+		SccProjectName1 = AS.Infrastructure
+		SccLocalPath1 = AS.Infrastructure
+		SccProjectUniqueName2 = AS.Domain.Interfaces\\AS.Domain.Interfaces.csproj
+		SccProjectTopLevelParentUniqueName2 = AS.sln
+		SccProjectName2 = AS.Domain.Interfaces
+		SccLocalPath2 = AS.Domain.Interfaces
+		SccProjectUniqueName3 = AS.Services.Interfaces\\AS.Services.Interfaces.csproj
+		SccProjectTopLevelParentUniqueName3 = AS.sln
+		SccProjectName3 = AS.Services.Interfaces
+		SccLocalPath3 = AS.Services.Interfaces
+		SccProjectUniqueName4 = AS.Services\\AS.Services.csproj
+		SccProjectTopLevelParentUniqueName4 = AS.sln
+		SccProjectName4 = AS.Services
+		SccLocalPath4 = AS.Services
+		SccProjectUniqueName5 = AS.Domain.Entities\\AS.Domain.Entities.csproj
+		SccProjectTopLevelParentUniqueName5 = AS.sln
+		SccProjectName5 = AS.Domain.Entities
+		SccLocalPath5 = AS.Domain.Entities
+		SccProjectUniqueName6 = AS.Infrastructure.Mappings\\AS.Infrastructure.Mappings.csproj
+		SccProjectTopLevelParentUniqueName6 = AS.sln
+		SccProjectName6 = AS.Infrastructure.Mappings
+		SccLocalPath6 = AS.Infrastructure.Mappings
+		SccProjectUniqueName7 = AS.Admin\\AS.Admin.csproj
+		SccProjectTopLevelParentUniqueName7 = AS.sln
+		SccProjectName7 = AS.Admin
+		SccLocalPath7 = AS.Admin
+		SccProjectUniqueName8 = AS.Infrastructure.Web\\AS.Infrastructure.Web.csproj
+		SccProjectTopLevelParentUniqueName8 = AS.sln
+		SccProjectName8 = AS.Infrastructure.Web
+		SccLocalPath8 = AS.Infrastructure.Web
+		SccProjectUniqueName9 = AS.Infrastructure.Tests\\AS.Infrastructure.Tests.csproj
+		SccProjectTopLevelParentUniqueName9 = AS.sln
+		SccProjectName9 = AS.Infrastructure.Tests
+		SccLocalPath9 = AS.Infrastructure.Tests
+		SccProjectUniqueName10 = AS.Jobs\\AS.Jobs.csproj
+		SccProjectTopLevelParentUniqueName10 = AS.sln
+		SccProjectName10 = AS.Jobs
+		SccLocalPath10 = AS.Jobs
+		SccProjectUniqueName11 = AS.Services.Tests\\AS.Services.Tests.csproj
+		SccProjectTopLevelParentUniqueName11 = AS.sln
+		SccProjectName11 = AS.Services.Tests
+		SccLocalPath11 = AS.Services.Tests
+		SccProjectUniqueName12 = AS.Domain.Settings\\AS.Domain.Settings.csproj
+		SccProjectTopLevelParentUniqueName12 = AS.sln
+		SccProjectName12 = AS.Domain.Settings
+		SccLocalPath12 = AS.Domain.Settings
+	EndGlobalSection
+EndGlobal

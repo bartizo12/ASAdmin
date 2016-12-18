@@ -1,0 +1,73 @@
+﻿@model SettingsListModel
+@{
+    Model.Header.Title = ResMan.GetString("Settings");
+    Model.Header.Icon = "fa fa-cogs";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+<script type="text/javascript">
+    var settingDefs = @Html.Raw(Json.Encode(Model.SettingDefinitions));
+</script>
+@using (Html.BeginForm())
+{
+    <div class="row" style="max-width:1410px;">
+        <div style="margin-left:15px;">
+            @Html.DropDownListFor(m => m.SettingDefId, Model.SettingDefinitionSelectList, new { @class = "form-control" })
+        </div>
+    </div>
+    <div id="asGrid-wrapper" class="grid-wrapper">
+    </div>
+    <script type="text/javascript">
+        var grid;
+        $(function () {
+            grid = new Grid("Id");
+            $("#SettingDefId").change([grid,settingDefs],function (eventData) {
+                var grid = eventData.data[0];
+                grid.Columns = [];
+                var settingDefs = eventData.data[1];
+                for(var i = 0 ; i < settingDefs.length ; i++)
+                {
+                    if(settingDefs[i].Id.toString() == $(this).val()){
+
+                        for(var j=1; j <= 15 ;j++ )
+                        {
+                            if(settingDefs[i]["Field" + j.toString()] != null){
+                                var col = new GridColumn(settingDefs[i]["Field"+ j.toString()],
+                                    "Field" + j.toString());
+
+                                if(settingDefs[i]["FieldInputType" + j.toString()] == FormInputType.Html){
+                                    col.ClassName = "html-formatted-cell truncate-cell";
+                                }
+                                else if(settingDefs[i]["FieldInputType" + j.toString()] == FormInputType.MultiLine ||
+                                   settingDefs[i]["FieldInputType" + j.toString()] == FormInputType.Text){
+                                    col.ClassName = "truncate-cell";
+                                }
+                                grid.Columns.push(col);
+                            }
+                        }
+                    }
+                }
+                var col  = new GridColumn("@ResMan.GetString("CreatedOn")", "CreatedOn", CellRenderers.DateTimeRenderer)
+                col.Width = "120px";
+                col.Orderable=true;
+                grid.Columns.push(col);
+                col  = new GridColumn("@ResMan.GetString("CreatedBy")", "CreatedBy")
+                col.Width = "80px";
+                grid.Columns.push(col);
+                col  = new GridColumn("@ResMan.GetString("ModifiedOn")", "ModifiedOn", CellRenderers.DateTimeRenderer)
+                col.Width = "120px";
+                col.Orderable=true;
+                grid.Columns.push(col);
+                col  = new GridColumn("@ResMan.GetString("ModifiedBy")", "ModifiedBy")
+                col.Width = "80px";
+                grid.Columns.push(col);
+                grid.Columns.push(RowButtons.UpdateButton("grid","Id"));
+                grid.render();
+            });
+            grid.Ordering = true;
+            grid.UrlGenerator = function () {
+                return "List?serverSideProcessing=False&SettingDefId=" + $("#SettingDefId").val();
+            }
+            $("#SettingDefId").trigger("change");
+        });
+    </script>
+}

@@ -1,0 +1,54 @@
+﻿@{
+    Model.Header.Title = ResMan.GetString("EMail_Settings");
+    Model.Header.Icon = "fa fa-cogs";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+@section PageButtons{
+    <div>
+        <a style="width:180px;" class="btn btn-block btn-success btn-lg dialog-button"
+           data-iframeWidth="1000" data-iframeHeight="900" href="~/Settings/EditEmailSettings">
+            @ResMan.GetString("EMail_Settings_New")
+        </a>
+    </div>
+}
+@using (Html.BeginForm())
+{
+    <div id="asGrid-wrapper" class="grid-wrapper">
+    </div>
+    <script type="text/javascript">
+        var grid;
+        $(function () {
+            grid = new Grid("Id");
+            grid.HasDeleteButton = false;
+
+            grid.Columns = [new GridColumn("@ResMan.GetString("Name")", "Name"),
+                new GridColumn("@ResMan.GetString("EMailSettingModel_Host")", "Host"),
+                new GridColumn("@ResMan.GetString("EMailSettingModel_Port")", "Port"),
+                new GridColumn("@ResMan.GetString("EMailSettingModel_UserName")", "UserName"),
+                new GridColumn("@ResMan.GetString("EMailSettingModel_FromDisplayName")", "FromDisplayName"),
+                new GridColumn("@ResMan.GetString("EMailSettingModel_Comment")", "Comment"),
+                new GridColumn("@ResMan.GetString("CreatedOn")", "CreatedOn", CellRenderers.DateTimeRenderer),
+                new GridColumn("@ResMan.GetString("CreatedBy")", "CreatedBy"),
+                new GridColumn("@ResMan.GetString("ModifiedOn")", "ModifiedOn", CellRenderers.DateTimeRenderer),
+                new GridColumn("@ResMan.GetString("ModifiedBy")", "ModifiedBy")];
+
+            function renderUpdateButton(data, t, row, meta) {
+                var html = "<a  data-related-gridid='grid' data-iframeWidth='800' data-iframeHeight='750' class='btn btn-primary btn-rowButton dialog-button' href='EditEmailSettings?id=" + data + "'>";
+                html += "<i class='fa fa-pencil-square-o fw'></i>" + StringResources["Update"] + "</a>";
+
+                return html;
+            }
+            var col = new GridColumn("", "Id", renderUpdateButton);
+            col.Orderable = false;
+            col.Width = "50px";
+            col.ClassName = "button-cell";
+
+            grid.Columns.push(col);
+            grid.Ordering = false;
+            grid.UrlGenerator = function () {
+                return "ListEMailSettings?serverSideProcessing=False";
+            }
+            grid.render();
+        });
+    </script>
+}

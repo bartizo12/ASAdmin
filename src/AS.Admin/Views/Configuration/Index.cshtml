@@ -1,0 +1,324 @@
+﻿@model ConfigurationModel
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ResMan.GetString("Configuration")</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-type" content="text/html" />
+    <meta name="description" content="@Model.Header.MetaDescription" />
+    <meta name="keywords" content="@Model.Header.MetaKeywords" />
+    <meta name="generator" content="AS" />
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="~/Content/favicon.ico" rel="icon" type="image/x-icon" />
+    @Styles.Render("~/content/asCss")
+    @Scripts.Render("~/content/thirdPartyJs")
+    @Scripts.Render("~/content/asJs")
+    <!--[if lt IE 9]>
+    <script src="~/Content/html5shiv/dist/html5shiv.min.js"></script>
+    <script src="~/Content/respond/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+        var StringResources =  @Html.Raw(Json.Encode(Model.Header.ClientResources));
+
+        function bar_progress(progress_line_object, direction) {
+            var number_of_steps = progress_line_object.data('number-of-steps');
+            var now_value = progress_line_object.data('now-value');
+            var new_value = 0;
+            if (direction == 'right') {
+                new_value = now_value + (100 / number_of_steps);
+            }
+            else if (direction == 'left') {
+                new_value = now_value - (100 / number_of_steps);
+            }
+            progress_line_object.attr('style', 'width: ' + new_value + '%;').data('now-value', new_value);
+        }
+
+        jQuery(document).ready(function () {
+            $('.f1 fieldset:first').fadeIn('slow');
+
+            $('.f1 input[type="text"], .f1 input[type="password"], .f1 textarea').on('focus', function () {
+                $(this).removeClass('input-error');
+            });
+
+            // next step
+            $('.f1 .btn-next').on('click', function () {
+                var parent_fieldset = $(this).parents('fieldset');
+                var next_step = true;
+                // navigation steps / progress steps
+                var current_active_step = $(this).parents('.f1').find('.f1-step.active');
+                var progress_line = $(this).parents('.f1').find('.f1-progress-line');
+                var token = $('input[name="__RequestVerificationToken"]').val();
+
+                // Validate Step
+                if ($(this).attr('id') == "btnNextDb") {
+                    $.ajax({
+                        async: false,
+                        type: "POST",
+                        url: '@Url.Action("CanConnectDb", "Configuration")',
+                        data: {
+                            __RequestVerificationToken: token,
+                            provider: $("#DataProvider").val(),
+                            connectionString: $("#ConnectionString").val()
+                        },
+                        success: function (result) {
+                            if (result) {
+                                BootstrapDialog.show({
+                                    type: BootstrapDialog.TYPE_DANGER,
+                                    title: StringResources["AjaxErrorTitle"],
+                                    message: result,
+                                    buttons: [
+                                        {
+                                            label: StringResources["Ok"],
+                                            action: function (dialog) {
+                                                dialog.close();
+                                            }
+                                        }
+                                    ]
+                                });
+                                next_step = false;
+                            }
+                        }
+                    });
+                } else if ($(this).attr('id') == "btnNextSMTP") {
+                    $.ajax({
+                        async: false,
+                        type: "POST",
+                        url: '@Url.Action("UpdateMembershipSetting", "Configuration")',
+                        data: $('form').serialize(),
+                        success: function (result) {
+
+                        }
+                    });
+                }
+                // fields validation
+                if (next_step) {
+                    parent_fieldset.fadeOut(400, function () {
+                        // change icons
+                        current_active_step.removeClass('active').addClass('activated').next().addClass('active');
+                        // progress bar
+                        bar_progress(progress_line, 'right');
+                        // show next step
+                        $(this).next().fadeIn();
+                    });
+                }
+
+            });
+            $("#checkSMTPConnectionBtn").click(function () {
+                var $this = $(this);
+                $this.button('loading');
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("CanConnectSMTP", "Configuration")',
+                    data: $('form').serialize(),
+                    success: function (data) {
+                        if (data) {
+                            BootstrapDialog.show({
+                                type: BootstrapDialog.TYPE_DANGER,
+                                title: StringResources["AjaxErrorTitle"],
+                                message: data,
+                                buttons: [
+                                    {
+                                        label: StringResources["Ok"],
+                                        action: function (dialog) {
+                                            dialog.close();
+                                        }
+                                    }
+                                ]
+                            });
+                        }
+                        else {
+                            BootstrapDialog.show({
+                                type: BootstrapDialog.TYPE_SUCCESS,
+                                title: StringResources["Successful"],
+                                message: '@Html.Raw(ResMan.GetString("Installer_ConnectionSuccess"))',
+                                buttons: [
+                                    {
+                                        label: StringResources["Ok"],
+                                        action: function (dialog) {
+                                            dialog.close();
+                                        }
+                                    }
+                                ]
+                            });
+                        }
+                    }
+                }).always(function () {
+                    $this.button('reset');
+                });
+
+            });
+            $("#checkConnectionBtn").click(function () {
+                var $this = $(this);
+                $this.button('loading');
+                var token = $('input[name="__RequestVerificationToken"]').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("CanConnectDb", "Configuration")',
+                    data: {
+                        __RequestVerificationToken: token,
+                        provider: $("#DataProvider").val(),
+                        connectionString: $("#ConnectionString").val()
+                    },
+                    success: function (data) {
+                        if (data) {
+                            BootstrapDialog.show({
+                                type: BootstrapDialog.TYPE_DANGER,
+                                title: StringResources["AjaxErrorTitle"],
+                                message: data,
+                                buttons: [
+                                    {
+                                        label: StringResources["Ok"],
+                                        action: function (dialog) {
+                                            dialog.close();
+                                        }
+                                    }
+                                ]
+                            });
+                        }
+                        else {
+                            BootstrapDialog.show({
+                                type: BootstrapDialog.TYPE_SUCCESS,
+                                title: StringResources["Successful"],
+                                message: '@Html.Raw(ResMan.GetString("Installer_ConnectionSuccess"))',
+                                buttons: [
+                                    {
+                                        label: StringResources["Ok"],
+                                        action: function (dialog) {
+                                            dialog.close();
+                                        }
+                                    }
+                                ]
+                            });
+                        }
+                    }
+                }).always(function () {
+                    $this.button('reset');
+                });
+            });
+        });
+    </script>
+</head>
+<body class="hold-transition connection-page">
+    <div style="margin:100px">
+        @using (Html.BeginForm("Index", "Configuration", new { ReturnUrl = ViewBag.ReturnUrl },
+                                                                                            FormMethod.Post, new { @class = "f1" }))
+        {
+            @Html.AntiForgeryToken()
+            <h3>@ResMan.GetString("Installer")</h3>
+            <hr />
+            <div class="f1-steps">
+                <div class="f1-progress">
+                    <div class="f1-progress-line" data-now-value="12.5" data-number-of-steps="4" style="width: 12.5%;">
+                    </div>
+                </div>
+                <div class="f1-step active">
+                    <div class="f1-step-icon"><i class="fa fa-database"></i></div>
+                    <p>@ResMan.GetString("Installer_Database")</p>
+                </div>
+                <div class="f1-step">
+                    <div class="f1-step-icon"><i class="fa fa-envelope"></i></div>
+                    <p>@ResMan.GetString("Installer_SMTP")</p>
+                </div>
+                <div class="f1-step">
+                    <div class="f1-step-icon"><i class="fa fa-wrench"></i></div>
+                    <p>@ResMan.GetString("Installer_InitialSettings")</p>
+                </div>
+                <div class="f1-step">
+                    <div class="f1-step-icon"><i class="fa fa-check-square-o"></i></div>
+                    <p>@ResMan.GetString("Installer_Completed")</p>
+                </div>
+            </div>
+            <hr />
+            <fieldset>
+                <h4>@ResMan.GetString("Installer_DatabaseConnectionInfo")</h4>
+                @Html.FormLineDropDownListFor(m => m.DataProvider, Model.DataProviderSelectList)
+                @Html.FormLineEditorFor(m => m.ConnectionString)
+                <div class="form-group">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10 form-button-wrapper">
+                        <table>
+                            <tr>
+                                <td>
+                                    <button type="button" id="checkConnectionBtn"
+                                            data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> @ResMan.GetString("Installer_Testing")"
+                                            class="btn btn-info btn-block btn-flat">
+                                        @ResMan.GetString("Installer_TestConnection")
+                                    </button>
+                                </td>
+                                <td style="width:30px;"></td>
+                                <td>
+                                    <button type="button" id="btnNextDb" class="btn-next btn btn-primary btn-block btn-flat">
+                                        @ResMan.GetString("Next")
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <h4>@ResMan.GetString("Installer_SMTPConnectionInfo")</h4>
+                @Html.FormLineEditorFor(m => m.EMailSetting.Name)
+                @Html.FormLineEditorFor(m => m.EMailSetting.Host)
+                @Html.FormLineEditorFor(m => m.EMailSetting.Port)
+                @Html.FormLineEditorFor(m => m.EMailSetting.TimeOut)
+                @Html.FormLineCheckBoxFor(m => m.EMailSetting.EnableSsl)
+                @Html.FormLineCheckBoxFor(m => m.EMailSetting.DefaultCredentials)
+                @Html.FormLineEditorFor(m => m.EMailSetting.UserName)
+                @Html.FormLineEditorFor(m => m.EMailSetting.Password)
+                @Html.FormLineEditorFor(m => m.EMailSetting.FromDisplayName)
+                @Html.FormLineEditorFor(m => m.EMailSetting.FromAddress)
+                <div class="form-group">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10 form-button-wrapper">
+                        <table>
+                            <tr>
+                                <td>
+                                    <button type="button" id="checkSMTPConnectionBtn"
+                                            data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> @ResMan.GetString("Installer_Testing")"
+                                            class="btn btn-info btn-block btn-flat">
+                                        @ResMan.GetString("Installer_TestConnection")
+                                    </button>
+                                </td>
+                                <td style="width:30px;"></td>
+                                <td>
+                                    <button type="button" id="btnNextSMTP" class="btn-next btn btn-primary btn-block btn-flat">
+                                        @ResMan.GetString("Next")
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <h4>@ResMan.GetString("Installer_InitialSettingsInfo")</h4>
+                @Html.FormLineEditorFor(m => m.IsDemo)
+                @Html.FormLineEditorFor(m => m.IPQueryApiKey)
+                @Html.FormLineEditorFor(m => m.RecaptchaPrivateKey)
+                @Html.FormLineEditorFor(m => m.RecaptchaPublicKey)
+                <div class="form-group">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10 form-button-wrapper">
+                        <button type="button" id="btnNextInitialSetting" class="btn-next btn btn-primary btn-block btn-flat">
+                            @ResMan.GetString("Next")
+                        </button>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <h4>@ResMan.GetString("Installer_CompleteInfo")</h4>
+                <div class="row form-button-wrapper">
+                    <button type="submit" id="btnSubmit" class="btn btn-primary btn-block btn-flat">
+                        @ResMan.GetString("Complete")
+                    </button>
+                </div>
+            </fieldset>
+        }
+    </div>
+</body>
+</html>

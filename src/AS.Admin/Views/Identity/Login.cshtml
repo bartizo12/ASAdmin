@@ -1,0 +1,80 @@
+﻿@model LoginModel
+@{
+    Model.Header.Title = ResMan.GetString("Login_Title");
+    Layout = "~/Views/Shared/_Public.cshtml";
+}
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        $('#btnFacebookLogin').on('click', function () {
+            alert('@Html.Raw(ResMan.GetString("Login_FacebookLoginNotSupported"))');
+        });
+        $('#btnGooglePlusLogin').on('click', function () {
+            alert('@Html.Raw(ResMan.GetString("Login_GooglePlusLoginNotSupported"))');
+        });
+        $("#Language").change(function () {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Set", "Language")',
+                data: { languageCode: $("#Language").val() },
+                success: function (result) {
+                    location.reload();
+                }
+            });
+        });
+    });
+</script>
+
+@using (Html.BeginForm("Login", "Identity"))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group has-feedback">
+        @Html.TextBoxFor(m => m.UserNameOrEmail, new { @class = "form-control", @placeholder = @ResMan.GetString("Login_EmailOrUsername") })
+        <span class="fa fa-user form-control-feedback"></span>
+        @Html.ValidationMessageFor(m => m.UserNameOrEmail)
+    </div>
+    <div class="form-group has-feedback">
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = @ResMan.GetString("Login_Password") })
+        <span class="fa fa-lock form-control-feedback"></span>
+        @Html.ValidationMessageFor(m => m.Password)
+    </div>
+    <div class="form-group">
+        <select  name="Language" id="Language" class="selectpicker form-control">
+            @foreach (var language in Model.Header.LanguageList)
+            {
+                <option @(language.Selected == true? "selected" : "")
+                        data-content="<img src='@Url.Content("~/Content/images/" + language.Value + ".png")'> @language.Text" value="@language.Value" />
+            }
+        </select>
+    </div>
+    if (Model.DisplayCaptcha)
+    {
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <div class="row">
+            <div class="g-recaptcha" data-sitekey="@Model.CaptchaPublicKey">
+            </div>
+        </div>
+    }
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="checkbox icheck">
+                <label>
+                    @Html.CheckBoxFor(m => m.RememberMe)
+                    @ResMan.GetString("Login_RememberMe")
+                </label>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <button type="submit" class="btn btn-primary btn-block btn-lg">@ResMan.GetString("Login_Login")</button>
+        </div>
+    </div>
+}
+<div class="social-auth-links text-center">
+    <p>- @ResMan.GetString("OR") -</p>
+    <a href="#" id="btnFacebookLogin" class="btn btn-block btn-social btn-facebook btn-flat">
+        <i class="fa fa-facebook"></i>@ResMan.GetString("Login_LoginWithFb")
+    </a>
+    <a href="#" id="btnGooglePlusLogin" class="btn btn-block btn-social btn-google btn-flat">
+        <i class="fa fa-google-plus"></i>@ResMan.GetString("Login_LoginWithGooglePlus")
+    </a>
+</div>
+<a href="~/ForgotPassword">@ResMan.GetString("Login_ForgotPassword")</a><br>

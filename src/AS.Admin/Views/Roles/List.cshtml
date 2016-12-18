@@ -1,0 +1,36 @@
+﻿@{
+    Model.Header.Title = ResMan.GetString("Roles");
+    Model.Header.Icon = "fa fa-user-plus";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+@section PageButtons{
+    <div>
+        <a style="width:180px;" class="btn btn-block btn-success btn-lg dialog-button"
+           data-iframeWidth="800" data-iframeHeight="350"
+           id="newRole" href="~/Roles/Edit">
+            @ResMan.GetString("Roles_AddNew")
+        </a>
+    </div>
+}
+<div id="asGrid-wrapper" class="grid-wrapper">
+</div>
+
+<script type="text/javascript">
+    var grid = new Grid("Name");
+    grid.HasDeleteButton = true;
+    grid.Columns = [new GridColumn("@ResMan.GetString("RoleModel_Name")", "Name"),
+                    new GridColumn("@ResMan.GetString("CreatedOn")", "CreatedOn", CellRenderers.DateTimeRenderer),
+                    new GridColumn("@ResMan.GetString("CreatedBy")", "CreatedBy"),
+                    new GridColumn("@ResMan.GetString("ModifiedOn")", "ModifiedOn", CellRenderers.DateTimeRenderer),
+                    new GridColumn("@ResMan.GetString("ModifiedBy")", "ModifiedBy")];
+    grid.Columns.push(RowButtons.UpdateButton("grid", "Name"));
+    grid.Columns[1].Orderable = true;
+    grid.Columns[0].Orderable = true;
+    grid.Columns[3].Orderable = true;
+    grid.ServerSideProcessing = true;
+    grid.Order = [[1, 'desc']];
+    grid.UrlGenerator = function () {
+        return "List?serverSideProcessing=False";
+    }
+    grid.render();
+</script>

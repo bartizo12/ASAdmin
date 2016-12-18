@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7FEFB0C2-FAC3-4EAA-AD56-AC2ADC31DF9C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AS.Domain.Settings</RootNamespace>
+    <AssemblyName>AS.Domain.Settings</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\ASRuleSet.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AvailableSettings.cs" />
+    <Compile Include="Containers\AppSettingContainer.cs" />
+    <Compile Include="Containers\EMailAddressContainer.cs" />
+    <Compile Include="Containers\EMailSettingContainer.cs" />
+    <Compile Include="Containers\HTMLTemplateContainer.cs" />
+    <Compile Include="Containers\ISettingContainer.cs" />
+    <Compile Include="Containers\MembershipSettingContainer.cs" />
+    <Compile Include="Containers\SettingContainerBase.cs" />
+    <Compile Include="Containers\UrlAddressContainer.cs" />
+    <Compile Include="Converters\MembershipSettingsTypeConverter.cs" />
+    <Compile Include="ISettingDataProvider.cs" />
+    <Compile Include="ISettingManager.cs" />
+    <Compile Include="SettingManager.cs" />
+    <Compile Include="SettingsCacheLoadedEventArgs.cs" />
+    <Compile Include="Converters\SettingTypeConverterBase.cs" />
+    <Compile Include="Converters\EMailAddressTypeConverter.cs" />
+    <Compile Include="Converters\EMailSettingTypeConverter.cs" />
+    <Compile Include="Converters\HTMLTemplateTypeConverter.cs" />
+    <Compile Include="Converters\UrlAddressTypeConverter.cs" />
+    <Compile Include="Types\AppSetting.cs" />
+    <Compile Include="Types\MembershipSetting.cs" />
+    <Compile Include="Types\SettingBase.cs" />
+    <Compile Include="Converters\AppSettingTypeConverter.cs" />
+    <Compile Include="Types\Configuration.cs" />
+    <Compile Include="Types\EMailAddress.cs" />
+    <Compile Include="Types\EMailSetting.cs" />
+    <Compile Include="Types\HTMLTemplate.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Types\UrlAddress.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AS.Domain.Entities\AS.Domain.Entities.csproj">
+      <Project>{2efb678c-5f10-4a5d-a5e0-ff365350163b}</Project>
+      <Name>AS.Domain.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AS.Domain.Interfaces\AS.Domain.Interfaces.csproj">
+      <Project>{c2bbc3db-daff-4b76-9bba-c625700fac86}</Project>
+      <Name>AS.Domain.Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,17 @@
+﻿@model JobDefinitionModel
+@{
+    Model.Header.Title = ResMan.GetString("View");
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    Model.Header.PopupPage = true;
+}
+
+@Html.FormLineEditorFor(m => m.Name, new { htmlAttributes = new { @readonly = true } })
+@Html.FormLineEditorFor(m => m.JobTypeName, new { htmlAttributes = new { @readonly = true } })
+@Html.FormLineEditorFor(m => m.RunInterval, new { htmlAttributes = new { @readonly = true } })
+@Html.FormLineEditorFor(m => m.CreatedOn, new { htmlAttributes = new { @readonly = true } })
+@Html.FormLineEditorFor(m => m.CreatedBy, new { htmlAttributes = new { @readonly = true } })
+@Html.FormLineEditorFor(m => m.ModifiedOn, new { htmlAttributes = new { @readonly = true } })
+@Html.FormLineEditorFor(m => m.ModifiedBy, new { htmlAttributes = new { @readonly = true } })
+@Html.FormLineJobStatusFor(m => m.JobStatus)
+@Html.FormLineEditorFor(m => m.LastExecutionTime, new { htmlAttributes = new { @readonly = true } })
+@Html.FormLineEditorFor(m => m.Error, new { htmlAttributes = new { @readonly = true, @rows = 6 } })

@@ -1,0 +1,41 @@
+﻿@model MessageModel
+@{
+
+    string divCssClass = string.Empty;
+    IHtmlString iconHtml = null;
+
+    if (Model.MessageType == MessageType.Info)
+    {
+        iconHtml = new HtmlString("<i class='fa fa-info-circle'></i>");
+        divCssClass = "info";
+    }
+    else if (Model.MessageType == MessageType.Success)
+    {
+        iconHtml = new HtmlString("<i class='fa fa-check-circle'></i>");
+        divCssClass = "success";
+    }
+    else if (Model.MessageType == MessageType.Warning)
+    {
+        iconHtml = new HtmlString("<i class='fa fa-exclamation-circle'></i>");
+        divCssClass = "warning";
+    }
+    else if (Model.MessageType == MessageType.Danger)
+    {
+        iconHtml = new HtmlString("<i class='fa fa-times-circle'></i>");
+        divCssClass = "danger";
+    }
+
+    if (Model.ElementType == MessageElementType.CallOut)
+    {
+        <div class="callout callout-@divCssClass">
+            <p>@iconHtml @Html.Raw(Model.Message)</p>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-@divCssClass alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <p>@iconHtml @Html.Raw(Model.Message)</p>
+        </div>
+    }
+}

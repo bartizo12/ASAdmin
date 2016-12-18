@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DD4D1B13-1517-48AD-A744-039015ACD0EB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AS.Infrastructure</RootNamespace>
+    <AssemblyName>AS.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\ASRuleSet.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.2.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.2.1\lib\net45\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServerCompact, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.SqlServerCompact.6.1.3\lib\net45\EntityFramework.SqlServerCompact.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentScheduler, Version=5.1.0.0, Culture=neutral, PublicKeyToken=b76503528a14ebd1, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentScheduler.5.1.0\lib\net40\FluentScheduler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.9.9\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.4.0\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ASException.cs" />
+    <Compile Include="Collections\PagedList.cs" />
+    <Compile Include="ComponentModel\OptionalAttribute.cs" />
+    <Compile Include="Extensions\AS.Domain.Entities\SettingValueExtensions.cs" />
+    <Compile Include="Extensions\System.Globalization\CultureInfoExtensions.cs" />
+    <Compile Include="Extensions\System.Threading\TaskExtensions.cs" />
+    <Compile Include="Extensions\System\StringExtensions.cs" />
+    <Compile Include="Identity\LastActivityTimeUpdater.cs" />
+    <Compile Include="IO\ConfigurationStorageManager.cs" />
+    <Compile Include="Data\Database.cs" />
+    <Compile Include="Data\EF\ASDatabaseInitializer .cs" />
+    <Compile Include="Data\EF\Extensions\TypeConfigurationExtensions.cs" />
+    <Compile Include="Data\EF\ASDbContextFactory.cs" />
+    <Compile Include="Data\EF\ASHistoryContext.cs" />
+    <Compile Include="Data\EF\ASDbConfiguration.cs" />
+    <Compile Include="Data\EF\ASDbCommandInterceptor.cs" />
+    <Compile Include="Data\EF\ASDbMigrationsConfiguration.cs" />
+    <Compile Include="Data\SqlCommandParser.cs" />
+    <Compile Include="Data\IDbContext.cs" />
+    <Compile Include="Data\IDbContextFactory.cs" />
+    <Compile Include="Extensions\System\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\System\RandomExtensions.cs" />
+    <Compile Include="Geo\GeoProvider.cs" />
+    <Compile Include="Identity\ASRole.cs" />
+    <Compile Include="Identity\ASRoleManager.cs" />
+    <Compile Include="Identity\ASRoleStore.cs" />
+    <Compile Include="Identity\ASUser.cs" />
+    <Compile Include="Identity\ASUserClaim .cs" />
+    <Compile Include="Identity\ASUserLogin.cs" />
+    <Compile Include="Identity\ASUserManager.cs" />
+    <Compile Include="Identity\ASUserRole.cs" />
+    <Compile Include="Identity\ASUserStore.cs" />
+    <Compile Include="Logging\BaseLogger.cs" />
+    <Compile Include="Logging\LogLevels.cs" />
+    <Compile Include="Logging\RequestDbLogger.cs" />
+    <Compile Include="Reflection\TypeFinder.cs" />
+    <Compile Include="Scheduling\JobFactory.cs" />
+    <Compile Include="Security\AESEncryptionProvider.cs" />
+    <Compile Include="Settings\SettingDataProvider.cs" />
+    <Compile Include="Text\RegexHelper.cs" />
+    <Compile Include="Validation\EmailAddressValidator.cs" />
+    <Compile Include="Validation\PropertyValidatorBase.cs" />
+    <Compile Include="Validation\UsernameValidator.cs" />
+    <Compile Include="Validation\ValidationResult.cs" />
+    <Compile Include="XML\ASXmlSerializer.cs" />
+    <Compile Include="Data\EF\ASDbContext.cs" />
+    <Compile Include="Data\EF\EntityTypeConfigurationBase.cs" />
+    <Compile Include="ServiceLocator.cs" />
+    <Compile Include="Logging\LoggingConfigurator.cs" />
+    <Compile Include="Logging\NLogCustomTarget.cs" />
+    <Compile Include="Logging\NLogger.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="IO\StorageManagerBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <Compile Include="Validation\PasswordValidator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AS.Domain.Entities\AS.Domain.Entities.csproj">
+      <Project>{2efb678c-5f10-4a5d-a5e0-ff365350163b}</Project>
+      <Name>AS.Domain.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AS.Domain.Interfaces\AS.Domain.Interfaces.csproj">
+      <Project>{c2bbc3db-daff-4b76-9bba-c625700fac86}</Project>
+      <Name>AS.Domain.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AS.Domain.Settings\AS.Domain.Settings.csproj">
+      <Project>{7fefb0c2-fac3-4eaa-ad56-ac2adc31df9c}</Project>
+      <Name>AS.Domain.Settings</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReadMe.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    if not exist "$(TargetDir)x86" md "$(TargetDir)x86"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\x86\*.*" "$(TargetDir)x86"
+    if not exist "$(TargetDir)amd64" md "$(TargetDir)amd64"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\amd64\*.*" "$(TargetDir)amd64"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,46 @@
+﻿@model ASModelBase
+<header class="main-header">
+    <!-- Logo -->
+    <a href="~/Home" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>A</b>S</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>AS</b>ADMIN</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+        <!-- Navbar Right Menu -->
+        <div class="navbar-custom-menu">
+            <span id="userName">@ResMan.GetString("Panel_Top_UserWelcome") <strong>@User.Identity.Name</strong></span>
+            <span style="padding-left:15px;padding-right:15px;">|</span>
+            <span>@ResMan.GetString("Header_SessionTime")<strong id="sessionTime"></strong></span>
+            <span style="padding-left:15px;">|</span>
+            <select name="Language" data-width="fit" id="Language" class="selectpicker" data-style="btn-primary">
+                @foreach (var language in Model.Header.LanguageList)
+                {
+                    <option @(language.Selected == true ? "selected" : "")
+                            data-content="<img src='@Url.Content("~/Content/images/" + language.Value + ".png")'> @language.Text" value="@language.Value" />
+                }
+            </select>
+            <span style="padding-left:30px;">|</span>
+            <a class="btn btn-info" href="~/Logout">@ResMan.GetString("Logout")</a>
+        </div>
+    </nav>
+</header>
+<script type="text/javascript">
+    new DateTimeRenderer("#sessionTime");
+    $("#Language").change(function () {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("Set", "Language")',
+            data: { languageCode: $("#Language").val() },
+            success: function (result) {
+                location.reload();
+            }
+        });
+    });
+</script>

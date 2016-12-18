@@ -1,0 +1,76 @@
+﻿@model UserModel
+@{
+    Model.Header.Title = ResMan.GetString("Detail");
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    Model.Header.PopupPage = true;
+}
+<div class="nav-tabs-custom">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a href="#info" data-toggle="tab" aria-expanded="true">@ResMan.GetString("Info")</a>
+        </li>
+        <li>
+            <a href="#activities" data-toggle="tab" aria-expanded="true">@ResMan.GetString("Activities")</a>
+        </li>
+        <li>
+            <a href="#resetPassword" data-toggle="tab" aria-expanded="true">@ResMan.GetString("ResetPassword_ResetPassword")</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="info">
+            <div class="box">
+                <div class="box-body box-profile">
+                    <h2 class="text-center">@Model.UserName</h2>
+                    <ul class="list-group list-group-unbordered">
+                        <li class="list-group-item">
+                            <b>@ResMan.GetString("UserModel_Email")</b> <a class="pull-right">@Model.Email</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>@ResMan.GetString("UserModel_SelectedRoles")</b> <a class="pull-right">
+                                @foreach (string role in Model.Roles)
+                                {
+                                @role <span>,</span>
+                                }
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>@ResMan.GetString("CreatedOn")</b> <a class="pull-right datetime-field">@Model.CreatedOn</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>@ResMan.GetString("CreatedBy")</b> <a class="pull-right">@Model.CreatedBy</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>@ResMan.GetString("UserModel_LastLogin")</b> <a class="pull-right datetime-field">@Model.LastLogin</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>@ResMan.GetString("UserModel_LastActivity")</b> <a class="pull-right datetime-field">@Model.LastActivity</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="activities">
+            <div id="asGrid-wrapper" class="grid-wrapper" style="max-width:1400px;">
+            </div>
+        </div>
+        <div class="tab-pane" id="resetPassword">
+            @Html.Partial("ResetPassword", new ResetUserPasswordModel(Request.QueryString["userName"]))
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var grid;
+
+    $(function () {
+        grid = new Grid();
+        grid.ServerSideProcessing = true;
+        grid.Ordering = false;
+        grid.Columns = [new GridColumn("@ResMan.GetString("Activity_Activity")", "Activity"),
+                new GridColumn("@ResMan.GetString("Activity_Time")", "CreatedOn", CellRenderers.DateTimeRenderer), ];
+
+        grid.UrlGenerator = function () {
+            return "ViewDetail?UserId=" + @Model.Id;
+        }
+        grid.render();
+    });
+</script>

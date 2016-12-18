@@ -1,0 +1,64 @@
+﻿@model StringResourceListModel
+@{
+    Model.Header.Title = ResMan.GetString("StringResources");
+    Model.Header.Icon = "fa fa-globe";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+@section PageButtons{
+    <div>
+        <a style="width:250px;" class="btn btn-block btn-success btn-lg dialog-button"
+           data-iframeWidth="800" data-iframeHeight="350" href="~/StringResources/Edit">
+            @ResMan.GetString("StringResource_AddNew")
+        </a>
+    </div>
+}
+<div class="row">
+    <div class="col-md-6">
+        @Html.FormLineDropDownListFor(m => m.CultureCode, Model.CultureCodeList)
+    </div>
+    <div class="col-md-6">
+        @Html.FormLineEditorFor(m => m.NameOrValue)
+    </div>
+</div>
+
+<div class="admin-page-button-group">
+    <div class="admin-page-button-group-item" style="margin-left:10%">
+        <button type="button" onclick="grid.reload();" class="btn btn-primary btn-block btn-flat">@ResMan.GetString("List")</button>
+    </div>
+    <div class="admin-page-button-group-item" style="margin-left:50px">
+        <button id="btnReset" class="btn btn-default btn-block btn-flat">@ResMan.GetString("ResetPage")</button>
+    </div>
+</div>
+<div id="asGrid-wrapper" class="grid-wrapper">
+</div>
+<script type="text/javascript">
+    var grid;
+    $(function () {
+        new ResetPageButton("btnReset");
+        grid = new Grid("Id");
+        grid.ServerSideProcessing = true;
+        grid.HasDeleteButton = true;
+        grid.Columns = [new GridColumn("@ResMan.GetString("StringResourceModel_CultureCode")", "CultureCode"),
+                        new GridColumn("@ResMan.GetString("StringResourceModel_Name")", "Name"),
+                        new GridColumn("@ResMan.GetString("StringResourceModel_Value")", "Value"),
+                        new GridColumn("@ResMan.GetString("ModifiedOn")", "ModifiedOn", CellRenderers.DateTimeRenderer),
+                        new GridColumn("@ResMan.GetString("CreatedOn")", "CreatedOn", CellRenderers.DateTimeRenderer)];
+        grid.Columns.push(RowButtons.UpdateButton("grid", "Id"));
+
+        grid.Columns[1].Orderable = true;
+        grid.Columns[2].Orderable = true;
+        grid.Columns[3].Orderable = true;
+        grid.Columns[4].Orderable = true;
+        grid.Columns[2].ClassName = "truncate-cell";
+        grid.Order = [[1, 'asc']];
+        grid.UrlGenerator = function () {
+            return "List?cultureCode=" + $("#CultureCode").val() +
+                  "&nameOrValue=" + $("#NameOrValue").val();
+        }
+        grid.render();
+
+        $("#CultureCode").change(function () {
+            grid.reload();
+        });
+    });
+</script>

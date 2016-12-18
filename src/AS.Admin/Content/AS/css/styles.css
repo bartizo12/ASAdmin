@@ -1,0 +1,440 @@
+﻿.form-group .field-validation-error {
+    color: #dd4b39;
+    font-weight: bold;
+}
+
+.connection-page {
+    background: #d2d6de;
+}
+
+.login-box, .register-box {
+    width: 600px;
+}
+
+.login-box-body {
+    margin-top: 20px;
+}
+
+.public-validation-summary {
+    background-color: #fff;
+    padding-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
+
+.sidebar-menu .active-link > a {
+    color: #ffffff;
+    background: #1b2427;
+    border-left-color: #3c8dbc !important;
+}
+
+.callout {
+    padding-bottom: 10px;
+    font-size: 16px;
+    float: left;
+    width: 100%;
+}
+
+    .callout i {
+        float: left;
+    }
+
+    .callout p {
+        float: left;
+        padding-left: 15px;
+        margin-top: -3px;
+    }
+
+        .callout p i {
+            padding-right: 10px;
+            padding-top: 3px;
+        }
+
+.content-header i {
+    float: left;
+    font-size: 30px;
+}
+
+.content-header h1 {
+    float: left;
+    padding-left: 15px;
+}
+
+.content-header {
+    border-bottom: solid 3px lightgrey;
+    padding-bottom: 1px;
+    margin-bottom: 10px;
+    height: 65px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+    float: left;
+    width: 100%;
+}
+
+    .form-group .control-label {
+        margin-top: 10px;
+    }
+
+    .form-group .form-control, .form-group .form-control-feedback {
+        margin-top: 10px;
+    }
+
+.form-group-input input {
+    width: 100%;
+}
+
+.form-button-wrapper {
+    padding-top: 15px;
+}
+
+    .form-button-wrapper button {
+        width: 180px;
+    }
+
+.ms-drop input[type=checkbox] {
+    margin: 0px;
+}
+
+.date .form-control {
+    margin: 0px;
+}
+
+.navbar-custom-menu span {
+    color: white;
+}
+
+#userName strong {
+    font-size: 18px;
+}
+
+.main-header .navbar-custom-menu {
+    padding-top: 10px;
+    padding-right: 30px;
+}
+
+    .main-header .navbar-custom-menu .btn {
+        margin-left: 20px;
+    }
+
+.admin-page-button-group {
+    margin-top: 10px;
+    padding-bottom: 10px;
+    margin-right: -15px;
+    margin-left: -15px;
+    width: 100%;
+    float: left;
+}
+
+    .admin-page-button-group .admin-page-button-group-item {
+        float: left;
+        width: 200px;
+    }
+/* Result Page */
+.notify {
+    display: block;
+    background: #fff;
+    padding: 12px 18px;
+    max-width: 400px;
+    margin: 0 auto;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px 0px;
+}
+
+    .notify h1 {
+        margin-bottom: 6px;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 2.5em;
+        line-height: 1.5em;
+        letter-spacing: -0.05em;
+        padding: .1em 0;
+        color: #444;
+        position: relative;
+        overflow: hidden;
+        white-space: nowrap;
+        text-align: center;
+    }
+
+        .notify h1:before,
+        .notify h1:after {
+            content: "";
+            position: relative;
+            display: inline-block;
+            width: 50%;
+            height: 1px;
+            vertical-align: middle;
+            background: #f0f0f0;
+        }
+
+        .notify h1:before {
+            left: -.5em;
+            margin: 0 0 0 -50%;
+        }
+
+        .notify h1:after {
+            left: .5em;
+            margin: 0 -50% 0 0;
+        }
+
+    .notify p {
+        text-align: center;
+        font-size: 16px;
+    }
+
+.successbox h1, .successbox .fa {
+    color: #678361;
+}
+
+.errorbox h1, .errorbox .fa {
+    color: #6f423b;
+}
+
+.successbox h1:before, .successbox h1:after {
+    background: #cad8a9;
+}
+
+.errorbox h1:before, .errorbox h1:after {
+    background: #d6b8b7;
+}
+
+.notify .alerticon {
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 60px;
+    color: forestgreen;
+}
+
+.has-error .field-validation-error {
+    padding-left: 15px;
+}
+
+.has-error .validation-wrapper {
+    display: table;
+    padding-top: 8px;
+}
+/* End of Result Page */
+/* Grid Css */
+.grid-wrapper {
+    padding-top: 20px;
+}
+
+    .grid-wrapper .dt-buttons .btn-info {
+        color: white;
+    }
+
+div.dt-buttons {
+    float: left;
+}
+
+.dataTables_length > label:first-child {
+    float: right;
+    padding-right: 10px;
+}
+
+.dataTables_filter {
+    float: right;
+    margin-right: 10px;
+}
+
+.table .btn-rowButton i {
+    padding-right: 10px;
+}
+
+.table .button-cell {
+    text-align: center;
+}
+/* End of Grid */
+
+/* Wizard */
+.f1 {
+    padding: 25px;
+    background: #fff;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+
+    .f1 h3 {
+        margin-top: 0;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+    }
+
+.f1-steps {
+    overflow: hidden;
+    position: relative;
+    margin-top: 20px;
+}
+
+.f1-progress {
+    position: absolute;
+    top: 24px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #ddd;
+}
+
+.f1-progress-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1px;
+    background: #f35b3f;
+}
+
+.f1-step {
+    position: relative;
+    float: left;
+    width: 25%;
+    padding: 0 5px;
+}
+
+.f1-step-icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-top: 4px;
+    background: #ddd;
+    font-size: 16px;
+    color: #fff;
+    line-height: 40px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.f1-step.activated .f1-step-icon {
+    background: #fff;
+    border: 1px solid #f35b3f;
+    color: #f35b3f;
+    line-height: 38px;
+}
+
+.f1-step.active .f1-step-icon {
+    width: 48px;
+    height: 48px;
+    margin-top: 0;
+    background: #f35b3f;
+    font-size: 22px;
+    line-height: 48px;
+}
+
+.f1-step p {
+    color: #ccc;
+}
+
+.f1-step.activated p {
+    color: #f35b3f;
+}
+
+.f1-step.active p {
+    color: #f35b3f;
+}
+
+.f1 fieldset {
+    display: none;
+    text-align: left;
+}
+
+.f1-buttons {
+    text-align: right;
+}
+
+.f1 .input-error {
+    border-color: #f35b3f;
+}
+
+/* End of Wizard */
+.btn-back-top {
+    display: none;
+    right: 40px;
+    bottom: 40px;
+    position: fixed;
+    width: 61px;
+    height: 48px;
+}
+
+    .btn-back-top::before {
+        content: "";
+        display: block;
+        position: relative;
+        left: 7px;
+        top: 12px;
+        width: 22px;
+        height: 22px;
+        border-right: 6px solid white;
+        border-top: 6px solid white;
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        -webkit-transition: all 0.2s;
+        -moz-transition: all 0.2s;
+        -ms-transition: all 0.2s;
+        -o-transition: all 0.2s;
+        transition: all 0.2s;
+    }
+
+.nav-tabs-custom > .tab-content {
+    padding: unset !important;
+}
+
+.g-recaptcha {
+    float: left;
+    padding: 20px;
+}
+
+.truncate-cell-container {
+    position: relative;
+}
+
+.truncate-cell-content {
+    position: absolute;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.truncate-cell-spacer {
+    height: 0;
+    overflow: hidden;
+}
+
+.ms-choice {
+    height: 34px !important;
+}
+
+.error-page > .error-content {
+    padding-top: 20px;
+}
+
+.fancybox-iframe .form-group .icheckbox_square-blue {
+    top: 10px;
+}
+/* Overriden AdminLTE styles */
+.table-bordered {
+    border: 1px solid #ddd !important;
+}
+
+    .table-bordered > thead > tr > th,
+    .table-bordered > tbody > tr > th,
+    .table-bordered > tfoot > tr > th,
+    .table-bordered > thead > tr > td,
+    .table-bordered > tbody > tr > td,
+    .table-bordered > tfoot > tr > td {
+        border: 1px solid #ddd !important;
+    }
+
+.form-group .icheckbox_square-blue {
+    margin-top: 10px;
+}

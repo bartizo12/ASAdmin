@@ -1,0 +1,60 @@
+﻿@{
+    Model.Header.Title = ResMan.GetString("ScheduledJobs");
+    Model.Header.Icon = "fa fa-clock-o";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+@section PageButtons{
+    <div>
+        <a style="width:250px;" class="btn btn-block btn-success btn-lg dialog-button"
+           data-iframeWidth="800" data-iframeHeight="350" href="~/Scheduler/Edit">
+            @ResMan.GetString("ScheduledJobs_New")
+        </a>
+    </div>
+}
+<div id="asGrid-wrapper" class="grid-wrapper">
+</div>
+
+<script type="text/javascript">
+    var grid = new Grid("Id");
+    grid.HasDeleteButton = false;
+    grid.Columns = [new GridColumn("@ResMan.GetString("JobDefinitionModel_Name")", "Name"),
+                    new GridColumn("@ResMan.GetString("JobDefinitionModel_JobTypeName")", "JobTypeName"),
+                    new GridColumn("@ResMan.GetString("JobDefinitionModel_RunInterval")", "RunInterval"),
+                    new GridColumn("@ResMan.GetString("CreatedOn")", "CreatedOn", CellRenderers.DateTimeRenderer),
+                    new GridColumn("@ResMan.GetString("JobDefinitionModel_JobStatus")", "JobStatus", CellRenderers.JobStatusRenderer),
+                    new GridColumn("@ResMan.GetString("JobDefinitionModel_LastExecutionTime")", "LastExecutionTime", CellRenderers.DateTimeRenderer)];
+    function renderViewButton(data, t, row, meta) {
+        var html = "<a  data-iframeWidth='800' data-iframeHeight='750' class='btn btn-primary btn-rowButton dialog-button' href='ViewDetail?id=" + data + "'>";
+        html += "<i class='fa fa-list-alt'></i>" + StringResources["Details"] + "</a>";
+
+        return html;
+    }
+    var viewButtoncol = new GridColumn("", "Id", renderViewButton);
+    viewButtoncol.Width = "80px";
+    viewButtoncol.ClassName = "button-cell";
+    grid.Columns.push(viewButtoncol);
+    grid.Columns.push(RowButtons.UpdateButton("grid", "Id"));
+
+    function renderRunButton(data, t, row, meta) {
+        var html = "<a  data-iframeWidth='600' data-related-gridid='grid' data-iframeHeight='600' class='btn btn-success btn-rowButton dialog-button' href='Run?name=" + data + "'>";
+        html += "<i class='fa fa-play-circle'></i>" + StringResources["Run"] + "</a>";
+
+        return html;
+    }
+    var runButtonCol = new GridColumn("", "Name", renderRunButton);
+    runButtonCol.Width = "60px";
+    runButtonCol.ClassName = "button-cell";
+    grid.Columns.push(runButtonCol);
+
+    grid.Columns[1].Width = "400px";
+    grid.Columns[0].Orderable = true;
+    grid.Columns[3].Orderable = true;
+    grid.Columns[4].Orderable = true;
+    grid.Columns[5].Orderable = true;
+    grid.ServerSideProcessing = true;
+    grid.Order = [[5, 'desc']];
+    grid.UrlGenerator = function () {
+        return "List?serverSideProcessing=False";
+    }
+    grid.render();
+</script>

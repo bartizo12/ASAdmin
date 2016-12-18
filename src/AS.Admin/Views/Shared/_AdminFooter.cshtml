@@ -1,0 +1,12 @@
+﻿<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        @Html.Raw(@ResMan.GetString("Version"))  @typeof(AS.Admin.MvcApplication).Assembly.GetName().Version
+    </div>
+    @Html.Raw(@ResMan.GetString("Copyright_Text"))
+    <label style="margin-left:40px;">
+        (
+        <span>@ResMan.GetString("SourceCodeInfo") </span>
+        <a target="_blank" href="https://github.com/NazmiAltun/asadmin">https://github.com/NazmiAltun/asadmin</a>
+        )
+    </label>
+</footer>

@@ -1,0 +1,104 @@
+﻿@model HomeModel
+@{
+    Model.Header.Title = ResMan.GetString("Dashboard");
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+@section PageMessages{
+    @if (Model.SMTPSettingIsMissing)
+    {
+        @Html.Partial("_MessageBox", new MessageModel(MessageType.Warning, MessageElementType.Alert, ResMan.GetString("SMTP_SettingMissing")))
+    }
+}
+@using (Html.BeginForm("Admin", "Index"))
+{
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div id="totalUserCount" class="small-box bg-aqua overlay">
+                <i class="fa fa-refresh fa-spin"></i>
+                <div class="inner">
+                    <h3><span class="count-info"></span></h3>
+                    <p>@ResMan.GetString("Users")</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-users"></i>
+                </div>
+                <a href="~/Users" class="small-box-footer">
+                    @ResMan.GetString("MoreInfo") <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div id="totalMailCount" class="small-box bg-green overlay">
+                <i class="fa fa-refresh fa-spin"></i>
+                <div class="inner">
+                    <h3><span class="count-info"></span></h3>
+                    <p>@ResMan.GetString("Emails")</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-envelope-o"></i>
+                </div>
+                <a href="~/Email" class="small-box-footer">
+                    @ResMan.GetString("MoreInfo") <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div id="totalJobCount" class="small-box bg-yellow overlay">
+                <i class="fa fa-refresh fa-spin"></i>
+                <div class="inner">
+                    <h3><span class="count-info"></span></h3>
+                    <p>@ResMan.GetString("ScheduledJobs")</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-clock-o"></i>
+                </div>
+                <a href="~/Scheduler" class="small-box-footer">
+                    @ResMan.GetString("MoreInfo") <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div id="totalLogCount" class="small-box bg-red overlay">
+                <i class="fa fa-refresh fa-spin"></i>
+                <div class="inner">
+                    <h3><span class="count-info"></span></h3>
+                    <p>@ResMan.GetString("ApplicationLogs")</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-book"></i>
+                </div>
+                <a href="~/AppLog" class="small-box-footer">
+                    @ResMan.GetString("MoreInfo") <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+}
+<script type="text/javascript">
+    $(function () {
+        $.get("GetTotalUserCount", function (data) {
+            $("#totalUserCount i.fa-spin").remove();
+            $("#totalUserCount span.count-info").html(data);
+            $("#totalUserCount").removeClass('overlay');
+        });
+        $.get("GetTotalMailCount", function (data) {
+            $("#totalMailCount i.fa-spin").remove();
+            $("#totalMailCount span.count-info").html(data);
+            $("#totalMailCount").removeClass('overlay');
+        });
+        $.get("GetTotalLogCount", function (data) {
+            $("#totalLogCount i.fa-spin").remove();
+            $("#totalLogCount span.count-info").html(data);
+            $("#totalLogCount").removeClass('overlay');
+        });
+        $.get("GetTotalJobCount", function (data) {
+            $("#totalJobCount i.fa-spin").remove();
+            $("#totalJobCount span.count-info").html(data);
+            $("#totalJobCount").removeClass('overlay');
+        });
+    });
+</script>

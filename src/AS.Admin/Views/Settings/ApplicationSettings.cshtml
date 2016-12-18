@@ -1,0 +1,37 @@
+﻿@model ApplicationSettingsModel
+@{
+    Model.Header.Title = ResMan.GetString("ApplicationSettings");
+    Model.Header.Icon = "fa fa-cogs";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.FormLineEditorFor(m => m.ApplicationDefaultTitle)
+    @Html.FormLineEditorFor(m => m.MetaDescription)
+    @Html.FormLineEditorFor(m => m.MetaKeywords)
+    @Html.FormLineEditorFor(m => m.RecaptchaDisplayCount)
+    @Html.FormLineEditorFor(m => m.DbQueryLogEnable)
+    @Html.FormLineEditorFor(m => m.BundlingEnabled)
+    @Html.FormLineEditorFor(m => m.RecaptchaDisplayCount)
+    @Html.FormLineDropDownListFor(m => m.MinLogLevel, Model.LogLevels)
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("input[type=text],input[type=number],select").change(function () {
+            updateValue($(this).attr('id'), $(this).val());
+        });
+        $('input').on('ifChecked', function (event) {
+            updateValue($(this).attr('id'), true);
+        });
+        $('input').on('ifUnchecked', function (event) {
+            updateValue($(this).attr('id'), false);
+        });
+        function updateValue(sName, sValue) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("UpdateApplicationSetting", "Settings")',
+                data: { name: sName, newValue: sValue }
+            });
+        }
+    });
+</script>

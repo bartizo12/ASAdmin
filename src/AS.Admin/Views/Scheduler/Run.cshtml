@@ -1,0 +1,15 @@
+﻿@{
+    Model.Header.Title = ResMan.GetString("Run");
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    Model.Header.PopupPage = true;
+}
+<div class="notify successbox">
+    <h1>@ResMan.GetString("Result_Success")</h1>
+    <span class="alerticon">
+        <i class='fa fa-check-circle'></i>
+    </span>
+    <p>@Html.Raw(string.Format(ResMan.GetString("JobDefinition_RunSuccess"),Request.QueryString["name"]))</p>
+</div>
+<script type="text/javascript">
+        parent.reload = true;
+</script>

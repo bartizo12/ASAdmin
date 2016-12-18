@@ -1,0 +1,121 @@
+﻿@model ASModelBase
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@Model.Header.Title</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-type" content="text/html" />
+    <meta name="description" content="@Model.Header.MetaDescription" />
+    <meta name="keywords" content="@Model.Header.MetaKeywords" />
+    <meta name="generator" content="AS" />
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="~/Content/favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    @Styles.Render("~/content/asCss")
+    @Scripts.Render("~/content/thirdPartyJs")
+    @Scripts.Render("~/content/asJs")
+
+    @if (!Model.Header.PopupPage)
+    {
+        <link rel="stylesheet" type="text/css" href="~/Content/AS/css/pace.css" />
+    }
+    <!--[if lt IE 9]>
+    <script src="~/Content/html5shiv/dist/html5shiv.min.js"></script>
+    <script src="~/Content/respond/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+        var StringResources =  @Html.Raw(Json.Encode(Model.Header.ClientResources));
+    </script>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div>
+        @Html.Raw(Html.ValidationSummary(true))
+    </div>
+    @if (Model.Header.PopupPage)
+    {
+        if (Model.Header.DisplayDisabledOnDemoMessage)
+        {
+            if (Model.Header.IsDemo)
+            {
+                <div class="alert alert-warning alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="icon fa fa-warning"></i>@ResMan.GetString("Demo_Disabled_Message")</h4>
+                </div>
+            }
+        }
+        @RenderBody()
+    }
+    else
+    {
+        <div class="wrapper">
+            @Html.Partial("_AdminHeader")
+            <aside class="main-sidebar">
+                <section class="sidebar">
+                    <ul id="adminMenu" class="sidebar-menu">
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-cogs"></i>
+                                <span>@ResMan.GetString("Settings")</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu" style="display: none;">
+                                <li><a href="~/Settings/ApplicationSettings"><i class="fa fa-circle-o"></i> @ResMan.GetString("ApplicationSettings")</a></li>
+                                <li><a href="~/Settings/MembershipSettings"><i class="fa fa-circle-o"></i> @ResMan.GetString("MembershipSettings")</a></li>
+                                <li><a href="~/Settings/ListTemplates"><i class="fa fa-circle-o"></i> @ResMan.GetString("HTML_Templates")</a></li>
+                                <li><a href="~/Settings/ListEMailSettings"><i class="fa fa-circle-o"></i> @ResMan.GetString("EMail_Settings")</a></li>
+                                <li><a href="~/Settings/List"><i class="fa fa-circle-o"></i> @ResMan.GetString("Others")</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="~/StringResources"><i class="fa fa-globe"></i> <span>@ResMan.GetString("StringResources")</span></a></li>
+                        <li><a href="~/Roles"><i class="fa fa-user-plus"></i> <span>@ResMan.GetString("Roles")</span></a></li>
+                        <li><a href="~/Users"><i class="fa fa-users"></i> <span>@ResMan.GetString("Users")</span></a></li>
+                        <li><a href="~/Scheduler"><i class="fa fa-clock-o"></i> <span>@ResMan.GetString("ScheduledJobs")</span></a></li>
+                        <li><a href="~/Email"><i class="fa fa-envelope-o"></i> <span>@ResMan.GetString("Emails")</span></a></li>
+                        <li><a href="~/AppLog"><i class="fa fa-book"></i> <span>@ResMan.GetString("ApplicationLogs")</span></a></li>
+                    </ul>
+                </section>
+            </aside>
+            <div class="content-wrapper" style="min-height: 850px;">
+                @RenderSection("PageMessages", false)
+                <section class="content-header">
+                    <i class="@Model.Header.Icon"></i>
+                    <h1>@Model.Header.Title</h1>
+                    <div style="float:right">
+                        @RenderSection("PageButtons", false)
+                    </div>
+                </section>
+                <section class="content">
+                    @RenderBody()
+                </section>
+            </div>
+            @Html.Partial("_AdminFooter")
+        </div>
+    }
+    <a id="backTop" class="btn btn-back-top bg-teal"></a>
+</body>
+</html>
+<script type="text/javascript">
+    var parentListItem;
+    $(document).ready(function () {
+        $('#backTop').backTop();
+        var path = window.location.pathname + window.location.search;
+
+        $("#adminMenu li a").each(function (i, item) {
+            var liUrl = $(item).attr('href');
+            if (liUrl == path || liUrl + "/Index" == path || liUrl + "/List" == path) {
+                $(item).parent().addClass('active-link');
+                if ($(item).parent().parent().parent().hasClass('treeview')) {
+                    parentListItem = $(item).parent().parent().parent();
+                }
+            }
+        });
+
+        if (parentListItem) {
+            $(parentListItem).find('a:first').trigger('click');
+        }
+    });
+</script>

@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    Model.Header.PopupPage = true;
+}
+@{
+    if (TempData["ResultType"] != null)
+    {
+        MessageType resultType = (MessageType)TempData["ResultType"];
+        string divCssClass = string.Empty;
+        IHtmlString iconHtml = null;
+        string title = string.Empty;
+
+        if (resultType == MessageType.Success)
+        {
+            iconHtml = new HtmlString("<i class='fa fa-check-circle'></i>");
+            divCssClass = "successbox";
+            title = ResMan.GetString("Result_Success");
+        }
+        else if (resultType == MessageType.Danger)
+        {
+            iconHtml = new HtmlString("<i class='fa fa-times-circle'></i>");
+            divCssClass = "errorbox";
+            title = ResMan.GetString("Result_Error");
+        }
+
+        <div class="notify @divCssClass">
+            <h1>@title</h1>
+            <span class="alerticon">
+                @iconHtml
+            </span>
+            <p>@Html.Raw(TempData["ResultMessage"]);</p>
+        </div>
+    }
+}
+@{
+    <script type="text/javascript">
+        parent.reload = true;
+    </script>
+}

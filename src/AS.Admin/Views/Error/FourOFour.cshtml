@@ -1,0 +1,14 @@
+﻿@model ASModelBase
+@{
+    Model.Header.Title = "404";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+<div class="error-page">
+    <h2 class="headline text-yellow">404</h2>
+    <div class="error-content">
+        <h3><i class="fa fa-warning text-yellow"></i>@ResMan.GetString("ErrorMessage_PageNotFound")</h3>
+        <p>
+           @Html.Raw(ResMan.GetString("ErrorMessage_PageNotFoundAdminBody"))
+        </p>
+    </div>
+</div>

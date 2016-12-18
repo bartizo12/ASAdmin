@@ -1,0 +1,21 @@
+﻿@model RoleModel
+@{
+    Model.Header.Title = ResMan.GetString("Roles_AddNew");
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    Model.Header.PopupPage = true;
+}
+<div style="height:300px;">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(m => m.Id)
+        @Html.FormLineEditorFor(m => m.Name)
+        @Html.FormLineEditorFor(m => m.Note)
+
+        <div class="form-group">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-10 form-button-wrapper">
+                <button type="submit" class="btn btn-primary btn-block btn-flat">@ResMan.GetString("Save")</button>
+            </div>
+        </div>
+    }
+</div>

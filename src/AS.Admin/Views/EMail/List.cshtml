@@ -1,0 +1,103 @@
+﻿@model EMailListModel
+@{
+    Model.Header.Title = ResMan.GetString("Emails");
+    Model.Header.Icon = "fa fa-envelope-o";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+@section PageMessages{
+    @Html.Partial("_MessageBox", new MessageModel(MessageType.Info, MessageElementType.Alert, ResMan.GetString("EMail_DemoMaskMessage")))
+}
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-md-4">
+            @Html.FormLineEditorFor(m => m.Receiver)
+        </div>
+        <div class="col-md-8">
+            <table>
+                <tr>
+                    <td style="width:170px">
+                        <label>@ResMan.GetString("DateTimeInterval")</label>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <div class='input-group date' id='fromDt'>
+                                @Html.TextBoxFor(m => m.From, new { @class = "form-control" })
+                                <span class="input-group-addon">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="width:10px"></td>
+                    <td>
+                        <div class="form-group">
+                            <div class='input-group date' id='toDt'>
+                                @Html.TextBoxFor(m => m.To, new { @class = "form-control" })
+                                <span class="input-group-addon">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="admin-page-button-group">
+        <div class="admin-page-button-group-item" style="margin-left:7%">
+            <button type="button" onclick="grid.reload();" class="btn btn-primary btn-block btn-flat">@ResMan.GetString("List")</button>
+        </div>
+        <div style="margin-left:20px;" class="admin-page-button-group-item">
+            <button id="btnReset" class="btn btn-default btn-block btn-flat">@ResMan.GetString("ResetPage")</button>
+        </div>
+    </div>
+    <div id="asGrid-wrapper" class="grid-wrapper">
+    </div>
+    <script type="text/javascript">
+        var grid;
+        $(function () {
+            new ResetPageButton("btnReset");
+            $('#toDt').datetimepicker({
+                locale: '@System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName',
+                sideBySide: true,
+                defaultDate: new Date(@DateTime.UtcNow.AddDays(1).ToJavaScriptMilliseconds())
+            });
+            $('#fromDt').datetimepicker({
+                locale: '@System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName',
+                sideBySide: true,
+                defaultDate: new Date(@DateTime.UtcNow.AddYears(-1).ToJavaScriptMilliseconds())
+            });
+
+            grid = new Grid("Id");
+            grid.ServerSideProcessing = true;
+            grid.StateSave = false;
+            grid.Columns = [new GridColumn("@ResMan.GetString("EMailListModel_Subject")", "Subject"),
+                            new GridColumn("@ResMan.GetString("EMailListModel_Receiver")", "Receivers"),
+                            new GridColumn("@ResMan.GetString("CreatedOn")", "CreatedOn", CellRenderers.DateTimeRenderer),
+                            new GridColumn("@ResMan.GetString("EMailListModel_LastExecutionTime")", "LastExecutionTime", CellRenderers.DateTimeRenderer),
+                            new GridColumn("@ResMan.GetString("EMailListModel_Status")", "JobStatus", CellRenderers.JobStatusRenderer)
+            ];
+            grid.Columns[2].Orderable = true;
+            grid.Columns[3].Orderable = true;
+            grid.Order = [[2, 'desc']];
+
+            grid.UrlGenerator = function () {
+                return "List?Receiver=" + $("#Receiver").val() +
+                    "&From=" + $("#fromDt input").val() +
+                    "&To=" + $("#toDt input").val();
+            }
+            function renderViewButton(data, t, row, meta) {
+                var html = "<a  data-iframeWidth='800' data-iframeHeight='650' class='btn btn-primary btn-rowButton dialog-button' href='ViewDetail?id=" + data + "'>";
+                html += "<i class='fa fa-list-alt'></i>" + StringResources["Details"] + "</a>";
+
+                return html;
+            }
+            var col = new GridColumn("", "Id", renderViewButton);
+            col.Width = "80px";
+            col.ClassName = "button-cell";
+            grid.Columns.push(col);
+            grid.render();
+        });
+    </script>
+}

@@ -1,0 +1,111 @@
+﻿@model AppLogListModel
+@{
+    Model.Header.Title = ResMan.GetString("ApplicationLogs");
+    Model.Header.Icon = "fa fa-book";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(model => model.SelectedLogLevels, new { style = "padding-right:20px;" })
+            @Html.ListBoxFor(model => model.SelectedLogLevels, Model.LogLevels,
+       new { @multiple = "" ,@class= "selectpicker", size = 5, style = "width:200px;" })
+        </div>
+        <div class="col-md-8">
+            <table>
+                <tr>
+                    <td style="width:170px">
+                        <label>@ResMan.GetString("DateTimeInterval")</label>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <div class='input-group date' id='fromDt'>
+                                @Html.TextBoxFor(m => m.From, new { @class = "form-control" })
+                                <span class="input-group-addon">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="width:10px"></td>
+                    <td>
+                        <div class="form-group">
+                            <div class='input-group date' id='toDt'>
+                                @Html.TextBoxFor(m => m.To, new { @class = "form-control" })
+                                <span class="input-group-addon">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="admin-page-button-group">
+        <div style="margin-left:100px;" class="admin-page-button-group-item">
+            <button type="button" onclick="grid.reload();" class="btn btn-primary btn-block btn-flat">@ResMan.GetString("List")</button>
+        </div>
+        <div style="margin-left:20px;" class="admin-page-button-group-item">
+            <button id="btnReset" class="btn btn-default btn-block btn-flat">@ResMan.GetString("ResetPage")</button>
+        </div>
+    </div>
+        <div id="asGrid-wrapper" class="grid-wrapper">
+        </div>
+            <script type="text/javascript">
+                var grid;
+
+                $(function () {
+                    new ResetPageButton("btnReset");
+                    $('#toDt').datetimepicker({
+                        locale: '@System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName',
+                        sideBySide: true,
+                        defaultDate: new Date(@DateTime.UtcNow.AddDays(1).ToJavaScriptMilliseconds())
+                    });
+                    $('#fromDt').datetimepicker({
+                        locale: '@System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName',
+                        sideBySide: true,
+                        defaultDate: new Date(@DateTime.UtcNow.AddDays(-30).ToJavaScriptMilliseconds())
+                    });
+
+                    grid = new Grid("Id");
+                    grid.ServerSideProcessing = true;
+                    grid.StateSave = false;
+                    grid.Columns = [new GridColumn("@ResMan.GetString("AppLog_Level")", "Level"),
+                                    new GridColumn("@ResMan.GetString("AppLog_Message")", "Message"),
+                                    new GridColumn("@ResMan.GetString("AppLog_Location")", "Location"),
+                                    new GridColumn("@ResMan.GetString("AppLog_ClientIP")", "ClientIP"),
+                                    new GridColumn("@ResMan.GetString("AppLog_CreatedBy")", "CreatedBy"),
+                                    new GridColumn("@ResMan.GetString("AppLog_CreatedOn")", "CreatedOn", CellRenderers.DateTimeRenderer)
+                    ];
+                    grid.Columns[1].ClassName = "truncate-cell";
+                    grid.Columns[5].Orderable = true;
+                    grid.Order = [[5, 'desc']];
+                    grid.Columns[0].Width = "50px";
+
+                    grid.UrlGenerator = function () {
+                        var levels = "";
+
+                        $("#SelectedLogLevels option:selected").each(function () {
+                            levels += $(this).val() + ",";
+                        });
+
+                        return "List?SelectedLogLevels=" + levels +
+                            "&From=" + $("#fromDt input").val() +
+                            "&To=" + $("#toDt input").val();
+                    }
+                    function renderViewButton(data, t, row, meta) {
+                        var html = "<a  data-iframeWidth='1000' data-iframeHeight='650' class='btn btn-primary btn-rowButton dialog-button' href='ViewDetail?id=" + data.toString() + "'>";
+                        html += "<i class='fa fa-list-alt'></i>" + StringResources["Details"] + "</a>";
+
+                        return html;
+                    }
+                    var col = new GridColumn("", "Id", renderViewButton);
+                    col.Width = "80px";
+                    col.ClassName = "button-cell";
+                    grid.Columns.push(col);
+                    grid.render();
+                });
+            </script>
+}

@@ -1,0 +1,93 @@
+﻿@model SettingValueModel
+@{
+    Model.Header.Title = ResMan.GetString("Settings_Update");
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    Model.Header.PopupPage = true;
+}
+<script src="~/Content/ckeditor/ckeditor.js"></script>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.Id)
+    <div id="settingContent">
+    </div>
+    <div class="form-group">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10 form-button-wrapper">
+            <button type="submit" class="btn btn-primary btn-block btn-flat">@ResMan.GetString("Save")</button>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            model =  @Html.Raw(Json.Encode(Model));
+            var html = '';
+            var hashTable = new StringHashTable();
+
+            for(var i = 1 ; i <= 15 ; i++){
+                var fieldProp = "Field" + i.toString();
+                var fieldName = model.SettingDefinition[fieldProp];
+                var fieldValue = model[fieldProp];
+                var fieldType = model.SettingDefinition["FieldInputType" + i.toString()];
+
+                if(fieldValue == null)
+                    fieldValue = '';
+
+                if(fieldName != null)
+                {
+                    html += "<div class='form-group'>";
+                    html += "<label class='col-sm-2 control-label'>"+ fieldName +"</label>"
+                    html += "<div class='col-sm-10 form-group-input'>";
+
+                    if(fieldType == FormInputType.Text)
+                    {
+                        html += "<input class='form-control' type='text' name='" + fieldProp + "' id='"+ fieldName +"' value='" + fieldValue + "'></input>";
+                    }
+                    else if(fieldType == FormInputType.Email)
+                    {
+                        html += "<input class='form-control' type='email' name='" + fieldProp + "' id='"+ fieldName +"' value='" + fieldValue + "'></input>";
+                    }
+                    else if(fieldType == FormInputType.Url)
+                    {
+                        html += "<input class='form-control' type='url' name='" + fieldProp + "' id='"+ fieldName +"' value='" + fieldValue + "'></input>";
+                    }
+                    else if(fieldType == FormInputType.MultiLine)
+                    {
+                        html += "<textarea class='form-control' name='" + fieldProp + "' id='"+ fieldName +"'>" + fieldValue + "</textarea>";
+                    }
+                    else if(fieldType == FormInputType.Password)
+                    {
+                        html += "<input class='form-control' type='password' name='" + fieldProp + "' id='"+ fieldName +"' value='" + fieldValue + "'></input>";
+                    }
+                    else if(fieldType == FormInputType.DigitOnly)
+                    {
+                        html += "<input class='form-control' type='number' name='" + fieldProp + "' id='"+ fieldName +"' value='" + fieldValue + "'></input>";
+                    }
+                    else if(fieldType == FormInputType.Html)
+                    {
+                        html += "<textarea class='form-control ckeditor' name='" + fieldProp + "' id='"+ fieldName +"'>" + fieldValue + "</textarea>";
+                    }
+                    else if(fieldType == FormInputType.Checkbox)
+                    {
+                        hashTable.add(fieldProp,fieldValue);
+                        html += "<div class='checkbox icheck'><input  name='" + fieldProp + "' type='checkbox' id='" + fieldProp  + "' /><input name='"+ fieldProp + "' type='hidden' id='" + fieldProp  + "' /></div>";
+                    }
+                    html += "</div>"
+                    html += "</div>";
+                }
+            }
+            $("#settingContent").html(html);
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+            });
+            $.each(hashTable.getAllKeys(),function(index,id){
+                if(Boolean(hashTable.table[id])){
+                    $('#' + id).iCheck('check');
+                }
+                else{
+                    $('#' + id).iCheck('uncheck');
+                }
+            });
+        });
+    </script>
+}

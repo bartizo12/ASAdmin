@@ -1,0 +1,51 @@
+﻿@{
+    Model.Header.Title = ResMan.GetString("HTML_Templates");
+    Model.Header.Icon = "fa fa-cogs";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+@using (Html.BeginForm())
+{
+    <div id="asGrid-wrapper" class="grid-wrapper">
+    </div>
+    <script type="text/javascript">
+        var grid;
+        $(function () {
+            grid = new Grid("Id");
+            grid.HasDeleteButton = false;
+
+            grid.Columns = [new GridColumn("@ResMan.GetString("Name")", "Name"),
+                new GridColumn("@ResMan.GetString("HTMLTemplateModel_Subject")", "Subject"),
+                new GridColumn("@ResMan.GetString("HTMLTemplateModel_BodyFilePath")", "BodyFilePath"),
+                new GridColumn("@ResMan.GetString("HTMLTemplateModel_Comment")", "Comment"),
+                new GridColumn("@ResMan.GetString("CreatedOn")", "CreatedOn", CellRenderers.DateTimeRenderer),
+                new GridColumn("@ResMan.GetString("CreatedBy")", "CreatedBy")"),
+                new GridColumn("@ResMan.GetString("ModifiedOn")", "ModifiedOn")", CellRenderers.DateTimeRenderer),
+                new GridColumn("@ResMan.GetString("ModifiedBy")", "ModifiedBy")")];
+            grid.Columns[4].Width = "130px";
+            grid.Columns[6].Width = "130px";
+            grid.Columns[5].Width = "120px";
+            grid.Columns[7].Width = "120px";
+
+            function renderUpdateButton(data, t, row, meta) {
+                var html = "<a  data-related-gridid='grid' data-iframeWidth='800' data-iframeHeight='550' class='btn btn-primary btn-rowButton dialog-button' href='EditTemplate?id=" + data + "'>";
+                html += "<i class='fa fa-pencil-square-o fw'></i>" + StringResources["Update"] + "</a>";
+
+                return html;
+            }
+            var col = new GridColumn("", "Id", renderUpdateButton);
+            col.Orderable = false;
+            col.Width = "50px";
+            col.ClassName = "button-cell";
+
+            grid.Columns.push(col);
+            grid.UrlGenerator = function () {
+                return "ListTemplates?serverSideProcessing=False";
+            }
+            grid.Columns[0].Orderable = true;
+            grid.Columns[4].Orderable = true;
+            grid.Columns[6].Orderable = true;
+            grid.Order = [[0, 'desc']];
+            grid.render();
+        });
+    </script>
+}

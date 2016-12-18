@@ -1,0 +1,93 @@
+﻿@model ASModelBase
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@Model.Header.Title</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-type" content="text/html" />
+    <meta name="description" content="@Model.Header.MetaDescription" />
+    <meta name="keywords" content="@Model.Header.MetaKeywords" />
+    <meta name="generator" content="AS" />
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="~/Content/favicon.ico" rel="icon" type="image/x-icon" />
+    @Styles.Render("~/content/asCss")
+    @Scripts.Render("~/content/thirdPartyJs")
+    @Scripts.Render("~/content/asJs")
+    <!--[if lt IE 9]>
+    <script src="~/Content/html5shiv/dist/html5shiv.min.js"></script>
+    <script src="~/Content/respond/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o), m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-XXXX-Y');
+        ga('send', 'pageview');
+        var StringResources =  @Html.Raw(Json.Encode(Model.Header.ClientResources));
+
+        function isEmpty(el) {
+            return !$.trim($("#validationSummary > ul > li:first").html());
+        }
+
+        jQuery(document).ready(function () {
+            if (!isEmpty($("#validationSummary"))) {
+                $("#validationSummary").addClass('public-validation-summary');
+            }
+        });
+    </script>
+</head>
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="#"><b>@Model.Header.Title</b></a>
+        </div>
+        <div id="validationSummary">
+            @Html.ValidationSummary(true)
+        </div>
+        <div class="login-box-body">
+            @{
+                bool displayBody = true;
+
+                if (TempData["ResultType"] != null)
+                {
+                    displayBody = false;
+                    @Html.Partial("_MessageBox", new MessageModel((MessageType)TempData["ResultType"], MessageElementType.CallOut, (string)TempData["ResultMessage"]))
+                }
+                <div class="@(displayBody?"show":"hidden")">
+                    @RenderBody()
+                </div>
+            }
+            <div id="demoUserInfo" style="margin-top:40px">
+                <table>
+                    <tr>
+                        <td>
+                            Demo Username : admin
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Demo Password : 123456
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Demo e-mail : admin@asadmindemo.com
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="margin-top:30px;">
+                <label>
+                    <span>@ResMan.GetString("SourceCodeInfo") </span>
+                    <a target="_blank" href="https://github.com/NazmiAltun/asadmin">https://github.com/NazmiAltun/asadmin</a>
+                </label>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

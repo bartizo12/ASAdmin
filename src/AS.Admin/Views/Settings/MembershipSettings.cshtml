@@ -1,0 +1,40 @@
+﻿@model MembershipSettingModel
+@{
+    Model.Header.Title = ResMan.GetString("MembershipSettings");
+    Model.Header.Icon = "fa fa-cogs";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.FormLineEditorFor(m => m.PasswordResetTokenExpireTimeInHours)
+    @Html.FormLineEditorFor(m => m.LastActivityTimeUpdateIntervalInSeconds)
+    @Html.FormLineEditorFor(m => m.CookieValidationIntervalInMinutes)
+    @Html.FormLineEditorFor(m => m.MinimumPasswordRequiredLength)
+    @Html.FormLineEditorFor(m => m.AllowOnlyAlphanumericUserNames)
+    @Html.FormLineEditorFor(m => m.RequireDigitInPassword)
+    @Html.FormLineEditorFor(m => m.RequireLowercaseInPassword)
+    @Html.FormLineEditorFor(m => m.RequireNonLetterOrDigitInPassword)
+    @Html.FormLineEditorFor(m => m.RequireUppercaseInPassword)
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("input.text-box").change(function () {
+            updateValue($(this).attr('id'), $(this).val());
+        });
+        $('input').on('ifChecked', function (event) {
+            updateValue($(this).attr('id'), true);
+        });
+        $('input').on('ifUnchecked', function (event) {
+            updateValue($(this).attr('id'), false);
+        });
+        function updateValue(name, newValue) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("UpdateMembershipSetting", "Settings")',
+                data: { fieldName: name, newValue: newValue },
+                success: function (result) {
+                }
+            });
+        }
+    });
+</script>

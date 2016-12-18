@@ -1,0 +1,114 @@
+﻿@model UserListModel
+@{
+    Model.Header.Title = ResMan.GetString("Users");
+    Model.Header.Icon = "fa fa-users";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+@section PageButtons{
+    <div>
+        <a style="width:180px;" class="btn btn-block btn-success btn-lg dialog-button"
+           data-iframeWidth="800" data-iframeHeight="650" href="~/Users/Edit">
+            @ResMan.GetString("Users_AddNew")
+        </a>
+    </div>
+}
+<div class="row">
+    <div class="col-md-6">
+        @Html.FormLineEditorFor(m => m.UserName)
+    </div>
+    <div class="col-md-6">
+        @Html.FormLineEditorFor(m => m.EMail)
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="col-md-2">
+            <label class="control-label" for="LastActivityFrom">@ResMan.GetString("UserListModel_LastActivityFrom")</label>
+        </div>
+        <div class="col-md-10">
+            <div class="form-group">
+                <div class='input-group date' id='fromDt'>
+                    @Html.TextBoxFor(m => m.LastActivityFrom, new { @class = "form-control" })
+                    <span class="input-group-addon">
+                        <span class="fa fa-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="col-md-2">
+            <label class="control-label" for="LastActivityTo">@ResMan.GetString("UserListModel_LastActivityTo")</label>
+        </div>
+        <div class="col-md-10">
+            <div class="form-group">
+                <div class='input-group date' id='toDt'>
+                    @Html.TextBoxFor(m => m.LastActivityTo, new { @class = "form-control" })
+                    <span class="input-group-addon">
+                        <span class="fa fa-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="admin-page-button-group">
+    <div class="admin-page-button-group-item" style="margin-left:10%">
+        <button type="button" onclick="grid.reload();" class="btn btn-primary btn-block btn-flat">@ResMan.GetString("List")</button>
+    </div>
+    <div class="admin-page-button-group-item" style="margin-left:50px">
+        <button id="btnReset" class="btn btn-default btn-block btn-flat">@ResMan.GetString("ResetPage")</button>
+    </div>
+</div>
+<div id="asGrid-wrapper" class="grid-wrapper">
+</div>
+<script type="text/javascript">
+    var grid;
+
+    $(function () {
+        new ResetPageButton("btnReset");
+        $('#toDt').datetimepicker({
+            locale: '@System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName',
+            sideBySide: true
+        });
+        $('#fromDt').datetimepicker({
+            locale: '@System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName',
+            sideBySide: true
+        });
+
+        grid = new Grid("UserName");
+        grid.ServerSideProcessing = true;
+        grid.HasDeleteButton = true;
+        grid.Columns = [new GridColumn("@ResMan.GetString("UserModel_UserName")", "UserName"),
+                        new GridColumn("@ResMan.GetString("UserModel_Email")", "Email"),
+                        new GridColumn("@ResMan.GetString("UserModel_SelectedRoles")", "Roles"),
+                        new GridColumn("@ResMan.GetString("CreatedOn")", "CreatedOn", CellRenderers.DateTimeRenderer),
+                        new GridColumn("@ResMan.GetString("UserModel_LastActivity")", "LastActivity", CellRenderers.DateTimeRenderer),
+                        new GridColumn("@ResMan.GetString("UserModel_LastLogin")", "LastLogin", CellRenderers.DateTimeRenderer)];
+        grid.Columns[5].Orderable = true;
+        grid.Columns[0].Orderable = true;
+        grid.Columns[1].Orderable = true;
+        grid.Columns[3].Orderable = true;
+        grid.Columns[4].Orderable = true;
+        grid.Columns[2].Width = "300px";
+        grid.ServerSideProcessing = true;
+        grid.Order = [[3, 'desc']];
+        grid.UrlGenerator = function () {
+            return "List?LastActivityFrom=" + $("#fromDt input").val() +
+                  "&LastActivityTo=" + $("#toDt input").val() +
+                  "&UserName=" + $("#UserName").val() +
+                  "&EMail=" + $("#EMail").val();
+        }
+        function renderViewButton(data, t, row, meta) {
+            var html = "<a  data-iframeWidth='800' data-iframeHeight='600' class='btn btn-primary btn-rowButton dialog-button' href='ViewDetail?userName=" + data + "'>";
+            html += "<i class='fa fa-list-alt'></i>" + StringResources["View"] + "</a>";
+
+            return html;
+        }
+        var col = new GridColumn("", "UserName", renderViewButton);
+        col.Width = "80px";
+        col.ClassName = "button-cell";
+        grid.Columns.push(col);
+        grid.render();
+    });
+</script>

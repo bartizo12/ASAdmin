@@ -1,0 +1,82 @@
+﻿@model EMailSettingModel
+@{
+    Model.Header.Title = ResMan.GetString("Settings_Update");
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    Model.Header.PopupPage = true;
+}
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.Id)
+    @Html.FormLineEditorFor(m => m.Name)
+    @Html.FormLineEditorFor(m => m.Host)
+    @Html.FormLineEditorFor(m => m.Port)
+    @Html.FormLineEditorFor(m => m.TimeOut)
+    @Html.FormLineCheckBoxFor(m => m.EnableSsl)
+    @Html.FormLineCheckBoxFor(m => m.DefaultCredentials)
+    @Html.FormLineEditorFor(m => m.UserName)
+    @Html.FormLineEditorFor(m => m.Password)
+    @Html.FormLineEditorFor(m => m.FromDisplayName)
+    @Html.FormLineEditorFor(m => m.FromAddress)
+    @Html.FormLineEditorFor(m => m.Comment)
+
+    <div class="form-group">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10 form-button-wrapper">
+            <button type="button" id="checkConnectionBtn"
+                    style="float:left"
+                    data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> @ResMan.GetString("Installer_Testing")"
+                    class="btn btn-info btn-block btn-flat">
+                @ResMan.GetString("EmailSetting_TestConnection")
+            </button>
+            <button type="submit"
+                    style="float:left;margin-left:20px;margin-top:0px;"
+                    class="btn btn-primary btn-block btn-flat">
+                @ResMan.GetString("Save")
+            </button>
+        </div>
+    </div>
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#checkConnectionBtn").click(function () {
+            var $this = $(this);
+            $this.button('loading');
+
+            $.post("TestSMTPConnection", $('form').serialize())
+                .done(function (data) {
+                    if (data) {
+                        BootstrapDialog.show({
+                            type: BootstrapDialog.TYPE_DANGER,
+                            title: StringResources["AjaxErrorTitle"],
+                            message: data,
+                            buttons: [
+                                {
+                                    label: StringResources["Ok"],
+                                    action: function (dialog) {
+                                        dialog.close();
+                                    }
+                                }
+                            ]
+                        });
+                    }
+                    else {
+                        BootstrapDialog.show({
+                            type: BootstrapDialog.TYPE_SUCCESS,
+                            title: StringResources["Successful"],
+                            message: '@Html.Raw(ResMan.GetString("Installer_ConnectionSuccess"))',
+                            buttons: [
+                                {
+                                    label: StringResources["Ok"],
+                                    action: function (dialog) {
+                                        dialog.close();
+                                    }
+                                }
+                            ]
+                        });
+                    }
+                }).always(function () {
+                    $this.button('reset');
+                });
+        });
+    });
+</script>

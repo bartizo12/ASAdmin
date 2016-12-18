@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C2BBC3DB-DAFF-4B76-9BBA-C625700FAC86}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AS.Domain.Interfaces</RootNamespace>
+    <AssemblyName>AS.Domain.Interfaces</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\ASRuleSet.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Collections\IHashTable.cs" />
+    <Compile Include="Collections\IPagedList.cs" />
+    <Compile Include="Data\IDatabase.cs" />
+    <Compile Include="Geo\GeoProviderContract.cs" />
+    <Compile Include="Geo\IGeoProvider.cs" />
+    <Compile Include="Identity\ILastActivityTimeUpdater.cs" />
+    <Compile Include="IO\IStorageManager.cs" />
+    <Compile Include="Logging\IRequestLogger.cs" />
+    <Compile Include="Logging\LogLevel.cs" />
+    <Compile Include="Reflection\ITypeFinder.cs" />
+    <Compile Include="Resources\IResourceManager.cs" />
+    <Compile Include="Runtime\IAppManager.cs" />
+    <Compile Include="Runtime\IContextProvider.cs" />
+    <Compile Include="IServiceLocator.cs" />
+    <Compile Include="IO\IFileManager.cs" />
+    <Compile Include="Security\IEncryptionProvider.cs" />
+    <Compile Include="Validation\IValidationResult.cs" />
+    <Compile Include="Validation\IValidator.cs" />
+    <Compile Include="XML\IXmlSerializer.cs" />
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AS.Domain.Entities\AS.Domain.Entities.csproj">
+      <Project>{2efb678c-5f10-4a5d-a5e0-ff365350163b}</Project>
+      <Name>AS.Domain.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReadMe.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
