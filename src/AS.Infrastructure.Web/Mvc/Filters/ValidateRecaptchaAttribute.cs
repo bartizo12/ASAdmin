@@ -21,9 +21,9 @@ namespace AS.Infrastructure.Web.Mvc.Filters
             {
                 var result = RecaptchaValidator.Validate(response);
 
-                if(!result.Succeeded)
+                if (!result.Succeeded)
                 {
-                    filterContext.Controller.ViewData.ModelState.AddModelError(string.Empty, string.Join(".",result.Errors) );
+                    filterContext.Controller.ViewData.ModelState.AddModelError(string.Empty, string.Join(".", result.Errors));
                 }
             }
         }

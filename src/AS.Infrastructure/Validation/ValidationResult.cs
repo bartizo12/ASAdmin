@@ -9,6 +9,7 @@ namespace AS.Infrastructure.Validation
         /// True if input is valid , otherwise false
         /// </summary>
         public bool Succeeded { get; private set; }
+
         /// <summary>
         /// Validation errors.
         /// </summary>

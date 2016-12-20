@@ -69,7 +69,7 @@ namespace AS.Infrastructure.Web.Module
                 return;
 
             if (this._configStorageManager.CheckIfExists() &&
-                (!_settingManager.GetContainer<AppSetting>().Contains("REQUEST_LOGGING_DISABLED") 
+                (!_settingManager.GetContainer<AppSetting>().Contains("REQUEST_LOGGING_DISABLED")
                 || !bool.Parse(_settingManager.GetContainer<AppSetting>()["REQUEST_LOGGING_DISABLED"].Value)))
             {
                 Stopwatch stopwatch = new Stopwatch();

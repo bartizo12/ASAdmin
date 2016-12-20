@@ -24,6 +24,7 @@ namespace AS.Services
             this._logger = logger;
             this._configurationService = configurationService;
         }
+
         /// <summary>
         /// Clear all cache
         /// </summary>

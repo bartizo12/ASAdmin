@@ -2826,7 +2826,7 @@ namespace AS.Services
                 CultureCode = "en-US",
                 Name = "PasswordCannotBeEmpty",
                 Value = "Password cannot be empty"
-            });            
+            });
             resourceList.Add(new StringResource()
             {
                 AvailableOnClientSide = false,
@@ -2915,6 +2915,7 @@ namespace AS.Services
                 Name = "RecaptchaSystemError",
                 Value = "An unexpected error occured while validating the code.Please contact to the system admin"
             });
+
             #endregion EN-US
 
             #region tr-TR
@@ -5511,6 +5512,7 @@ namespace AS.Services
                 Name = "PasswordCannotBeEmpty",
                 Value = "Lütfen parola giriniz"
             });
+
             #endregion tr-TR
 
             return resourceList;

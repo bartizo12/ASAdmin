@@ -14,7 +14,7 @@ namespace AS.Infrastructure.Validation
     /// </summary>
     public class UsernameValidator : PropertyValidatorBase<string>
     {
-        private const string AllowedUserNameCharacters  = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+        private const string AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
         private const int MinUsernameLength = 4;
         private const int MaxUsernameLength = 50;
 
@@ -26,11 +26,12 @@ namespace AS.Infrastructure.Validation
             this._settingManager = settingManager;
             this._resourceManager = resourceManager;
         }
+
         public override IValidationResult Validate(string userName)
         {
             List<string> errors = new List<string>();
             bool isValid = true;
-            
+
             if (string.IsNullOrEmpty(userName) || string.IsNullOrWhiteSpace(userName))
             {
                 errors.Add(_resourceManager.GetString("UsernameCannotBeEmpty"));
@@ -39,21 +40,20 @@ namespace AS.Infrastructure.Validation
             if (userName.Length < MinUsernameLength || userName.Length > MaxUsernameLength)
             {
                 isValid = false;
-                errors.Add(string.Format(_resourceManager.GetString("UsernameLengthMustBeInRange"), 
-                    MinUsernameLength,MaxUsernameLength));
+                errors.Add(string.Format(_resourceManager.GetString("UsernameLengthMustBeInRange"),
+                    MinUsernameLength, MaxUsernameLength));
             }
             MembershipSetting setting = _settingManager.GetContainer<MembershipSetting>().Default;
 
-            if(setting != null)
+            if (setting != null)
             {
-                if(setting.AllowOnlyAlphanumericUserNames && !userName.All(char.IsLetterOrDigit))
+                if (setting.AllowOnlyAlphanumericUserNames && !userName.All(char.IsLetterOrDigit))
                 {
                     isValid = false;
                     errors.Add(_resourceManager.GetString("UsernameCanBeOnlyAlphanumeric"));
-
                 }
             }
-            if(userName.Any(c => !AllowedUserNameCharacters.Contains(c)))
+            if (userName.Any(c => !AllowedUserNameCharacters.Contains(c)))
             {
                 isValid = false;
                 errors.Add(_resourceManager.GetString("InvalidUsername"));

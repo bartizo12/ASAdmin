@@ -52,6 +52,10 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="FluentScheduler, Version=5.1.1.0, Culture=neutral, PublicKeyToken=b76503528a14ebd1, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentScheduler.5.1.1\lib\net40\FluentScheduler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
       <Private>True</Private>
@@ -169,7 +173,7 @@
     <Compile Include="Mvc\Validation\RecaptchaValidator.cs" />
     <Compile Include="Mvc\Filters\ValidateRecaptchaAttribute.cs" />
     <Compile Include="ResMan.cs" />
-    <Compile Include="WebServiceLocator.cs" />
+    <Compile Include="ServiceLocatorWeb.cs" />
     <Compile Include="Enums\MessageType.cs" />
     <Compile Include="Mvc\Binders\DateTimeModelBinder.cs" />
     <Compile Include="Mvc\Filters\ExcludeFilterAttribute .cs" />

@@ -8,7 +8,6 @@ namespace AS.Infrastructure.Tests.Validation
 {
     public class EmailValidatorTest
     {
-
         [Theory]
         [InlineData("admin@test.com")]
         [InlineData("tester1234@test.edu")]

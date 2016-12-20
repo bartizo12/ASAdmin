@@ -11,6 +11,7 @@ namespace AS.Domain.Interfaces
         /// True if input is valid , otherwise false
         /// </summary>
         bool Succeeded { get; }
+
         /// <summary>
         /// Validation errors.
         /// </summary>

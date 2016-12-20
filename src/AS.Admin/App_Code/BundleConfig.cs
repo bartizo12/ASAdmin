@@ -46,7 +46,7 @@ namespace AS.Admin
 
             ISettingContainer<AppSetting> appSettings = DependencyResolver.Current
                                                                           .GetService<ISettingManager>()
-                                                                          .GetContainer<AppSetting>();        
+                                                                          .GetContainer<AppSetting>();
 
             if (appSettings.Contains("BundlingEnabled"))
             {

@@ -18,6 +18,7 @@ namespace AS.Infrastructure.Validation
             this._settingManager = settingManager;
             this._resourceManager = resourceManager;
         }
+
         /// <summary>
         /// Validates password according to the membership password validation settings.
         /// </summary>

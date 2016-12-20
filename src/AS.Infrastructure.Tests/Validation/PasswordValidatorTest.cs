@@ -2,7 +2,6 @@
 using AS.Domain.Settings;
 using AS.Infrastructure.Validation;
 using Moq;
-using System.Linq;
 using Xunit;
 
 namespace AS.Infrastructure.Tests
@@ -43,7 +42,6 @@ namespace AS.Infrastructure.Tests
         [InlineData("abcdefg ")]
         public void PasswordValidator_Should_Return_Invalid(string password)
         {
-
             Mock<ISettingManager> mockSettingManager = new Mock<ISettingManager>();
             Mock<IResourceManager> mockResourceManager = new Mock<IResourceManager>();
             Mock<ISettingContainer<MembershipSetting>> mockMembershipSettingContainer = new Mock<ISettingContainer<MembershipSetting>>();

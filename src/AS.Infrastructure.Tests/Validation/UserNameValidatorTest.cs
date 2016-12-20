@@ -1,9 +1,7 @@
-﻿using AS.Domain.Entities;
-using AS.Domain.Interfaces;
+﻿using AS.Domain.Interfaces;
 using AS.Domain.Settings;
 using AS.Infrastructure.Validation;
 using Moq;
-using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -20,15 +18,15 @@ namespace AS.Infrastructure.Tests
         [InlineData(".1-2")]
         public void UserNameValidate_Should_Return_Valid(string userName)
         {
-            Mock<ISettingManager> mockSettingManager= new Mock<ISettingManager>();
+            Mock<ISettingManager> mockSettingManager = new Mock<ISettingManager>();
             Mock<IResourceManager> mockResourceManager = new Mock<IResourceManager>();
             Mock<ISettingContainer<MembershipSetting>> mockMembershipSettingContainer = new Mock<ISettingContainer<MembershipSetting>>();
 
             mockMembershipSettingContainer.SetupGet(m => m.Default)
                                            .Returns(new MembershipSetting()
-                                                    {
-                                                        AllowOnlyAlphanumericUserNames = false
-                                                    });
+                                           {
+                                               AllowOnlyAlphanumericUserNames = false
+                                           });
             mockSettingManager.Setup(m => m.GetContainer<MembershipSetting>()).Returns(mockMembershipSettingContainer.Object);
             mockResourceManager.Setup(m => m.GetString(It.IsAny<string>())).Returns(string.Empty);
 
@@ -82,7 +80,7 @@ namespace AS.Infrastructure.Tests
             Assert.False(validator.Validate(userName).Succeeded);
             Assert.Equal(validator.Validate(userName).Errors.First(), "UsernameLengthMustBeInRange");
         }
-        
+
         [Theory]
         [InlineData("admin 123")]
         [InlineData("admin123!'^++&%/()")]

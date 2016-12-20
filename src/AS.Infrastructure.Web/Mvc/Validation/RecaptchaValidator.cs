@@ -41,7 +41,7 @@ namespace AS.Infrastructure.Web.Mvc
             if (string.IsNullOrEmpty(value))
             {
                 errors.Add(_resourceManager.GetString("RecaptchaInvalidResponse"));
-                return new ValidationResult(false,errors);
+                return new ValidationResult(false, errors);
             }
             if (!_settingManager.GetContainer<UrlAddress>().Contains("RecaptchaUrl") || !_settingManager.GetContainer<AppSetting>().Contains("RecaptchaPrivateKey"))
             {

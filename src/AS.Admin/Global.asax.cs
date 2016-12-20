@@ -26,7 +26,7 @@ namespace AS.Admin
             MvcHandler.DisableMvcResponseHeader = true;
             MappingConfig.RegisterMappings();
             GlobalFilters.Filters.Add(new CompressContentAttribute());
-            var serviceLocator = new WebServiceLocator();
+            var serviceLocator = new ServiceLocatorWeb();
             ServiceLocator.SetServiceLocator(serviceLocator);
             LoggingConfigurator.ConfigureNLog(serviceLocator);
             ModelMetadataProviders.Current = new ASMetadataProvider();

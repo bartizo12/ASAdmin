@@ -33,7 +33,7 @@ namespace AS.Services
         /// <returns>Subject after values applied to the template</returns>
         public string GetSubject(string templateName, Dictionary<string, object> values)
         {
-            HTMLTemplate template =  _settingManager.GetContainer<HTMLTemplate>()[templateName];
+            HTMLTemplate template = _settingManager.GetContainer<HTMLTemplate>()[templateName];
             return Engine.Razor.RunCompile(template.Subject, template.Name + "_Subject", null, values);
         }
 

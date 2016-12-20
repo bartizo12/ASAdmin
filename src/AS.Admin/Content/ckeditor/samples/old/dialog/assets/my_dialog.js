@@ -3,45 +3,45 @@
  * For licensing, see LICENSE.md or http://ckeditor.com/license
  */
 
-CKEDITOR.dialog.add( 'myDialog', function() {
-	return {
-		title: 'My Dialog',
-		minWidth: 400,
-		minHeight: 200,
-		contents: [
+CKEDITOR.dialog.add('myDialog', function () {
+    return {
+        title: 'My Dialog',
+        minWidth: 400,
+        minHeight: 200,
+        contents: [
 			{
-				id: 'tab1',
-				label: 'First Tab',
-				title: 'First Tab',
-				elements: [
+			    id: 'tab1',
+			    label: 'First Tab',
+			    title: 'First Tab',
+			    elements: [
 					{
-						id: 'input1',
-						type: 'text',
-						label: 'Text Field'
+					    id: 'input1',
+					    type: 'text',
+					    label: 'Text Field'
 					},
 					{
-						id: 'select1',
-						type: 'select',
-						label: 'Select Field',
-						items: [
-							[ 'option1', 'value1' ],
-							[ 'option2', 'value2' ]
-						]
+					    id: 'select1',
+					    type: 'select',
+					    label: 'Select Field',
+					    items: [
+							['option1', 'value1'],
+							['option2', 'value2']
+					    ]
 					}
-				]
+			    ]
 			},
 			{
-				id: 'tab2',
-				label: 'Second Tab',
-				title: 'Second Tab',
-				elements: [
+			    id: 'tab2',
+			    label: 'Second Tab',
+			    title: 'Second Tab',
+			    elements: [
 					{
-						id: 'button1',
-						type: 'button',
-						label: 'Button Field'
+					    id: 'button1',
+					    type: 'button',
+					    label: 'Button Field'
 					}
-				]
+			    ]
 			}
-		]
-	};
-} );
+        ]
+    };
+});

@@ -18,17 +18,17 @@ namespace AS.Infrastructure.Tests.Geo
             urlAddressesMock.Setup(m => m.Contains("IPCountryQueryUrl")).Returns(true);
             urlAddressesMock.SetupGet(m => m["IPCountryQueryUrl"])
                             .Returns(new UrlAddress()
-                                    {
-                                        Name = "IPCountryQueryUrl",
-                                        Address = "http://api.ipinfodb.com/v3/ip-country/?key={{apiKey}}&amp;ip={{ip}}"
-                                    });
+                            {
+                                Name = "IPCountryQueryUrl",
+                                Address = "http://api.ipinfodb.com/v3/ip-country/?key={{apiKey}}&amp;ip={{ip}}"
+                            });
             appsettingMock.Setup(m => m.Contains("IPInfoDbApiKey")).Returns(true);
             appsettingMock.SetupGet(m => m["IPInfoDbApiKey"])
                           .Returns(new AppSetting()
-                                    {
-                                        Name = "IPInfoDbApiKey",
-                                        Value = "InvalidKey"
-                                    });
+                          {
+                              Name = "IPInfoDbApiKey",
+                              Value = "InvalidKey"
+                          });
 
             Mock<ISettingManager> settingManagerMock = new Mock<ISettingManager>();
             settingManagerMock.Setup(m => m.GetContainer<AppSetting>()).Returns(appsettingMock.Object);

@@ -79,23 +79,21 @@ namespace AS.Infrastructure.Data.EF
                 string error = string.Empty;
 
                 if (interceptionContext.Exception != null)
-                    error = interceptionContext.Exception.ToString();
-
-                if (!string.IsNullOrEmpty(error) && !command.CommandText.StartsWith("INSERT"))
                 {
-                    Dictionary<string, object> parameters = new Dictionary<string, object>();
-                    parameters.Add("@command", command.CommandText);
-                    parameters.Add("@duration", timer.ElapsedMilliseconds);
-                    parameters.Add("@error", error);
-                    parameters.Add("@createdOn", DateTime.UtcNow);
-
-                    if (_contextProvider != null)
-                        parameters.Add("@createdBy", _contextProvider.UserName);
-                    else
-                        parameters.Add("@createdBy", string.Empty);
-
-                    this._database.ExecuteNonQuery("DbCommand_INS", parameters);
+                    error = interceptionContext.Exception.ToString();
                 }
+                Dictionary<string, object> parameters = new Dictionary<string, object>();
+                parameters.Add("@command", command.CommandText);
+                parameters.Add("@duration", timer.ElapsedMilliseconds);
+                parameters.Add("@error", error);
+                parameters.Add("@createdOn", DateTime.UtcNow);
+
+                if (_contextProvider != null)
+                    parameters.Add("@createdBy", _contextProvider.UserName);
+                else
+                    parameters.Add("@createdBy", string.Empty);
+
+                this._database.ExecuteNonQuery("DbCommand_INS", parameters);
             }
         }
     }

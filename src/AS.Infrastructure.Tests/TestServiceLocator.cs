@@ -45,7 +45,7 @@ namespace AS.Infrastructure.Tests
 
         public void Dispose()
         {
-            GC.SuppressFinalize(this);
+          
         }
     }
 }

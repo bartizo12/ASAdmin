@@ -59,6 +59,7 @@ BEGIN
 		DELETE FROM PasswordResetToken 
 		DELETE FROM UserActivity  
 		DELETE FROM StringResource
+		DELETE FROM AppLog WHERE Level IN(''Debug'',''Info'')
 	END')
 END
 GO

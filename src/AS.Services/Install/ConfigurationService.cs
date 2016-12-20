@@ -40,7 +40,7 @@ namespace AS.Services
         {
             get
             {
-                if (_settingManager.GetContainer<EMailAddress>() == null || 
+                if (_settingManager.GetContainer<EMailAddress>() == null ||
                     !_settingManager.GetContainer<EMailAddress>().Contains("SmtpConnectionTestEmailAddress"))
                     return TestEmailAddress;
                 return _settingManager.GetContainer<EMailAddress>()["SmtpConnectionTestEmailAddress"].Address;
