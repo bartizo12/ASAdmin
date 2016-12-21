@@ -6,6 +6,7 @@ using AS.Infrastructure.Identity;
 using AS.Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 
@@ -69,7 +70,7 @@ namespace AS.Services
 
                     try
                     {
-                        _database.ExecuteNonQuery("DeleteAllData", null);
+                        _database.ExecuteNonQuery("DeleteAllData", CommandType.StoredProcedure, null);
                     }
                     catch (Exception ex)
                     {

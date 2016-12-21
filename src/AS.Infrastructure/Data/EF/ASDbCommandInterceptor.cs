@@ -2,6 +2,7 @@
 using AS.Domain.Settings;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Data.Entity.Infrastructure.Interception;
 using System.Diagnostics;
@@ -93,7 +94,7 @@ namespace AS.Infrastructure.Data.EF
                 else
                     parameters.Add("@createdBy", string.Empty);
 
-                this._database.ExecuteNonQuery("DbCommand_INS", parameters);
+                this._database.ExecuteNonQuery("DbCommand_INS", CommandType.StoredProcedure, parameters);
             }
         }
     }

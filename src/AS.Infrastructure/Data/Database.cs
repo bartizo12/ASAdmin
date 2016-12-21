@@ -22,10 +22,10 @@ namespace AS.Infrastructure.Data
         }
 
         [SuppressMessage("Microsoft.Security", "CA2100:ReviewSqlQueriesForSecurityVulnerabilities")]
-        public int ExecuteNonQuery(string spName, Dictionary<string, object> parameters)
+        public int ExecuteNonQuery(string command, CommandType commandType, Dictionary<string, object> parameters)
         {
             if (!_configStorageManager.CheckIfExists())
-                throw new FileNotFoundException("config does not exist");
+                throw new FileNotFoundException("Config file does not exist");
 
             Configuration config = _configStorageManager.Read().First();
             var factory = DbProviderFactories.GetFactory(config.DataProvider);
@@ -35,22 +35,22 @@ namespace AS.Infrastructure.Data
                 connection.ConnectionString = config.ConnectionString;
                 connection.Open();
 
-                using (IDbCommand command = connection.CreateCommand())
+                using (IDbCommand dbCommand = connection.CreateCommand())
                 {
-                    command.CommandText = spName;
-                    command.CommandType = CommandType.StoredProcedure;
+                    dbCommand.CommandText = command;
+                    dbCommand.CommandType = commandType;
 
                     if (parameters != null)
                     {
                         foreach (string parameterName in parameters.Keys)
                         {
-                            IDbDataParameter dbDataParameter = command.CreateParameter();
+                            IDbDataParameter dbDataParameter = dbCommand.CreateParameter();
                             dbDataParameter.Value = parameters[parameterName];
                             dbDataParameter.ParameterName = parameterName;
-                            command.Parameters.Add(dbDataParameter);
+                            dbCommand.Parameters.Add(dbDataParameter);
                         }
                     }
-                    return command.ExecuteNonQuery();
+                    return dbCommand.ExecuteNonQuery();
                 }
             }
         }
