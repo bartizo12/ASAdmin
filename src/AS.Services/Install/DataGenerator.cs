@@ -333,7 +333,7 @@ namespace AS.Services
                 CreatedBy = "Installer",
                 CultureCode = "en-US",
                 Name = "Admin_EMailSettingMissingNotification",
-                Value = "There is no  e-mail setting found . Please add one  otherwise e-mails will not be send."
+                Value = "There is no  e-mail setting found . Please add one.Otherwise e-mails will not be send."
             });
             resourceList.Add(new StringResource()
             {
