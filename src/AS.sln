@@ -30,7 +30,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E3C56570-30A1-424F-99A8-D6EBC6E59601}"
 	ProjectSection(SolutionItems) = preProject
 		ASRuleSet.ruleset = ASRuleSet.ruleset
-		TODO.xlsx = TODO.xlsx
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AS.Infrastructure.Web", "AS.Infrastructure.Web\AS.Infrastructure.Web.csproj", "{202A7AB8-09F8-4529-8C12-4E43EFA31D82}"
@@ -116,60 +115,7 @@ Global
 		{7FEFB0C2-FAC3-4EAA-AD56-AC2ADC31DF9C} = {5967EA60-36E2-4534-A3DF-FDF660304485}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPath = packages\EntLibContrib.Data.MySql.5.0.505.0\lib\NET35
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 13
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = AS.Infrastructure\\AS.Infrastructure.csproj
-		SccProjectTopLevelParentUniqueName1 = AS.sln
-		SccProjectName1 = AS.Infrastructure
-		SccLocalPath1 = AS.Infrastructure
-		SccProjectUniqueName2 = AS.Domain.Interfaces\\AS.Domain.Interfaces.csproj
-		SccProjectTopLevelParentUniqueName2 = AS.sln
-		SccProjectName2 = AS.Domain.Interfaces
-		SccLocalPath2 = AS.Domain.Interfaces
-		SccProjectUniqueName3 = AS.Services.Interfaces\\AS.Services.Interfaces.csproj
-		SccProjectTopLevelParentUniqueName3 = AS.sln
-		SccProjectName3 = AS.Services.Interfaces
-		SccLocalPath3 = AS.Services.Interfaces
-		SccProjectUniqueName4 = AS.Services\\AS.Services.csproj
-		SccProjectTopLevelParentUniqueName4 = AS.sln
-		SccProjectName4 = AS.Services
-		SccLocalPath4 = AS.Services
-		SccProjectUniqueName5 = AS.Domain.Entities\\AS.Domain.Entities.csproj
-		SccProjectTopLevelParentUniqueName5 = AS.sln
-		SccProjectName5 = AS.Domain.Entities
-		SccLocalPath5 = AS.Domain.Entities
-		SccProjectUniqueName6 = AS.Infrastructure.Mappings\\AS.Infrastructure.Mappings.csproj
-		SccProjectTopLevelParentUniqueName6 = AS.sln
-		SccProjectName6 = AS.Infrastructure.Mappings
-		SccLocalPath6 = AS.Infrastructure.Mappings
-		SccProjectUniqueName7 = AS.Admin\\AS.Admin.csproj
-		SccProjectTopLevelParentUniqueName7 = AS.sln
-		SccProjectName7 = AS.Admin
-		SccLocalPath7 = AS.Admin
-		SccProjectUniqueName8 = AS.Infrastructure.Web\\AS.Infrastructure.Web.csproj
-		SccProjectTopLevelParentUniqueName8 = AS.sln
-		SccProjectName8 = AS.Infrastructure.Web
-		SccLocalPath8 = AS.Infrastructure.Web
-		SccProjectUniqueName9 = AS.Infrastructure.Tests\\AS.Infrastructure.Tests.csproj
-		SccProjectTopLevelParentUniqueName9 = AS.sln
-		SccProjectName9 = AS.Infrastructure.Tests
-		SccLocalPath9 = AS.Infrastructure.Tests
-		SccProjectUniqueName10 = AS.Jobs\\AS.Jobs.csproj
-		SccProjectTopLevelParentUniqueName10 = AS.sln
-		SccProjectName10 = AS.Jobs
-		SccLocalPath10 = AS.Jobs
-		SccProjectUniqueName11 = AS.Services.Tests\\AS.Services.Tests.csproj
-		SccProjectTopLevelParentUniqueName11 = AS.sln
-		SccProjectName11 = AS.Services.Tests
-		SccLocalPath11 = AS.Services.Tests
-		SccProjectUniqueName12 = AS.Domain.Settings\\AS.Domain.Settings.csproj
-		SccProjectTopLevelParentUniqueName12 = AS.sln
-		SccProjectName12 = AS.Domain.Settings
-		SccLocalPath12 = AS.Domain.Settings
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\EntLibContrib.Data.MySql.5.0.505.0\lib\NET35
 	EndGlobalSection
 EndGlobal
