@@ -8,7 +8,7 @@ namespace AS.Domain.Entities
     /// Value : Name of the country
     /// </summary>
     [Serializable]
-    public class Country : Pair<string, string>
+    public class Country : Pair<string, string> 
     {
         public static Country Empty
         {
@@ -24,6 +24,32 @@ namespace AS.Domain.Entities
         public override string ToString()
         {
             return Key ?? string.Empty + ";" + Value ?? string.Empty;
+        }
+        public override bool Equals(object obj)
+        {
+            Country other = obj as Country;
+
+            if (other == null)
+                return false;
+
+            return this.Key == other.Key;
+        }
+        public override int GetHashCode()
+        {
+            return this.Key.GetHashCode();
+        }
+
+        public static bool operator ==(Country first,Country second)
+        {
+            if (object.ReferenceEquals(first,null) || object.ReferenceEquals(second,null))
+                return false;
+            return first.Key == second.Key;
+        }
+        public static bool operator !=(Country first, Country second)
+        {
+            if (object.ReferenceEquals(first, null) || object.ReferenceEquals(second, null))
+                return true;
+            return first.Key != second.Key;
         }
     }
 }
