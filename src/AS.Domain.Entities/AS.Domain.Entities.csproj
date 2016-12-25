@@ -41,18 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Types\Pair.cs" />
-    <Compile Include="Enums\UserActivityType.cs" />
-    <Compile Include="Interfaces\IEntity.cs" />
+    <Compile Include="Core\Configuration\ASConfiguration.cs" />
+    <Compile Include="Core\Configuration\DbConnectionConfiguration.cs" />
+    <Compile Include="Core\Pair.cs" />
+    <Compile Include="Membership\UserActivityType.cs" />
+    <Compile Include="Core\IEntity.cs" />
     <Compile Include="Job\JobDefinition.cs" />
     <Compile Include="Logging\AppLog.cs" />
-    <Compile Include="Base\EntityBase.cs" />
-    <Compile Include="Base\TrackableEntityBase.cs" />
-    <Compile Include="Interfaces\ISafeToDeleteEntity.cs" />
-    <Compile Include="Interfaces\ITrackableEntity.cs" />
+    <Compile Include="Core\EntityBase.cs" />
+    <Compile Include="Core\TrackableEntityBase.cs" />
+    <Compile Include="Core\ISafeToDeleteEntity.cs" />
+    <Compile Include="Core\ITrackableEntity.cs" />
     <Compile Include="ContactUs\ContactUs.cs" />
-    <Compile Include="Enums\FormInputType.cs" />
-    <Compile Include="Enums\JobStatus .cs" />
+    <Compile Include="Settings\FormInputType.cs" />
+    <Compile Include="Job\JobStatus .cs" />
     <Compile Include="EMail\EMail.cs" />
     <Compile Include="Logging\RequestLog.cs" />
     <Compile Include="Membership\Interfaces\IRole.cs" />
@@ -65,12 +67,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Logging\RecordAuditLog.cs" />
     <Compile Include="StringResources\StringResource.cs" />
-    <Compile Include="Types\Country.cs" />
-    <Compile Include="Types\Gender.cs" />
+    <Compile Include="Core\Country.cs" />
+    <Compile Include="Core\Gender.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ReadMe.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

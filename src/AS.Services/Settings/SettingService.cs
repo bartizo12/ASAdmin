@@ -1,6 +1,5 @@
 ﻿using AS.Domain.Entities;
 using AS.Domain.Interfaces;
-using AS.Domain.Settings;
 using AS.Infrastructure;
 using AS.Infrastructure.Data;
 using AS.Infrastructure.Web;
@@ -19,16 +18,19 @@ namespace AS.Services
     public class SettingService : ISettingsService
     {
         private readonly IDbContext _dbContext;
-        private readonly IStorageManager<Configuration> _configurationStorageManager;
+        private readonly Func<ASConfiguration> _configurationFactory;
         private readonly IEncryptionProvider _encryptionProvider;
+        private readonly IResourceManager _resourceManager;
 
         public SettingService(IDbContext dbContext,
-            IStorageManager<Configuration> configurationStorageManager
-            , IEncryptionProvider encryptionProvider)
+            Func<ASConfiguration> configurationFactory,
+            IResourceManager resourceManager,
+            IEncryptionProvider encryptionProvider)
         {
             this._dbContext = dbContext;
-            this._configurationStorageManager = configurationStorageManager;
+            this._configurationFactory = configurationFactory;
             this._encryptionProvider = encryptionProvider;
+            this._resourceManager = resourceManager;
         }
 
         public void AddSettingDefinition(SettingDefinition SettingDefinition)
@@ -61,7 +63,7 @@ namespace AS.Services
                 string value = (string)settingValue.GetType().GetProperty("Field" + i.ToString()).GetValue(settingValue, null);
 
                 if (isRequired && string.IsNullOrEmpty(value))
-                    throw new ASException(ResMan.GetString("Setting_InvalidSettingValue"));
+                    throw new ASException(this._resourceManager.GetString("Setting_InvalidSettingValue"));
             }
             settingValue = Encrypt(settingValue, settingDef);
             _dbContext.Entry(settingValue).State = EntityState.Modified;
@@ -145,14 +147,13 @@ namespace AS.Services
                 if (inputType == FormInputType.Password)
                 {
                     string value = (string)settingValue.GetType().GetProperty("Field" + i.ToString()).GetValue(settingValue, null);
-                    value = _encryptionProvider.Decrypt(value, _configurationStorageManager.Read().First().SymmetricKey);
+                    value = _encryptionProvider.Decrypt(value, _configurationFactory().SymmetricKey);
                     settingValue.GetType().GetProperty("Field" + i.ToString()).SetValue(settingValue, value);
                 }
             }
 
             return settingValue;
         }
-
         /// <summary>
         /// Encrypts password fields of the setting value to store it securely
         /// </summary>
@@ -171,7 +172,7 @@ namespace AS.Services
                 if (inputType == FormInputType.Password)
                 {
                     string value = (string)settingValue.GetType().GetProperty("Field" + i.ToString()).GetValue(settingValue, null);
-                    value = _encryptionProvider.Encrypt(value, _configurationStorageManager.Read().First().SymmetricKey);
+                    value = _encryptionProvider.Encrypt(value, _configurationFactory().SymmetricKey);
                     settingValue.GetType().GetProperty("Field" + i.ToString()).SetValue(settingValue, value);
                 }
             }

@@ -7,10 +7,12 @@
 @using (Html.BeginForm())
 {
     <div class="row">
-        <div class="col-md-4">
-            @Html.LabelFor(model => model.SelectedLogLevels, new { style = "padding-right:20px;" })
+        <div class="col-md-1">
+            @Html.LabelFor(model => model.SelectedLogLevels)
+        </div>
+        <div class="col-md-3">
             @Html.ListBoxFor(model => model.SelectedLogLevels, Model.LogLevels,
-       new { @multiple = "" ,@class= "selectpicker", size = 5, style = "width:200px;" })
+       new { @multiple = "", @class = "selectpicker", size = 5, style = "width:200px;" })
         </div>
         <div class="col-md-8">
             <table>
@@ -43,8 +45,9 @@
             </table>
         </div>
     </div>
-    <div class="admin-page-button-group">
-        <div style="margin-left:100px;" class="admin-page-button-group-item">
+    <div class="admin-page-button-group row">
+        <div class="col-md-1"></div>
+        <div class="admin-page-button-group-item col-md-3">
             <button type="button" onclick="grid.reload();" class="btn btn-primary btn-block btn-flat">@ResMan.GetString("List")</button>
         </div>
         <div style="margin-left:20px;" class="admin-page-button-group-item">

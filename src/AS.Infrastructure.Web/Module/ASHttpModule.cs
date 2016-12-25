@@ -19,22 +19,19 @@ namespace AS.Infrastructure.Web.Module
         private readonly IContextProvider _httpContextProvider;
         private readonly ILogger _logger;
         private readonly IRequestLogger _requestLogger;
-        private readonly IStorageManager<Configuration> _configStorageManager;
         private readonly IGeoProvider _geoProvider;
 
         public ASHttpModule(ISettingManager settingManager,
             IContextProvider httpContextProvider,
             ILogger logger,
             IRequestLogger requestLogger,
-            IGeoProvider geoProvider,
-            IStorageManager<Configuration> configStorageManager)
+            IGeoProvider geoProvider)
         {
             this._settingManager = settingManager;
             this._geoProvider = geoProvider;
             this._requestLogger = requestLogger;
             this._httpContextProvider = httpContextProvider;
             this._logger = logger;
-            this._configStorageManager = configStorageManager;
         }
 
         public void Init(HttpApplication context)
@@ -68,9 +65,8 @@ namespace AS.Infrastructure.Web.Module
             if (StaticResourceExtensions.Contains(extension))
                 return;
 
-            if (this._configStorageManager.CheckIfExists() &&
-                (!_settingManager.GetContainer<AppSetting>().Contains("REQUEST_LOGGING_DISABLED")
-                || !bool.Parse(_settingManager.GetContainer<AppSetting>()["REQUEST_LOGGING_DISABLED"].Value)))
+            if (!_settingManager.GetContainer<AppSetting>().Contains("REQUEST_LOGGING_DISABLED")
+                || !bool.Parse(_settingManager.GetContainer<AppSetting>()["REQUEST_LOGGING_DISABLED"].Value))
             {
                 Stopwatch stopwatch = new Stopwatch();
                 _httpContextProvider.Items["Stopwatch"] = stopwatch;
@@ -85,9 +81,8 @@ namespace AS.Infrastructure.Web.Module
             if (StaticResourceExtensions.Contains(extension))
                 return;
 
-            if (this._configStorageManager.CheckIfExists() &&
-                (!_settingManager.GetContainer<AppSetting>().Contains("REQUEST_LOGGING_DISABLED") ||
-                !bool.Parse(_settingManager.GetContainer<AppSetting>()["REQUEST_LOGGING_DISABLED"].Value)))
+            if (!_settingManager.GetContainer<AppSetting>().Contains("REQUEST_LOGGING_DISABLED") ||
+                !bool.Parse(_settingManager.GetContainer<AppSetting>()["REQUEST_LOGGING_DISABLED"].Value))
             {
                 Stopwatch stopwatch = (Stopwatch)_httpContextProvider.Items["Stopwatch"];
                 if (stopwatch == null)

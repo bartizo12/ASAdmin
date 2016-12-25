@@ -18,12 +18,10 @@ namespace AS.Infrastructure.Logging
         {
             this.logger = LogManager.GetCurrentClassLogger();
         }
-
         public void Error(Exception ex)
         {
             this.logger.Error(ex);
         }
-
         public void Info(string message)
         {
             if (MinimumLogLevel <= Domain.Interfaces.LogLevel.Info)
@@ -31,7 +29,6 @@ namespace AS.Infrastructure.Logging
                 this.logger.Info(message);
             }
         }
-
         public void Debug(string message)
         {
             if (MinimumLogLevel <= Domain.Interfaces.LogLevel.Debug)
@@ -39,7 +36,6 @@ namespace AS.Infrastructure.Logging
                 this.logger.Debug(message);
             }
         }
-
         public void Warn(string message)
         {
             if (MinimumLogLevel <= Domain.Interfaces.LogLevel.Warn)
@@ -47,7 +43,6 @@ namespace AS.Infrastructure.Logging
                 this.logger.Warn(message);
             }
         }
-
         public void Warn(string format, params object[] args)
         {
             if (MinimumLogLevel <= Domain.Interfaces.LogLevel.Warn)

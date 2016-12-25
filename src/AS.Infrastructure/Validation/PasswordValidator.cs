@@ -59,7 +59,7 @@ namespace AS.Infrastructure.Validation
                     isValid = false;
                     errors.Add(_resourceManager.GetString("PasswordRequiresLower"));
                 }
-                if (setting.RequireNonLetterOrDigitInPassword && !password.All(char.IsLetterOrDigit))
+                if (setting.RequireNonLetterOrDigitInPassword && password.All(char.IsLetterOrDigit))
                 {
                     isValid = false;
                     errors.Add(_resourceManager.GetString("PasswordRequiresNonAlphanumeric"));

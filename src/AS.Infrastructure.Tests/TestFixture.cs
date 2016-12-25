@@ -44,8 +44,7 @@ namespace AS.Infrastructure.Tests
         private readonly ISettingContainer<AppSetting> _appSettings;
         private readonly IDatabaseInitializer<ASDbContext> _dbInitializer;
         private readonly ASDbCommandInterceptor _dbCommandInterceptor;
-        private readonly IStorageManager<Configuration> _configurationManager;
-        private readonly List<Configuration> _configurations;
+        private readonly Func<DbConnectionConfiguration> _dbConnectionConfigurationFactory;
         private readonly ITypeFinder _typeFinder;
         private readonly IAppManager _appManager;
         private readonly DbContext _dbContext;
@@ -73,10 +72,8 @@ namespace AS.Infrastructure.Tests
 
         public TestFixture()
         {
-            _configurations = new List<Configuration>() { new Configuration(ProviderName, ConnectionString) };
             var mockAppSettings = new Mock<ISettingContainer<AppSetting>>();
             var mockContextProvider = new Mock<IContextProvider>();
-            var mockConnectionStringManager = new Mock<IStorageManager<Configuration>>();
             var mockAppManager = new Mock<IAppManager>();
             var mockMembershipSettings = new MembershipSettingContainer();
             var mockSettingManager = new Mock<ISettingManager>();
@@ -92,26 +89,27 @@ namespace AS.Infrastructure.Tests
             mockContextProvider.Setup(m => m.UserId).Returns(1);
             mockContextProvider.Setup(m => m.UserName).Returns("UnitTester");
             mockAppSettings.Setup(m => m["DbQueryLogEnable"]).Returns(new AppSetting() { Value = "True" });
-            mockConnectionStringManager.Setup(m => m.CheckIfExists()).Returns(true);
-            mockConnectionStringManager.Setup(m => m.Read()).Returns(_configurations);
             mockAppManager.Setup(m => m.MapPhysicalFile(It.IsAny<string>())).Returns("Script.sql");
 
             _appSettings = mockAppSettings.Object;
             _xmlSerializer = new ASXmlSerializer();
             _contextProvider = mockContextProvider.Object;
-            _configurationManager = mockConnectionStringManager.Object;
-            _database = new Infrastructure.Data.Database(_configurationManager);
+            this._dbConnectionConfigurationFactory = delegate ()
+            {
+                return new DbConnectionConfiguration(ProviderName, ConnectionString);
+            }; 
+            _database = new Infrastructure.Data.Database(_dbConnectionConfigurationFactory);
             _appManager = mockAppManager.Object;
             _typeFinder = new TypeFinder();
             mockSettingManager.Setup(m => m.GetContainer<AppSetting>()).Returns(_appSettings);
             mockSettingManager.Setup(m => m.GetContainer<MembershipSetting>()).Returns(mockMembershipSettings);
 
-            _dbInitializer = new ASDatabaseInitializer<ASDbContext>(_configurationManager, _appManager);
+            _dbInitializer = new ASDatabaseInitializer<ASDbContext>(_dbConnectionConfigurationFactory, _appManager);
             _dbCommandInterceptor = new ASDbCommandInterceptor(_database, _contextProvider, mockSettingManager.Object);
             _dbContextFactory = new ASDbContextFactory(_xmlSerializer, _contextProvider, _dbInitializer,
-                 _typeFinder, _configurationManager);
+                 _typeFinder, _dbConnectionConfigurationFactory);
             _dbContext = new ASDbContext(_xmlSerializer, _contextProvider, _dbInitializer,
-                 _typeFinder, _configurationManager);
+                 _typeFinder, _dbConnectionConfigurationFactory);
             _userStore = new ASUserStore(_dbContext);
             _userManager = new ASUserManager(_userStore, mockSettingManager.Object);
         }

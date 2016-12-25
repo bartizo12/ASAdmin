@@ -1,6 +1,5 @@
 ﻿using AS.Domain.Entities;
 using AS.Domain.Interfaces;
-using AS.Domain.Settings;
 using AS.Infrastructure.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
@@ -20,7 +19,7 @@ namespace AS.Infrastructure.Data.EF
     [DbConfigurationType(typeof(ASDbConfiguration))]
     public partial class ASDbContext : IdentityDbContext<ASUser, ASRole, int, ASUserLogin, ASUserRole, ASUserClaim>, IDbContext
     {
-        private readonly IStorageManager<Configuration> _configurationStorageManager;
+        private readonly Func<DbConnectionConfiguration> _dbConnectionConfigurationFactory;
         private readonly IContextProvider _contextProvider;
         private readonly ITypeFinder _typeFinder;
         private readonly IXmlSerializer _xmlSerializer;
@@ -41,19 +40,20 @@ namespace AS.Infrastructure.Data.EF
             IContextProvider contextProvider,
             IDatabaseInitializer<ASDbContext> dbInitializer,
             ITypeFinder typeFinder,
-            IStorageManager<Configuration> configurationStorageManager) : base("Data Source=;")
+            Func<DbConnectionConfiguration> dbConnectionConfigurationFactory) : base("Data Source=;")
         {
             this.AuditLoggingEnabled = true;
-            this._configurationStorageManager = configurationStorageManager;
+            this._dbConnectionConfigurationFactory = dbConnectionConfigurationFactory;
             this._xmlSerializer = xmlSerializer;
             this._contextProvider = contextProvider;
             this._typeFinder = typeFinder;
+            var dbConConfig = _dbConnectionConfigurationFactory();
 
-            if (!_configurationStorageManager.CheckIfExists())
+            if (dbConConfig == null)
             {
                 return;
             }
-            this.Database.Connection.ConnectionString = _configurationStorageManager.Read().First().ConnectionString;
+            this.Database.Connection.ConnectionString = dbConConfig.ConnectionString;
             System.Data.Entity.Database.SetInitializer(dbInitializer);
             this.Configuration.ProxyCreationEnabled = false;
         }
@@ -164,7 +164,7 @@ namespace AS.Infrastructure.Data.EF
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            if (!_configurationStorageManager.CheckIfExists())
+            if (_dbConnectionConfigurationFactory() == null)
             {
                 return;
             }

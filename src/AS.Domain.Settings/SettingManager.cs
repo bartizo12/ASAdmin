@@ -13,12 +13,9 @@ namespace AS.Domain.Settings
         private readonly Dictionary<string, dynamic> _containers;
         private readonly ISettingDataProvider _settingDataProvider;
         private readonly ITypeFinder _typeFinder;
-        private readonly IStorageManager<Configuration> _configurationStorageManager;
 
-        public SettingManager(ISettingDataProvider settingDataProvider, ITypeFinder typeFinder,
-            IStorageManager<Configuration> configurationStorageManager)
+        public SettingManager(ISettingDataProvider settingDataProvider, ITypeFinder typeFinder)
         {
-            this._configurationStorageManager = configurationStorageManager;
             this._settingDataProvider = settingDataProvider;
             this._typeFinder = typeFinder;
             _containers = new Dictionary<string, dynamic>();
@@ -40,14 +37,7 @@ namespace AS.Domain.Settings
                 ISettingContainer<TSettingValue> container = Activator.CreateInstance(concreteType)
                     as ISettingContainer<TSettingValue>;
 
-                if (!_configurationStorageManager.CheckIfExists())
-                {
-                    container.Load(null);
-                }
-                else
-                {
-                    container.Load(_settingDataProvider.FetchSettingValues());
-                }
+                container.Load(_settingDataProvider.FetchSettingValues());
                 this._containers.Add(name, container);
             }
             return this._containers[name] as ISettingContainer<TSettingValue>;

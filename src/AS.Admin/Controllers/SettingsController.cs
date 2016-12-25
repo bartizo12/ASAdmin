@@ -23,15 +23,18 @@ namespace AS.Admin.Controllers
         private readonly IAppManager _appManager;
         private readonly IConfigurationService _configurationService;
         private readonly ISettingManager _settingManager;
+        private readonly IResourceManager _resourceManager;
 
         public SettingsController(ISettingsService settingService,
             ITemplateService templateService,
             IAppManager appManager,
             ICacheService cacheService,
+            IResourceManager resourceManager,
             ISettingManager settingManager,
             IConfigurationService configurationService)
         {
             this._settingManager = settingManager;
+            this._resourceManager = resourceManager;
             this._settingService = settingService;
             this._cacheService = cacheService;
             this._appManager = appManager;
@@ -74,12 +77,13 @@ namespace AS.Admin.Controllers
                 value.CreatedOn = dbValue.CreatedOn;
 
                 if (dbValue.IsHiddenFromUser)
-                    throw new ASException(ResMan.GetString("ErrorMessage_UnableToUpdate"));
+                    throw new ASException(this._resourceManager.GetString("ErrorMessage_UnableToUpdate"));
 
                 _settingService.UpdateSettingValue(value);
 
                 TempData["ResultType"] = MessageType.Success;
-                TempData["ResultMessage"] = ResMan.GetString("SettingValueUpdateSuccess");
+                TempData["ResultMessage"] = this._resourceManager.GetString("SettingValueUpdateSuccess");
+                TempData["ResultModel"] = model;
                 _cacheService.Clear();
 
                 return RedirectToAction("Result", "Shared");
@@ -146,7 +150,7 @@ namespace AS.Admin.Controllers
             model.TemplateFileList = new MultiSelectList(_templateService.FetchTemplateFileList());
 
             if (model.Id <= 0)
-                ModelState.AddModelError(string.Empty, ResMan.GetString("ErrorMessage_UnableToUpdate"));
+                ModelState.AddModelError(string.Empty, this._resourceManager.GetString("ErrorMessage_UnableToUpdate"));
 
             if (!ModelState.IsValid)
             {
@@ -163,7 +167,7 @@ namespace AS.Admin.Controllers
                 SettingValue dbValue = _settingService.GetSettingValueById(model.Id);
 
                 if (dbValue.IsHiddenFromUser)
-                    throw new ASException(ResMan.GetString("ErrorMessage_UnableToUpdate"));
+                    throw new ASException(this._resourceManager.GetString("ErrorMessage_UnableToUpdate"));
 
                 value.SettingDefinitionID = dbValue.SettingDefinitionID;
                 value.CreatedBy = dbValue.CreatedBy;
@@ -171,7 +175,8 @@ namespace AS.Admin.Controllers
                 _settingService.UpdateSettingValue(value);
 
                 TempData["ResultType"] = MessageType.Success;
-                TempData["ResultMessage"] = ResMan.GetString("SettingValueUpdateSuccess");
+                TempData["ResultMessage"] = this._resourceManager.GetString("SettingValueUpdateSuccess");
+                TempData["ResultModel"] = model;
                 _cacheService.Clear();
 
                 return RedirectToAction("Result", "Shared");
@@ -198,7 +203,7 @@ namespace AS.Admin.Controllers
 
             if (string.IsNullOrEmpty(idStr) || !int.TryParse(idStr, out id))
             {
-                ModelState.AddModelError(string.Empty, ResMan.GetString("RecordDoesNotExist"));
+                ModelState.AddModelError(string.Empty, this._resourceManager.GetString("RecordDoesNotExist"));
 
                 return View(new HTMLTemplateModel());
             }
@@ -234,7 +239,7 @@ namespace AS.Admin.Controllers
         [HttpPost]
         public ActionResult TestSMTPConnection(EMailSettingModel model)
         {
-            Configuration config = new Configuration();
+            ASConfiguration config = new ASConfiguration();
             config.SMTPDefaultCredentials = model.DefaultCredentials;
             config.SMTPEnableSsl = model.EnableSsl;
             config.SMTPFromAddress = model.FromAddress;
@@ -258,7 +263,7 @@ namespace AS.Admin.Controllers
             }
             try
             {
-                Configuration config = new Configuration();
+                ASConfiguration config = new ASConfiguration();
                 config.SMTPDefaultCredentials = model.DefaultCredentials;
                 config.SMTPEnableSsl = model.EnableSsl;
                 config.SMTPFromAddress = model.FromAddress;
@@ -284,7 +289,7 @@ namespace AS.Admin.Controllers
                     SettingValue dbValue = _settingService.GetSettingValueById(model.Id);
 
                     if (dbValue.IsHiddenFromUser)
-                        throw new ASException(ResMan.GetString("ErrorMessage_UnableToUpdate"));
+                        throw new ASException(this._resourceManager.GetString("ErrorMessage_UnableToUpdate"));
 
                     value.SettingDefinitionID = dbValue.SettingDefinitionID;
                     value.CreatedBy = dbValue.CreatedBy;
@@ -292,17 +297,18 @@ namespace AS.Admin.Controllers
                     _settingService.UpdateSettingValue(value);
 
                     TempData["ResultType"] = MessageType.Success;
-                    TempData["ResultMessage"] = ResMan.GetString("Resources.SettingValueUpdateSuccess");
+                    TempData["ResultMessage"] = this._resourceManager.GetString("Resources.SettingValueUpdateSuccess");
                 }
                 else
                 {
                     value.SettingDefinitionID = _settingService.GetSettingDefinitionByName("EMailSetting").Id;
                     _settingService.AddSettingValue(value);
                     TempData["ResultType"] = MessageType.Success;
-                    TempData["ResultMessage"] = ResMan.GetString("SettingValueUpdateSuccess");
+                    TempData["ResultMessage"] = this._resourceManager.GetString("SettingValueUpdateSuccess");
                 }
                 _cacheService.Clear();
 
+                TempData["ResultModel"] = model;
                 return RedirectToAction("Result", "Shared");
             }
             catch (ASException ex)

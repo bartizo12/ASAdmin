@@ -20,10 +20,10 @@ namespace AS.Services
         private readonly IMailService _mailService;
         private readonly IEncryptionProvider _encryptionProvider;
         private readonly ISettingManager _settingManager;
-        private readonly IStorageManager<Configuration> _configurationStorageManager;
+        private readonly IStorageManager<ASConfiguration> _configurationStorageManager;
         private readonly ILogger _logger;
 
-        public ConfigurationService(IStorageManager<Configuration> configurationStorageManager,
+        public ConfigurationService(IStorageManager<ASConfiguration> configurationStorageManager,
             ISettingManager settingManager,
             ILogger logger,
             IEncryptionProvider encryptionProvider,
@@ -60,7 +60,7 @@ namespace AS.Services
         /// Reads config from file
         /// </summary>
         /// <returns>Read config</returns>
-        public Configuration ReadConfig()
+        public ASConfiguration ReadConfig()
         {
             return this._configurationStorageManager.Read().First();
         }
@@ -69,9 +69,10 @@ namespace AS.Services
         /// Saves config to a file
         /// </summary>
         /// <param name="settings"></param>
-        public void SaveConfig(Configuration config)
+        public void SaveConfig(ASConfiguration config)
         {
             config.SymmetricKey = this._encryptionProvider.GenerateKey();
+            config.SMTPPassword = this._encryptionProvider.Encrypt(config.SMTPPassword, config.SymmetricKey);
             this._configurationStorageManager.Save(config);
         }
 
@@ -81,7 +82,7 @@ namespace AS.Services
         /// <param name="settings">Db configuration</param>
         /// <returns>Error message if there is an error while connecting database.
         /// Otherwise returns emtpy string</returns>
-        public string CanConnectDatabase(Configuration config)
+        public string CanConnectDatabase(ASConfiguration config)
         {
             var factory = DbProviderFactories.GetFactory(config.DataProvider);
 
@@ -107,7 +108,7 @@ namespace AS.Services
         /// <param name="setting">SMTP configuration</param>
         /// <returns>Error message if there is an error while connecting SMTP Server.
         /// Otherwise returns emtpy string</returns>
-        public string CanConnectSMTPServer(Configuration config)
+        public string CanConnectSMTPServer(ASConfiguration config)
         {
             try
             {

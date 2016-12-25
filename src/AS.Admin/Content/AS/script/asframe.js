@@ -684,6 +684,12 @@ var Grid = (function () {
                 loadingRecords: StringResources["DataTable_LoadingRecords"],
                 processing: StringResources["DataTable_Processing"],
                 zeroRecords: StringResources["DataTable_ZeroRecords"],
+                paginate: {
+                    next: StringResources["DataTable_Next"],
+                    previous: StringResources["DataTable_Previous"],
+                    first: StringResources["DataTable_First"],
+                    last: StringResources["DataTable_Last"]
+                },
                 aria: {
                     sortAscending: StringResources["DataTable_SortAscending"],
                     sortDescending: StringResources["DataTable_SortDescending"]

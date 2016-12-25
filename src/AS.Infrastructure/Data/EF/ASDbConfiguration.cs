@@ -1,14 +1,13 @@
-﻿using AS.Domain.Interfaces;
-using AS.Domain.Settings;
+﻿using AS.Domain.Entities;
 using MySql.Data.Entity;
 using MySql.Data.MySqlClient;
+using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.SqlServer;
 using System.Data.Entity.SqlServerCompact;
 using System.Data.SqlClient;
 using System.Data.SqlServerCe;
-using System.Linq;
 
 namespace AS.Infrastructure.Data.EF
 {
@@ -23,11 +22,14 @@ namespace AS.Infrastructure.Data.EF
     {
         public ASDbConfiguration()
         {
-            IStorageManager<Configuration> connectionStringManager = ServiceLocator.Current.Resolve<IStorageManager<Configuration>>();
+            Func<DbConnectionConfiguration> dbConnectionConfigurationFactory = 
+                ServiceLocator.Current.Resolve<Func<DbConnectionConfiguration>>();
+            var config = dbConnectionConfigurationFactory();
 
-            if (!connectionStringManager.CheckIfExists())
+            if (config == null)
                 return;
-            string providerName = connectionStringManager.Read().First().DataProvider;
+            string providerName = config.DataProvider;
+
             //If its mysql
             if (providerName == MySqlProviderInvariantName.ProviderName)
             {

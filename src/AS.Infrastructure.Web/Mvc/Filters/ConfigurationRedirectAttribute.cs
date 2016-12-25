@@ -1,5 +1,5 @@
-﻿using AS.Domain.Interfaces;
-using AS.Domain.Settings;
+﻿using AS.Domain.Entities;
+using AS.Domain.Interfaces;
 using System;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -12,15 +12,15 @@ namespace AS.Infrastructure.Web.Mvc.Filters
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class)]
     public sealed class ConfigurationRedirectAttribute : ActionFilterAttribute
     {
-        private readonly IStorageManager<Configuration> _configurationStorageManager;
+        private readonly Func<ASConfiguration> _configurationFactory;
 
         public ConfigurationRedirectAttribute()
         {
         }
 
-        public ConfigurationRedirectAttribute(IStorageManager<Configuration> configurationStorageManager)
+        public ConfigurationRedirectAttribute(Func<ASConfiguration> configurationFactory)
         {
-            this._configurationStorageManager = configurationStorageManager;
+            this._configurationFactory = configurationFactory;
         }
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
@@ -41,7 +41,7 @@ namespace AS.Infrastructure.Web.Mvc.Filters
             if (filterDisabled)
                 return;
 
-            if (!this._configurationStorageManager.CheckIfExists())
+            if (this._configurationFactory() == null)
             {
                 filterContext.Controller.TempData["IsRedirectedToConfiguration"] = true;
 

@@ -1,6 +1,5 @@
 ﻿using AS.Domain.Entities;
 using AS.Domain.Interfaces;
-using AS.Domain.Settings;
 using AS.Infrastructure;
 using AS.Infrastructure.Data;
 using AS.Jobs;
@@ -19,14 +18,14 @@ namespace AS.Services
     /// </summary>
     public class SchedulerService : ISchedulerService
     {
-        private readonly IStorageManager<Configuration> _configurationStorageManager;
+        private readonly Func<DbConnectionConfiguration> _dbConnectionConfigurationFactory;
         private readonly IDbContext _dbContext;
         private readonly IDbContextFactory _dbContextFactory;
         private readonly ILogger _logger;
         private readonly ITypeFinder _typeFinder;
 
         public SchedulerService(IDbContext dbContext,
-            IStorageManager<Configuration> configurationStorageManager,
+            Func<DbConnectionConfiguration> dbConnectionConfigurationFactory,
             IDbContextFactory dbContextFactory,
             ITypeFinder typeFinder,
             ILogger logger)
@@ -35,7 +34,7 @@ namespace AS.Services
             this._dbContextFactory = dbContextFactory;
             this._typeFinder = typeFinder;
             this._logger = logger;
-            this._configurationStorageManager = configurationStorageManager;
+            this._dbConnectionConfigurationFactory = dbConnectionConfigurationFactory;
         }
 
         public void CreateJobDefinition(JobDefinition jobDefinition)
@@ -108,7 +107,7 @@ namespace AS.Services
         /// </summary>
         public void Initialize()
         {
-            if (!_configurationStorageManager.CheckIfExists())
+            if (_dbConnectionConfigurationFactory() == null)
                 return;
 
             JobManager.JobException -= JobManager_JobException;

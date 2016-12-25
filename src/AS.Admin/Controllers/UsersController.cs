@@ -81,8 +81,9 @@ namespace AS.Admin.Controllers
             {
                 _service.CreateUser(model.UserName, model.Password, model.Email, model.Roles);
                 TempData["ResultType"] = MessageType.Success;
-                TempData["ResultMessage"] = string.Format(ResMan.GetString("Users_CreateSuccess"),
+                TempData["ResultMessage"] = string.Format(this._resourceManager.GetString("Users_CreateSuccess"),
                     model.UserName);
+                TempData["ResultModel"] = model;
                 return RedirectToAction("Result", "Shared");
             }
             catch (ASException ex)

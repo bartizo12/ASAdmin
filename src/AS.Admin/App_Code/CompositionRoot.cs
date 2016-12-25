@@ -1,4 +1,5 @@
-﻿using AS.Domain.Interfaces;
+﻿using AS.Domain.Entities;
+using AS.Domain.Interfaces;
 using AS.Domain.Settings;
 using AS.Infrastructure;
 using AS.Infrastructure.Data;
@@ -34,6 +35,21 @@ namespace AS.Admin
                 .AsImplementedInterfaces()
                 .AsSelf()
                 .SingleInstance();
+
+            builder.Register(c =>
+            {
+                return c.Resolve<ConfigurationStorageManager>().GetConfigurationFactory();
+            })
+            .AsSelf()
+            .SingleInstance();
+
+            builder.Register(c =>
+            {
+                return c.Resolve<ConfigurationStorageManager>().GetConfigurationFactory() as Func<DbConnectionConfiguration>;
+            })
+            .AsSelf()
+            .SingleInstance();
+
             builder.RegisterType<NLogCustomTarget>()
                 .AsSelf()
                 .InstancePerLifetimeScope();
@@ -117,6 +133,7 @@ namespace AS.Admin
             builder.RegisterType<AESEncryptionProvider>()
                 .As<IEncryptionProvider>()
                 .InstancePerRequest();
+
             //Register Services
             builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies())
                    .Where(t => typeof(IService).IsAssignableFrom(t))
@@ -133,7 +150,7 @@ namespace AS.Admin
             builder.Register(c => new GlobalValuesActionFilterAttribute(c.Resolve<ISettingManager>(),
                c.Resolve<IContextProvider>(), c.Resolve<IResourceManager>()))
                             .AsActionFilterFor<Controller>().InstancePerRequest();
-            builder.Register(c => new ConfigurationRedirectAttribute(c.Resolve<IStorageManager<Configuration>>()))
+            builder.Register(c => new ConfigurationRedirectAttribute(c.Resolve<Func<ASConfiguration>>()))
                           .AsActionFilterFor<Controller>().InstancePerRequest();
             builder.Register(c => new LastActivityUpdateActionFilter(c.Resolve<ILastActivityTimeUpdater>()))
                           .AsActionFilterFor<Controller>().InstancePerRequest();

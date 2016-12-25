@@ -63,7 +63,7 @@ namespace AS.Admin.Controllers
 
             if (stringResource == null)
             {
-                ModelState.AddModelError(string.Empty, ResMan.GetString("StringResource_NotExists"));
+                ModelState.AddModelError(string.Empty, this._resourceManager.GetString("StringResource_NotExists"));
             }
             else
             {
@@ -91,14 +91,14 @@ namespace AS.Admin.Controllers
                     if (tempStringResource != null && tempStringResource.Id != model.Id)
                     {
                         ModelState.AddModelError("Name",
-                           string.Format(ResMan.GetString("StringResource_Exists"), model.Name));
+                           string.Format(this._resourceManager.GetString("StringResource_Exists"), model.Name));
                     }
                     else
                     {
                         _resourceService.Update(this.Map<StringResource>(model));
                         _resourceManager.ClearCache();
                         TempData["ResultType"] = MessageType.Success;
-                        TempData["ResultMessage"] = string.Format(ResMan.GetString("StringResources_SaveSuccess"),
+                        TempData["ResultMessage"] = string.Format(this._resourceManager.GetString("StringResources_SaveSuccess"),
                             model.Name, model.CultureCode);
                         TempData["ResultModel"] = model;
                         return RedirectToAction("Result", "Shared");
@@ -110,7 +110,7 @@ namespace AS.Admin.Controllers
                         .GetResourceByNameAndCulture(model.CultureCode, model.Name) != null)
                     {
                         ModelState.AddModelError("Name",
-                            string.Format(ResMan.GetString("StringResource_Exists"),
+                            string.Format(this._resourceManager.GetString("StringResource_Exists"),
                             model.Name, model.CultureCode));
                     }
                     else
@@ -118,7 +118,7 @@ namespace AS.Admin.Controllers
                         _resourceService.Insert(Map<StringResource>(model));
                         _resourceManager.ClearCache();
                         TempData["ResultType"] = MessageType.Success;
-                        TempData["ResultMessage"] = string.Format(ResMan.GetString("StringResources_SaveSuccess"),
+                        TempData["ResultMessage"] = string.Format(this._resourceManager.GetString("StringResources_SaveSuccess"),
                             model.Name, model.CultureCode);
                         TempData["ResultModel"] = model;
                         return RedirectToAction("Result", "Shared");

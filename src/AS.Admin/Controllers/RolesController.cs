@@ -1,5 +1,6 @@
 ﻿using AS.Admin.Models;
 using AS.Domain.Entities;
+using AS.Domain.Interfaces;
 using AS.Infrastructure;
 using AS.Infrastructure.Web;
 using AS.Infrastructure.Web.Mvc;
@@ -13,10 +14,13 @@ namespace AS.Admin.Controllers
     public class RolesController : ASControllerBase
     {
         private readonly IMembershipService _service;
+        private readonly IResourceManager _resourceManager;
 
-        public RolesController(IMembershipService service)
+        public RolesController(IMembershipService service,
+            IResourceManager resourceManager)
         {
             this._service = service;
+            this._resourceManager = resourceManager;
         }
 
         public ActionResult Index()
@@ -44,7 +48,7 @@ namespace AS.Admin.Controllers
             IRole role = _service.GetRoleByName(roleName);
 
             if (role == null)
-                ModelState.AddModelError(string.Empty, ResMan.GetString("Roles_NotExists"));
+                ModelState.AddModelError(string.Empty, this._resourceManager.GetString("Roles_NotExists"));
 
             RoleModel roleModel = base.Map<RoleModel>(role);
 
@@ -67,6 +71,7 @@ namespace AS.Admin.Controllers
             }
             try
             {
+                TempData["ResultModel"] = model;
                 if (model.Id > 0)
                 {
                     IRole tempRole = _service.GetRoleByName(model.Name);
@@ -74,15 +79,15 @@ namespace AS.Admin.Controllers
                     if (tempRole != null && tempRole.Id != model.Id)
                     {
                         ModelState.AddModelError("Name",
-                           string.Format(ResMan.GetString("Roles_Exists"), model.Name));
+                           string.Format(this._resourceManager.GetString("Roles_Exists"), model.Name));
                     }
                     else
                     {
                         _service.UpdateRole(model.Id, model.Name, model.Note);
                         TempData["ResultType"] = MessageType.Success;
-                        TempData["ResultMessage"] = string.Format(ResMan.GetString("Roles_UpdateSuccess"),
+                        TempData["ResultMessage"] = string.Format(this._resourceManager.GetString("Roles_UpdateSuccess"),
                             model.Name);
-
+                        
                         return RedirectToAction("Result", "Shared");
                     }
                 }
@@ -91,15 +96,15 @@ namespace AS.Admin.Controllers
                     if (_service.GetRoleByName(model.Name) != null)
                     {
                         ModelState.AddModelError("Name",
-                            string.Format(ResMan.GetString("Roles_Exists"), model.Name));
+                            string.Format(this._resourceManager.GetString("Roles_Exists"), model.Name));
                     }
                     else
                     {
                         _service.CreateRole(model.Name, model.Note);
                         TempData["ResultType"] = MessageType.Success;
-                        TempData["ResultMessage"] = string.Format(ResMan.GetString("Roles_NewRoleSuccess"),
+                        TempData["ResultMessage"] = string.Format(this._resourceManager.GetString("Roles_NewRoleSuccess"),
                             model.Name);
-
+                        
                         return RedirectToAction("Result", "Shared");
                     }
                 }

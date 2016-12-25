@@ -1,6 +1,6 @@
 ﻿using AS.Admin.Models;
+using AS.Domain.Entities;
 using AS.Domain.Interfaces;
-using AS.Domain.Settings;
 using AS.Infrastructure.Web;
 using AS.Infrastructure.Web.Mvc;
 using AS.Infrastructure.Web.Mvc.Filters;
@@ -21,12 +21,15 @@ namespace AS.Admin.Controllers
         private readonly List<string> _avaliableProviders = new List<string>();
         private readonly IConfigurationService _configurationService;
         private readonly IAppManager _appManager;
+        private readonly IResourceManager _resourceManager;
 
         public ConfigurationController(IConfigurationService configurationService,
-            IAppManager appManager)
+             IResourceManager resourceManager,
+             IAppManager appManager)
         {
             this._configurationService = configurationService;
             this._appManager = appManager;
+            this._resourceManager = resourceManager;
             _avaliableProviders.Add(MySqlProviderInvariantName.ProviderName);
             _avaliableProviders.Add(SqlProviderServices.ProviderInvariantName);
             _avaliableProviders.Add(SqlCeProviderServices.ProviderInvariantName);
@@ -50,13 +53,13 @@ namespace AS.Admin.Controllers
         [ValidateAntiForgeryToken]
         public JsonNetResult CanConnectDb(string provider, string connectionString)
         {
-            Configuration config = new Configuration();
+            ASConfiguration config = new ASConfiguration();
             config.ConnectionString = connectionString;
             config.DataProvider = provider;
             string connectionResult = _configurationService.CanConnectDatabase(config);
 
             if (!string.IsNullOrEmpty(connectionResult))
-                connectionResult = string.Format(ResMan.GetString("Installer_CannotConnectDatabase"),
+                connectionResult = string.Format(this._resourceManager.GetString("Installer_CannotConnectDatabase"),
                     connectionResult);
 
             return new JsonNetResult(connectionResult);
@@ -65,10 +68,10 @@ namespace AS.Admin.Controllers
         [ValidateAntiForgeryToken]
         public JsonNetResult CanConnectSMTP(ConfigurationModel model)
         {
-            string connectionResult = _configurationService.CanConnectSMTPServer(Map<Configuration>(model));
+            string connectionResult = _configurationService.CanConnectSMTPServer(Map<ASConfiguration>(model));
 
             if (!string.IsNullOrEmpty(connectionResult))
-                connectionResult = string.Format(ResMan.GetString("Installer_CannotConnectSMTP"),
+                connectionResult = string.Format(this._resourceManager.GetString("Installer_CannotConnectSMTP"),
                     connectionResult);
 
             return new JsonNetResult(connectionResult);
@@ -79,15 +82,15 @@ namespace AS.Admin.Controllers
         public ActionResult Index(ConfigurationModel model)
         {
             model.DataProviderSelectList = new MultiSelectList(_avaliableProviders);
-            string canConnectResult = this._configurationService.CanConnectDatabase(Map<Configuration>(model));
+            string canConnectResult = this._configurationService.CanConnectDatabase(Map<ASConfiguration>(model));
 
             if (!string.IsNullOrEmpty(canConnectResult))
             {
                 ModelState.AddModelError(string.Empty,
-                    string.Format(ResMan.GetString("Installer_CannotConnectDatabase"), canConnectResult));
+                    string.Format(this._resourceManager.GetString("Installer_CannotConnectDatabase"), canConnectResult));
                 return View(model);
             }
-            _configurationService.SaveConfig(Map<Configuration>(model));
+            _configurationService.SaveConfig(Map<ASConfiguration>(model));
             _appManager.RestartApplication();
 
             return RedirectToAction("Index", "Installer", new { isRedirected = true });

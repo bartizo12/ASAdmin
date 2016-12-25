@@ -1,5 +1,5 @@
 ﻿using AS.Admin.Models;
-using AS.Domain.Settings;
+using AS.Domain.Entities;
 using Mapster;
 
 namespace AS.Admin
@@ -11,7 +11,7 @@ namespace AS.Admin
     {
         public static void RegisterMappings()
         {
-            TypeAdapterConfig<ConfigurationModel, Configuration>.NewConfig()
+            TypeAdapterConfig<ConfigurationModel, ASConfiguration>.NewConfig()
                 .Map(dest => dest.SMTPName, src => src.EMailSetting.Name)
                 .Map(dest => dest.SMTPDefaultCredentials, src => src.EMailSetting.DefaultCredentials)
                 .Map(dest => dest.SMTPEnableSsl, src => src.EMailSetting.EnableSsl)

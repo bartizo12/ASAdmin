@@ -1,6 +1,5 @@
 ﻿using AS.Domain.Entities;
 using AS.Domain.Interfaces;
-using AS.Domain.Settings;
 using AS.Infrastructure;
 using AS.Infrastructure.Collections;
 using AS.Infrastructure.Data;
@@ -26,18 +25,18 @@ namespace AS.Services
         private readonly IDbContext _dbContext;
         private readonly IDbContextFactory _dbContextFactory;
         private readonly IEncryptionProvider _encryptionProvider;
-        private readonly IStorageManager<Configuration> _configurationStorageManager;
+        private readonly Func<ASConfiguration> _configurationFactory;
         private readonly IResourceManager _resourceManager;
 
         public MailService(IDbContextFactory dbContextFactory,
             IEncryptionProvider encryptionProvider,
-            IStorageManager<Configuration> configurationStorageManager,
+            Func<ASConfiguration> configurationFactory,
             IResourceManager resourceManager,
             IDbContext dbContext)
         {
             this._dbContextFactory = dbContextFactory;
             this._encryptionProvider = encryptionProvider;
-            this._configurationStorageManager = configurationStorageManager;
+            this._configurationFactory = configurationFactory;
             this._dbContext = dbContext;
             this._resourceManager = resourceManager;
         }
@@ -74,8 +73,7 @@ namespace AS.Services
                     try
                     {
                         email.JobStatus = JobStatus.Running;
-                        email.SmtpPassword = _encryptionProvider.Decrypt(email.SmtpPassword,
-                            _configurationStorageManager.Read().First().SymmetricKey);
+                        email.SmtpPassword = _encryptionProvider.Decrypt(email.SmtpPassword,_configurationFactory().SymmetricKey);
                         dbContext.Entry(email).State = EntityState.Modified;
                         dbContext.SaveChanges();
                         this.SendEMail(email);
@@ -90,8 +88,7 @@ namespace AS.Services
                     {
                         email.TryCount++;
                         email.LastExecutionTime = DateTime.UtcNow;
-                        email.SmtpPassword = _encryptionProvider.Decrypt(email.SmtpPassword,
-                            _configurationStorageManager.Read().First().SymmetricKey);
+                        email.SmtpPassword = _encryptionProvider.Encrypt(email.SmtpPassword,_configurationFactory().SymmetricKey);
                         dbContext.Entry(email).State = EntityState.Modified;
                         dbContext.SaveChanges();
                     }

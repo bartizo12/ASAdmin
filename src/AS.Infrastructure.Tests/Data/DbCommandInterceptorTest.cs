@@ -14,7 +14,7 @@ namespace AS.Infrastructure.Tests
         {
             this._fixture = fixture;
         }
-
+        [Fact]
         public void Interceptor_Should_Log_Without_Throwing_Any_Exception()
         {
             Mock<DbCommand> mockNonQueryDbCmd = new Mock<DbCommand>();

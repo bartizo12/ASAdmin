@@ -1,4 +1,4 @@
-﻿using AS.Domain.Settings;
+﻿using AS.Domain.Entities;
 
 namespace AS.Services.Interfaces
 {
@@ -17,13 +17,13 @@ namespace AS.Services.Interfaces
         /// Saves config to a file
         /// </summary>
         /// <param name="settings"></param>
-        void SaveConfig(Configuration settings);
+        void SaveConfig(ASConfiguration settings);
 
         /// <summary>
         /// Reads config from file
         /// </summary>
         /// <returns>Read config</returns>
-        Configuration ReadConfig();
+        ASConfiguration ReadConfig();
 
         /// <summary>
         /// Check if input database setting is valid and connect database.
@@ -31,7 +31,7 @@ namespace AS.Services.Interfaces
         /// <param name="settings">Db configuration</param>
         /// <returns>Error message if there is an error while connecting database.
         /// Otherwise returns emtpy string</returns>
-        string CanConnectDatabase(Configuration settings);
+        string CanConnectDatabase(ASConfiguration settings);
 
         /// <summary>
         /// Checks if input SMTP server setting is valid and can connect SMTP
@@ -39,6 +39,6 @@ namespace AS.Services.Interfaces
         /// <param name="setting">SMTP configuration</param>
         /// <returns>Error message if there is an error while connecting SMTP Server.
         /// Otherwise returns emtpy string</returns>
-        string CanConnectSMTPServer(Configuration setting);
+        string CanConnectSMTPServer(ASConfiguration setting);
     }
 }

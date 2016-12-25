@@ -37,6 +37,7 @@ namespace AS.Services
         private readonly IAppManager _appManager;
         private readonly IXmlSerializer _xmlSerializer;
         private readonly ISettingManager _settingManager;
+        private readonly IResourceManager _resourceManager;
 
         public MembershipService(
             IDbContext dbContext,
@@ -49,9 +50,11 @@ namespace AS.Services
             IContextProvider contextProvider,
             IDataProtectionProvider dataProtectionProvider,
             ISettingManager settingManager,
+            IResourceManager resourceManager,
             IXmlSerializer xmlSerializer,
             IAppManager appManager)
         {
+            this._resourceManager = resourceManager;
             this._dbContext = dbContext;
             this._roleManager = roleManager;
             this._userManager = userManager;
@@ -82,10 +85,10 @@ namespace AS.Services
                 user = _userManager.FindByName(userNameOrEmail);
 
                 if (user == null)
-                    throw new ASException(ResMan.GetString("Membership_UserNotFound"));
+                    throw new ASException(this._resourceManager.GetString("Membership_UserNotFound"));
             }
             if (this._settingManager.GetContainer<EMailSetting>().Default == null)
-                throw new ASException(ResMan.GetString("EMail_UserErrorMessage"));
+                throw new ASException(this._resourceManager.GetString("EMail_UserErrorMessage"));
 
             PasswordResetToken token = new PasswordResetToken();
             token.Token = this._userManager.GeneratePasswordResetToken(user.Id);
@@ -194,7 +197,7 @@ namespace AS.Services
             {
                 if (!(_roleManager.RoleExistsAsync(role).Result))
                 {
-                    throw new ASException(ResMan.GetString("Membership_RoleDoesNotExist"));
+                    throw new ASException(this._resourceManager.GetString("Membership_RoleDoesNotExist"));
                 }
             }
             //Now create user
@@ -219,20 +222,24 @@ namespace AS.Services
             viewBag.Add("Url", this._contextProvider.RootAddress);
             EMail mail = new EMail();
             mail.Body = this._templateService.GetBody("Newuser", viewBag);
-            mail.EmailSettingName = this._settingManager.GetContainer<EMailSetting>().Default.Name;
-            mail.FromAddress = this._settingManager.GetContainer<EMailSetting>().Default.FromAddress;
-            mail.FromName = this._settingManager.GetContainer<EMailSetting>().Default.FromDisplayName;
-            mail.Receivers = user.Email;
-            mail.SmtpClientTimeOut = this._settingManager.GetContainer<EMailSetting>().Default.TimeOut;
-            mail.SmtpEnableSsl = this._settingManager.GetContainer<EMailSetting>().Default.EnableSsl;
-            mail.SmtpHostAddress = this._settingManager.GetContainer<EMailSetting>().Default.Host;
-            mail.SmtpPassword = this._settingManager.GetContainer<EMailSetting>().Default.Password;
-            mail.SmtpPort = this._settingManager.GetContainer<EMailSetting>().Default.Port;
-            mail.SmtpUseDefaultCredentials = this._settingManager.GetContainer<EMailSetting>().Default.DefaultCredentials;
-            mail.SmtpUserName = this._settingManager.GetContainer<EMailSetting>().Default.UserName;
-            mail.Subject = this._templateService.GetSubject("NewUser", viewBag);
-            _mailService.Enqueue(mail);
 
+            if (this._settingManager.GetContainer<EMailSetting>().Default != null)
+            {
+
+                mail.EmailSettingName = this._settingManager.GetContainer<EMailSetting>().Default.Name;
+                mail.FromAddress = this._settingManager.GetContainer<EMailSetting>().Default.FromAddress;
+                mail.FromName = this._settingManager.GetContainer<EMailSetting>().Default.FromDisplayName;
+                mail.Receivers = user.Email;
+                mail.SmtpClientTimeOut = this._settingManager.GetContainer<EMailSetting>().Default.TimeOut;
+                mail.SmtpEnableSsl = this._settingManager.GetContainer<EMailSetting>().Default.EnableSsl;
+                mail.SmtpHostAddress = this._settingManager.GetContainer<EMailSetting>().Default.Host;
+                mail.SmtpPassword = this._settingManager.GetContainer<EMailSetting>().Default.Password;
+                mail.SmtpPort = this._settingManager.GetContainer<EMailSetting>().Default.Port;
+                mail.SmtpUseDefaultCredentials = this._settingManager.GetContainer<EMailSetting>().Default.DefaultCredentials;
+                mail.SmtpUserName = this._settingManager.GetContainer<EMailSetting>().Default.UserName;
+                mail.Subject = this._templateService.GetSubject("NewUser", viewBag);
+                _mailService.Enqueue(mail);
+            }
             UserActivity activity = new UserActivity();
             activity.UserId = user.Id;
             activity.UserActivityType = UserActivityType.UserCreation;
@@ -301,7 +308,7 @@ namespace AS.Services
                 user = this._userManager.FindByEmail(userNameOrEmail);
 
             if (user == null)
-                throw new ASException(ResMan.GetString("Membership_UserNotFound"));
+                throw new ASException(this._resourceManager.GetString("Membership_UserNotFound"));
 
             SignInStatus status = _signInManager.PasswordSignInAsync(user.UserName, password, isPersistent, false).Result;
 
@@ -313,7 +320,7 @@ namespace AS.Services
                 activity.UserActivityType = UserActivityType.InvalidPasswordEntry;
                 _dbContext.Set<UserActivity>().Add(activity);
                 _dbContext.SaveChanges();
-                throw new ASException(ResMan.GetString("Membership_LoginFailed"));
+                throw new ASException(this._resourceManager.GetString("Membership_LoginFailed"));
             }
             var identity = this._userManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
             this._signInManager.AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, identity);
@@ -363,7 +370,7 @@ namespace AS.Services
             SignInStatus status = _signInManager.PasswordSignInAsync(user.UserName, currentPassword, false, false).Result;
 
             if (status != SignInStatus.Success)
-                throw new ASException(ResMan.GetString("Membership_LoginFailed"));
+                throw new ASException(this._resourceManager.GetString("Membership_LoginFailed"));
 
             string token = _userManager.GeneratePasswordResetToken(userId);
             IdentityResult iResult = _userManager.ResetPassword(userId, token, newPassword);
@@ -399,7 +406,7 @@ namespace AS.Services
             {
                 if (this._dbContext.Set<ASUserRole>().Any(u => u.RoleId == asRole.Id))
                 {
-                    throw new ASException(ResMan.GetString("Roles_CannotBeDeletedRoleHasUsers"), role);
+                    throw new ASException(this._resourceManager.GetString("Roles_CannotBeDeletedRoleHasUsers"), role);
                 }
                 IdentityResult iResult = _roleManager.Delete(asRole);
                 if (!iResult.Succeeded)
@@ -431,7 +438,7 @@ namespace AS.Services
             ASRole role = _roleManager.FindById(id);
 
             if (role == null)
-                throw new ASException(ResMan.GetString("Roles_NotExists"));
+                throw new ASException(this._resourceManager.GetString("Roles_NotExists"));
             role.Name = roleName;
             role.Note = note;
             role.ModifiedOn = DateTime.UtcNow;

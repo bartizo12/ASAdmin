@@ -1,5 +1,5 @@
-﻿using AS.Domain.Interfaces;
-using AS.Domain.Settings;
+﻿using AS.Domain.Entities;
+using AS.Domain.Interfaces;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -8,20 +8,19 @@ namespace AS.Infrastructure.Tests
 {
     public class TestServiceLocator : IServiceLocator
     {
-        private readonly IStorageManager<Configuration> _configurationManager;
+        private readonly Func<DbConnectionConfiguration> _configFactory;
 
         public TestServiceLocator()
         {
-            var _connectionStringSettings = new Configuration()
+            var _connectionStringSettings = new ASConfiguration()
             {
                 DataProvider = TestFixture.ProviderName,
                 ConnectionString = TestFixture.ConnectionString
             };
-            var mockConnectionStringManager = new Mock<IStorageManager<Configuration>>();
-            mockConnectionStringManager.Setup(m => m.CheckIfExists()).Returns(true);
-            mockConnectionStringManager.Setup(m => m.Read()).Returns(new List<Configuration>() { _connectionStringSettings });
-
-            _configurationManager = mockConnectionStringManager.Object;
+            _configFactory = () =>
+            {
+                return _connectionStringSettings;
+            };
         }
 
         public bool IsRegistered<T>()
@@ -36,9 +35,9 @@ namespace AS.Infrastructure.Tests
 
         public T Resolve<T>()
         {
-            if (typeof(T) == typeof(IStorageManager<Configuration>))
+            if (typeof(T) == typeof(Func<DbConnectionConfiguration>))
             {
-                return (T)this._configurationManager;
+                return (T)(object)_configFactory;
             }
             return default(T);
         }

@@ -20,7 +20,8 @@ namespace AS.Admin
             .Include("~/Content/admin-lte/dist/css/skins/skin-blue.css", new ASCssTransform())
             .Include("~/Content/iCheck/skins/square/blue.css", new ASCssTransform())
             .Include("~/Content/bootstrap-select/dist/css/bootstrap-select.css", new ASCssTransform())
-            .Include("~/Content/DataTables/datatables.css", new ASCssTransform())
+            .Include("~/Content/datatables.net-bs/css/dataTables.bootstrap.css", new ASCssTransform())
+            .Include("~/Content/datatables.net-buttons-bs/css/buttons.bootstrap.css", new ASCssTransform())
             .Include("~/Content/AS/css/styles.css", new ASCssTransform())
             );
 
@@ -36,8 +37,11 @@ namespace AS.Admin
             .Include("~/Content/iCheck/icheck.js")
             .Include("~/Content/bootstrap-select/dist/js/bootstrap-select.js")
             .Include("~/Content/pace/pace.js")
-
-            .Include("~/Content/DataTables/datatables.min.js")
+            .Include("~/Content/datatables.net/js/jquery.dataTables.js")
+            .Include("~/Content/datatables.net-bs/js/dataTables.bootstrap.js")
+            .Include("~/Content/datatables.net-buttons/js/dataTables.buttons.js")
+            .Include("~/Content/datatables.net-buttons/js/buttons.colVis.js")
+            .Include("~/Content/datatables.net-buttons-bs/js/buttons.bootstrap.js")
            );
 
             BundleTable.Bundles.Add(new ScriptBundle("~/content/asJs")

@@ -1,10 +1,10 @@
-﻿using AS.Domain.Interfaces;
-using AS.Domain.Settings;
+﻿using AS.Domain.Entities;
+using AS.Domain.Interfaces;
 using MySql.Data.MySqlClient;
+using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Migrations;
-using System.Linq;
 
 namespace AS.Infrastructure.Data.EF
 {
@@ -19,36 +19,32 @@ namespace AS.Infrastructure.Data.EF
     public class ASDatabaseInitializer<TDbContext> : IDatabaseInitializer<TDbContext>
         where TDbContext : DbContext
     {
-        #region Constants
-
         private const string SqlServerScriptPath = "~/SQLScripts/SQLServer.sql";
         private const string MySqlScriptPath = "~/SQLScripts/MySql.sql";
         private const string SqlServerEOC = "GO";
         private const string MySqlEOC = ";";
 
-        #endregion Constants
-
-        private readonly IStorageManager<Configuration> _configurationStorageManager;
-        private readonly ASDbMigrationsConfiguration _config;
+        private readonly Func<DbConnectionConfiguration> _dbConnectionConfigurationFactory;
+        private readonly ASDbMigrationsConfiguration _migrationConfig;
         private readonly IAppManager _appManager;
 
-        public ASDatabaseInitializer(IStorageManager<Configuration> configurationStorageManager,
+        public ASDatabaseInitializer(Func<DbConnectionConfiguration> dbConnectionConfigurationFactory,
             IAppManager appManager)
         {
             this._appManager = appManager;
-            this._configurationStorageManager = configurationStorageManager;
-            this._config = new ASDbMigrationsConfiguration();
+            this._dbConnectionConfigurationFactory = dbConnectionConfigurationFactory;
+            this._migrationConfig = new ASDbMigrationsConfiguration();
         }
 
         public void InitializeDatabase(TDbContext context)
         {
-            if (!_configurationStorageManager.CheckIfExists())
+            var config = _dbConnectionConfigurationFactory();
+            if (config == null)
                 return;
 
-            var config = this._configurationStorageManager.Read().First();
-            _config.TargetDatabase = new DbConnectionInfo(config.ConnectionString, config.DataProvider);
+            _migrationConfig.TargetDatabase = new DbConnectionInfo(config.ConnectionString, config.DataProvider);
 
-            var migrator = new DbMigrator(_config);
+            var migrator = new DbMigrator(_migrationConfig);
             migrator.Update();
             string scriptPath, eoc;
 

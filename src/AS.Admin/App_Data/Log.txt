@@ -1,9 +1,159 @@
 <?xml version="1.0" encoding="utf-16"?>
 <AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Id>0</Id>
-  <CreatedOn>2016-12-17T15:41:47.081081Z</CreatedOn>
+  <CreatedOn>2016-12-24T18:28:11.6560727Z</CreatedOn>
   <Level>Error</Level>
-  <Message>MySql.Data.MySqlClient.MySqlException (0x80004005): Authentication to host 'flax.arvixe.com' for user 'asadmin2' using method 'mysql_native_password' failed with message: Access denied for user 'asadmin2'@'212.253.112.136' (using password: YES) ---&gt; MySql.Data.MySqlClient.MySqlException (0x80004005): Access denied for user 'asadmin2'@'212.253.112.136' (using password: YES)
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
+  <MachineName>QWREF</MachineName>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-3-131270776438172447</AppDomain>
+  <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
+  <ClientIP>127.0.0.1</ClientIP>
+</AppLog><?xml version="1.0" encoding="utf-16"?>
+<AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>0</Id>
+  <CreatedOn>2016-12-24T18:29:00.2901676Z</CreatedOn>
+  <Level>Error</Level>
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
+  <MachineName>QWREF</MachineName>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-4-131270776916930755</AppDomain>
+  <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
+  <ClientIP>127.0.0.1</ClientIP>
+</AppLog><?xml version="1.0" encoding="utf-16"?>
+<AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>0</Id>
+  <CreatedOn>2016-12-24T18:31:02.6225832Z</CreatedOn>
+  <Level>Error</Level>
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
+  <MachineName>QWREF</MachineName>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-1-131270778182892495</AppDomain>
+  <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
+  <ClientIP>127.0.0.1</ClientIP>
+</AppLog><?xml version="1.0" encoding="utf-16"?>
+<AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>0</Id>
+  <CreatedOn>2016-12-24T18:31:02.740581Z</CreatedOn>
+  <Level>Error</Level>
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
+  <MachineName>QWREF</MachineName>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-1-131270778182892495</AppDomain>
+  <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
+  <ClientIP>127.0.0.1</ClientIP>
+</AppLog><?xml version="1.0" encoding="utf-16"?>
+<AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>0</Id>
+  <CreatedOn>2016-12-24T18:31:06.3327991Z</CreatedOn>
+  <Level>Error</Level>
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
+  <MachineName>QWREF</MachineName>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-1-131270778182892495</AppDomain>
+  <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
+  <ClientIP>127.0.0.1</ClientIP>
+</AppLog><?xml version="1.0" encoding="utf-16"?>
+<AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>0</Id>
+  <CreatedOn>2016-12-24T18:31:47.1226452Z</CreatedOn>
+  <Level>Error</Level>
+  <Message>MySql.Data.MySqlClient.MySqlException (0x80004005): Authentication to host 'localhost' for user 'asadmin' using method 'mysql_native_password' failed with message: Access denied for user 'asadmin'@'localhost' (using password: YES) ---&gt; MySql.Data.MySqlClient.MySqlException (0x80004005): Access denied for user 'asadmin'@'localhost' (using password: YES)
    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
    at MySql.Data.MySqlClient.Authentication.MySqlAuthenticationPlugin.ReadPacket()
    at MySql.Data.MySqlClient.Authentication.MySqlAuthenticationPlugin.AuthenticationFailed(Exception ex)
@@ -17,272 +167,816 @@
    at MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
    at MySql.Data.MySqlClient.MySqlPool.GetConnection()
    at MySql.Data.MySqlClient.MySqlConnection.Open()
-   at AS.Services.ConfigurationService.CanConnectDatabase(Configuration config) in D:\Projects\AS\AS\AS.Services\Install\ConfigurationService.cs:line 93</Message>
-  <Location>ConfigurationService.CanConnectDatabase:93</Location>
+   at AS.Services.ConfigurationService.CanConnectDatabase(ASConfiguration config) in D:\Projects\ASAdmin\src\AS.Services\Install\ConfigurationService.cs:line 94</Message>
+  <Location>ConfigurationService.CanConnectDatabase:94</Location>
   <MachineName>QWREF</MachineName>
-  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-8-131264628152394854</AppDomain>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-1-131270778182892495</AppDomain>
   <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
   <ClientIP>127.0.0.1</ClientIP>
 </AppLog><?xml version="1.0" encoding="utf-16"?>
 <AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Id>0</Id>
-  <CreatedOn>2016-12-17T15:43:12.6179384Z</CreatedOn>
+  <CreatedOn>2016-12-24T18:31:47.3256431Z</CreatedOn>
+  <Level>Error</Level>
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
+  <MachineName>QWREF</MachineName>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-1-131270778182892495</AppDomain>
+  <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
+  <ClientIP>127.0.0.1</ClientIP>
+</AppLog><?xml version="1.0" encoding="utf-16"?>
+<AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>0</Id>
+  <CreatedOn>2016-12-24T18:32:39.3775085Z</CreatedOn>
+  <Level>Error</Level>
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
+  <MachineName>QWREF</MachineName>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-1-131270778182892495</AppDomain>
+  <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
+  <ClientIP>127.0.0.1</ClientIP>
+</AppLog><?xml version="1.0" encoding="utf-16"?>
+<AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>0</Id>
+  <CreatedOn>2016-12-24T18:32:48.0624827Z</CreatedOn>
+  <Level>Error</Level>
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
+  <MachineName>QWREF</MachineName>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-1-131270778182892495</AppDomain>
+  <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
+  <ClientIP>127.0.0.1</ClientIP>
+</AppLog><?xml version="1.0" encoding="utf-16"?>
+<AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>0</Id>
+  <CreatedOn>2016-12-24T18:33:41.3587629Z</CreatedOn>
   <Level>Error</Level>
   <Message>System.Exception: Failed to connect server.
-   at AS.Services.ConfigurationService.CheckSMTPConnection(String address, Int32 port, Int32 timeOut) in D:\Projects\AS\AS\AS.Services\Install\ConfigurationService.cs:line 161
-   at AS.Services.ConfigurationService.CanConnectSMTPServer(Configuration config) in D:\Projects\AS\AS\AS.Services\Install\ConfigurationService.cs:line 127</Message>
-  <Location>ConfigurationService.CanConnectSMTPServer:127</Location>
+   at AS.Services.ConfigurationService.CheckSMTPConnection(String address, Int32 port, Int32 timeOut) in D:\Projects\ASAdmin\src\AS.Services\Install\ConfigurationService.cs:line 162
+   at AS.Services.ConfigurationService.CanConnectSMTPServer(ASConfiguration config) in D:\Projects\ASAdmin\src\AS.Services\Install\ConfigurationService.cs:line 128</Message>
+  <Location>ConfigurationService.CanConnectSMTPServer:128</Location>
   <MachineName>QWREF</MachineName>
-  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-8-131264628152394854</AppDomain>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-1-131270778182892495</AppDomain>
   <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
   <ClientIP>127.0.0.1</ClientIP>
 </AppLog><?xml version="1.0" encoding="utf-16"?>
 <AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Id>0</Id>
-  <CreatedOn>2016-12-17T15:45:22.5005942Z</CreatedOn>
+  <CreatedOn>2016-12-24T18:33:41.3767605Z</CreatedOn>
+  <Level>Error</Level>
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
+  <MachineName>QWREF</MachineName>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-1-131270778182892495</AppDomain>
+  <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
+  <ClientIP>127.0.0.1</ClientIP>
+</AppLog><?xml version="1.0" encoding="utf-16"?>
+<AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>0</Id>
+  <CreatedOn>2016-12-24T18:33:50.005583Z</CreatedOn>
+  <Level>Error</Level>
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
+  <MachineName>QWREF</MachineName>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-1-131270778182892495</AppDomain>
+  <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
+  <ClientIP>127.0.0.1</ClientIP>
+</AppLog><?xml version="1.0" encoding="utf-16"?>
+<AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>0</Id>
+  <CreatedOn>2016-12-24T18:33:50.0145835Z</CreatedOn>
+  <Level>Error</Level>
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
+  <MachineName>QWREF</MachineName>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-1-131270778182892495</AppDomain>
+  <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
+  <ClientIP>127.0.0.1</ClientIP>
+</AppLog><?xml version="1.0" encoding="utf-16"?>
+<AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>0</Id>
+  <CreatedOn>2016-12-24T18:33:50.0245847Z</CreatedOn>
+  <Level>Error</Level>
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
+  <MachineName>QWREF</MachineName>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-1-131270778182892495</AppDomain>
+  <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
+  <ClientIP>127.0.0.1</ClientIP>
+</AppLog><?xml version="1.0" encoding="utf-16"?>
+<AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>0</Id>
+  <CreatedOn>2016-12-24T18:33:50.0425851Z</CreatedOn>
+  <Level>Error</Level>
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
+  <MachineName>QWREF</MachineName>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-1-131270778182892495</AppDomain>
+  <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
+  <ClientIP>127.0.0.1</ClientIP>
+</AppLog><?xml version="1.0" encoding="utf-16"?>
+<AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>0</Id>
+  <CreatedOn>2016-12-25T09:47:01.1476776Z</CreatedOn>
+  <Level>Error</Level>
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
+  <MachineName>QWREF</MachineName>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-7-131271327739016431</AppDomain>
+  <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
+  <ClientIP>127.0.0.1</ClientIP>
+</AppLog><?xml version="1.0" encoding="utf-16"?>
+<AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>0</Id>
+  <CreatedOn>2016-12-25T09:47:04.9203696Z</CreatedOn>
+  <Level>Error</Level>
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
+  <MachineName>QWREF</MachineName>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-7-131271327739016431</AppDomain>
+  <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
+  <ClientIP>127.0.0.1</ClientIP>
+</AppLog><?xml version="1.0" encoding="utf-16"?>
+<AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>0</Id>
+  <CreatedOn>2016-12-25T09:48:06.5533652Z</CreatedOn>
+  <Level>Error</Level>
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
+  <MachineName>QWREF</MachineName>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-7-131271327739016431</AppDomain>
+  <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
+  <ClientIP>127.0.0.1</ClientIP>
+</AppLog><?xml version="1.0" encoding="utf-16"?>
+<AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>0</Id>
+  <CreatedOn>2016-12-25T09:49:35.483762Z</CreatedOn>
+  <Level>Error</Level>
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
+  <MachineName>QWREF</MachineName>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-7-131271327739016431</AppDomain>
+  <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
+  <ClientIP>127.0.0.1</ClientIP>
+</AppLog><?xml version="1.0" encoding="utf-16"?>
+<AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>0</Id>
+  <CreatedOn>2016-12-25T09:49:35.5467514Z</CreatedOn>
+  <Level>Error</Level>
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
+  <MachineName>QWREF</MachineName>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-7-131271327739016431</AppDomain>
+  <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
+  <ClientIP>127.0.0.1</ClientIP>
+</AppLog><?xml version="1.0" encoding="utf-16"?>
+<AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>0</Id>
+  <CreatedOn>2016-12-25T09:50:34.7564371Z</CreatedOn>
   <Level>Error</Level>
   <Message>System.Exception: Failed to connect server.
-   at AS.Services.ConfigurationService.CheckSMTPConnection(String address, Int32 port, Int32 timeOut) in D:\Projects\AS\AS\AS.Services\Install\ConfigurationService.cs:line 161
-   at AS.Services.ConfigurationService.CanConnectSMTPServer(Configuration config) in D:\Projects\AS\AS\AS.Services\Install\ConfigurationService.cs:line 127</Message>
-  <Location>ConfigurationService.CanConnectSMTPServer:127</Location>
+   at AS.Services.ConfigurationService.CheckSMTPConnection(String address, Int32 port, Int32 timeOut) in D:\Projects\ASAdmin\src\AS.Services\Install\ConfigurationService.cs:line 162
+   at AS.Services.ConfigurationService.CanConnectSMTPServer(ASConfiguration config) in D:\Projects\ASAdmin\src\AS.Services\Install\ConfigurationService.cs:line 128</Message>
+  <Location>ConfigurationService.CanConnectSMTPServer:128</Location>
   <MachineName>QWREF</MachineName>
-  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-8-131264628152394854</AppDomain>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-7-131271327739016431</AppDomain>
   <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
   <ClientIP>127.0.0.1</ClientIP>
 </AppLog><?xml version="1.0" encoding="utf-16"?>
 <AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Id>0</Id>
-  <CreatedOn>2016-12-17T15:46:16.1493609Z</CreatedOn>
+  <CreatedOn>2016-12-25T09:50:34.7754377Z</CreatedOn>
   <Level>Error</Level>
-  <Message>System.Exception: Failed to connect server.
-   at AS.Services.ConfigurationService.CheckSMTPConnection(String address, Int32 port, Int32 timeOut) in D:\Projects\AS\AS\AS.Services\Install\ConfigurationService.cs:line 161
-   at AS.Services.ConfigurationService.CanConnectSMTPServer(Configuration config) in D:\Projects\AS\AS\AS.Services\Install\ConfigurationService.cs:line 127</Message>
-  <Location>ConfigurationService.CanConnectSMTPServer:127</Location>
-  <MachineName>QWREF</MachineName>
-  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-8-131264628152394854</AppDomain>
-  <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
-  <ClientIP>127.0.0.1</ClientIP>
-</AppLog><?xml version="1.0" encoding="utf-16"?>
-<AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Id>0</Id>
-  <CreatedOn>2016-12-17T15:47:26.5551187Z</CreatedOn>
-  <Level>Error</Level>
-  <Message>System.Exception: Failed to connect server.
-   at AS.Services.ConfigurationService.CheckSMTPConnection(String address, Int32 port, Int32 timeOut) in D:\Projects\AS\AS\AS.Services\Install\ConfigurationService.cs:line 161
-   at AS.Services.ConfigurationService.CanConnectSMTPServer(Configuration config) in D:\Projects\AS\AS\AS.Services\Install\ConfigurationService.cs:line 127</Message>
-  <Location>ConfigurationService.CanConnectSMTPServer:127</Location>
-  <MachineName>QWREF</MachineName>
-  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-8-131264628152394854</AppDomain>
-  <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
-  <ClientIP>127.0.0.1</ClientIP>
-</AppLog><?xml version="1.0" encoding="utf-16"?>
-<AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Id>0</Id>
-  <CreatedOn>2016-12-17T15:48:21.8990823Z</CreatedOn>
-  <Level>Error</Level>
-  <Message>System.Exception: The operation has timed out.
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
 
-   at AS.Services.ConfigurationService.CanConnectSMTPServer(Configuration config) in D:\Projects\AS\AS\AS.Services\Install\ConfigurationService.cs:line 140
-   at AS.Admin.Controllers.ConfigurationController.CanConnectSMTP(ConfigurationModel model) in D:\Projects\AS\AS\AS.Admin\Controllers\ConfigurationController.cs:line 68
-   at lambda_method(Closure , ControllerBase , Object[] )
-   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
-   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;BeginInvokeSynchronousActionMethod&gt;b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)</Message>
-  <Location>ExceptionHandleFilterAttribute.OnException:31</Location>
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
   <MachineName>QWREF</MachineName>
-  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-8-131264628152394854</AppDomain>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-7-131271327739016431</AppDomain>
   <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
   <ClientIP>127.0.0.1</ClientIP>
 </AppLog><?xml version="1.0" encoding="utf-16"?>
 <AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Id>0</Id>
-  <CreatedOn>2016-12-17T15:51:12.9719014Z</CreatedOn>
+  <CreatedOn>2016-12-25T09:51:20.8689278Z</CreatedOn>
   <Level>Error</Level>
-  <Message>System.Exception: The operation has timed out.
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
 
-   at AS.Services.ConfigurationService.CanConnectSMTPServer(Configuration config) in D:\Projects\AS\AS\AS.Services\Install\ConfigurationService.cs:line 140
-   at AS.Admin.Controllers.ConfigurationController.CanConnectSMTP(ConfigurationModel model) in D:\Projects\AS\AS\AS.Admin\Controllers\ConfigurationController.cs:line 68
-   at lambda_method(Closure , ControllerBase , Object[] )
-   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
-   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;BeginInvokeSynchronousActionMethod&gt;b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)</Message>
-  <Location>ExceptionHandleFilterAttribute.OnException:31</Location>
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
   <MachineName>QWREF</MachineName>
-  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-8-131264628152394854</AppDomain>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-7-131271327739016431</AppDomain>
   <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
   <ClientIP>127.0.0.1</ClientIP>
 </AppLog><?xml version="1.0" encoding="utf-16"?>
 <AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Id>0</Id>
-  <CreatedOn>2016-12-17T16:06:05.7346923Z</CreatedOn>
+  <CreatedOn>2016-12-25T09:51:34.9422863Z</CreatedOn>
   <Level>Error</Level>
-  <Message>System.Exception: The operation has timed out.
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
 
-   at AS.Services.ConfigurationService.CanConnectSMTPServer(Configuration config) in D:\Projects\AS\AS\AS.Services\Install\ConfigurationService.cs:line 140
-   at AS.Admin.Controllers.ConfigurationController.CanConnectSMTP(ConfigurationModel model) in D:\Projects\AS\AS\AS.Admin\Controllers\ConfigurationController.cs:line 68
-   at lambda_method(Closure , ControllerBase , Object[] )
-   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
-   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;BeginInvokeSynchronousActionMethod&gt;b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)</Message>
-  <Location>ExceptionHandleFilterAttribute.OnException:31</Location>
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
   <MachineName>QWREF</MachineName>
-  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-8-131264628152394854</AppDomain>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-7-131271327739016431</AppDomain>
   <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
   <ClientIP>127.0.0.1</ClientIP>
 </AppLog><?xml version="1.0" encoding="utf-16"?>
 <AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Id>0</Id>
-  <CreatedOn>2016-12-17T16:07:49.4490344Z</CreatedOn>
+  <CreatedOn>2016-12-25T09:51:34.9632996Z</CreatedOn>
   <Level>Error</Level>
-  <Message>System.Exception: Server does not support secure connections.
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
 
-   at AS.Services.ConfigurationService.CanConnectSMTPServer(Configuration config) in D:\Projects\AS\AS\AS.Services\Install\ConfigurationService.cs:line 140
-   at AS.Admin.Controllers.ConfigurationController.CanConnectSMTP(ConfigurationModel model) in D:\Projects\AS\AS\AS.Admin\Controllers\ConfigurationController.cs:line 68
-   at lambda_method(Closure , ControllerBase , Object[] )
-   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
-   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;BeginInvokeSynchronousActionMethod&gt;b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)</Message>
-  <Location>ExceptionHandleFilterAttribute.OnException:31</Location>
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
   <MachineName>QWREF</MachineName>
-  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-8-131264628152394854</AppDomain>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-7-131271327739016431</AppDomain>
   <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
   <ClientIP>127.0.0.1</ClientIP>
 </AppLog><?xml version="1.0" encoding="utf-16"?>
 <AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Id>0</Id>
-  <CreatedOn>2016-12-17T16:11:06.9726581Z</CreatedOn>
+  <CreatedOn>2016-12-25T09:51:35.0083032Z</CreatedOn>
   <Level>Error</Level>
-  <Message>System.Exception: The operation has timed out.
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
 
-   at AS.Services.ConfigurationService.CanConnectSMTPServer(Configuration config) in D:\Projects\AS\AS\AS.Services\Install\ConfigurationService.cs:line 140
-   at AS.Admin.Controllers.ConfigurationController.CanConnectSMTP(ConfigurationModel model) in D:\Projects\AS\AS\AS.Admin\Controllers\ConfigurationController.cs:line 68
-   at lambda_method(Closure , ControllerBase , Object[] )
-   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
-   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;BeginInvokeSynchronousActionMethod&gt;b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)</Message>
-  <Location>ExceptionHandleFilterAttribute.OnException:31</Location>
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
   <MachineName>QWREF</MachineName>
-  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-8-131264628152394854</AppDomain>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-7-131271327739016431</AppDomain>
   <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
   <ClientIP>127.0.0.1</ClientIP>
 </AppLog><?xml version="1.0" encoding="utf-16"?>
 <AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Id>0</Id>
-  <CreatedOn>2016-12-17T16:47:37.4440082Z</CreatedOn>
+  <CreatedOn>2016-12-25T11:02:05.141654Z</CreatedOn>
   <Level>Error</Level>
-  <Message>System.Exception: The operation has timed out.
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
 
-   at AS.Services.ConfigurationService.CanConnectSMTPServer(Configuration config) in D:\Projects\AS\AS\AS.Services\Install\ConfigurationService.cs:line 140
-   at AS.Admin.Controllers.ConfigurationController.CanConnectSMTP(ConfigurationModel model) in D:\Projects\AS\AS\AS.Admin\Controllers\ConfigurationController.cs:line 68
-   at lambda_method(Closure , ControllerBase , Object[] )
-   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
-   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;BeginInvokeSynchronousActionMethod&gt;b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)</Message>
-  <Location>ExceptionHandleFilterAttribute.OnException:31</Location>
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
   <MachineName>QWREF</MachineName>
-  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-8-131264628152394854</AppDomain>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-9-131271372812725115</AppDomain>
   <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
   <ClientIP>127.0.0.1</ClientIP>
 </AppLog><?xml version="1.0" encoding="utf-16"?>
 <AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Id>0</Id>
-  <CreatedOn>2016-12-17T16:53:32.5158089Z</CreatedOn>
+  <CreatedOn>2016-12-25T11:02:05.9647024Z</CreatedOn>
   <Level>Error</Level>
-  <Message>System.Exception: The operation has timed out.
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
 
-   at AS.Services.ConfigurationService.CanConnectSMTPServer(Configuration config) in D:\Projects\AS\AS\AS.Services\Install\ConfigurationService.cs:line 140
-   at AS.Admin.Controllers.ConfigurationController.CanConnectSMTP(ConfigurationModel model) in D:\Projects\AS\AS\AS.Admin\Controllers\ConfigurationController.cs:line 68
-   at lambda_method(Closure , ControllerBase , Object[] )
-   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
-   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;BeginInvokeSynchronousActionMethod&gt;b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
-   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()
-   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)</Message>
-  <Location>ExceptionHandleFilterAttribute.OnException:31</Location>
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
   <MachineName>QWREF</MachineName>
-  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-8-131264628152394854</AppDomain>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-9-131271372812725115</AppDomain>
+  <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
+  <ClientIP>127.0.0.1</ClientIP>
+</AppLog><?xml version="1.0" encoding="utf-16"?>
+<AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>0</Id>
+  <CreatedOn>2016-12-25T11:03:57.4598913Z</CreatedOn>
+  <Level>Error</Level>
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
+  <MachineName>QWREF</MachineName>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-9-131271372812725115</AppDomain>
+  <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
+  <ClientIP>127.0.0.1</ClientIP>
+</AppLog><?xml version="1.0" encoding="utf-16"?>
+<AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>0</Id>
+  <CreatedOn>2016-12-25T11:03:57.5248991Z</CreatedOn>
+  <Level>Error</Level>
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
+  <MachineName>QWREF</MachineName>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-9-131271372812725115</AppDomain>
+  <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
+  <ClientIP>127.0.0.1</ClientIP>
+</AppLog><?xml version="1.0" encoding="utf-16"?>
+<AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>0</Id>
+  <CreatedOn>2016-12-25T11:04:51.4539862Z</CreatedOn>
+  <Level>Error</Level>
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
+  <MachineName>QWREF</MachineName>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-9-131271372812725115</AppDomain>
+  <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
+  <ClientIP>127.0.0.1</ClientIP>
+</AppLog><?xml version="1.0" encoding="utf-16"?>
+<AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>0</Id>
+  <CreatedOn>2016-12-25T11:04:51.4889835Z</CreatedOn>
+  <Level>Error</Level>
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
+  <MachineName>QWREF</MachineName>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-9-131271372812725115</AppDomain>
+  <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
+  <ClientIP>127.0.0.1</ClientIP>
+</AppLog><?xml version="1.0" encoding="utf-16"?>
+<AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>0</Id>
+  <CreatedOn>2016-12-25T11:04:51.5229983Z</CreatedOn>
+  <Level>Error</Level>
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
+  <MachineName>QWREF</MachineName>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-9-131271372812725115</AppDomain>
+  <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
+  <ClientIP>127.0.0.1</ClientIP>
+</AppLog><?xml version="1.0" encoding="utf-16"?>
+<AppLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>0</Id>
+  <CreatedOn>2016-12-25T11:04:51.5849852Z</CreatedOn>
+  <Level>Error</Level>
+  <Message>System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+AS.Infrastructure.Data.EF.ASUserRole: : EntityType 'ASUserRole' has no key defined. Define the key for this EntityType.
+AS.Infrastructure.Data.EF.ASUserLogin: : EntityType 'ASUserLogin' has no key defined. Define the key for this EntityType.
+ASUserRoles: EntityType: EntitySet 'ASUserRoles' is based on type 'ASUserRole' that has no keys defined.
+ASUserLogins: EntityType: EntitySet 'ASUserLogins' is based on type 'ASUserLogin' that has no keys defined.
+
+   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   at System.Data.Entity.DbSet`1.Add(TEntity entity)
+   at AS.Infrastructure.Logging.RequestDbLogger.Log(RequestLog log) in D:\Projects\ASAdmin\src\AS.Infrastructure\Logging\RequestDbLogger.cs:line 28</Message>
+  <Location>RequestDbLogger.Log:28</Location>
+  <MachineName>QWREF</MachineName>
+  <AppDomain>/LM/W3SVC/1/ROOT/AS.Admin-9-131271372812725115</AppDomain>
   <LoggerName>AS.Infrastructure.Logging.NLogger</LoggerName>
   <ClientIP>127.0.0.1</ClientIP>
 </AppLog>

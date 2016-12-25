@@ -1,5 +1,6 @@
 ﻿using AS.Admin.Models;
 using AS.Domain.Entities;
+using AS.Domain.Interfaces;
 using AS.Domain.Settings;
 using AS.Infrastructure;
 using AS.Infrastructure.Web;
@@ -16,10 +17,14 @@ namespace AS.Admin.Controllers
     {
         private readonly ISchedulerService _service;
         private readonly ISettingManager _settingManager;
+        private readonly IResourceManager _resourceManager;
 
-        public SchedulerController(ISchedulerService service, ISettingManager settingManager)
+        public SchedulerController(ISchedulerService service, 
+            IResourceManager resourceManager,
+            ISettingManager settingManager)
         {
             this._service = service;
+            this._resourceManager = resourceManager;
             this._settingManager = settingManager;
         }
 
@@ -66,7 +71,7 @@ namespace AS.Admin.Controllers
             JobDefinition jobDef = _service.GetById(jobDefId);
 
             if (jobDef == null)
-                ModelState.AddModelError(string.Empty, ResMan.GetString("JobDefinition_NotExists"));
+                ModelState.AddModelError(string.Empty, this._resourceManager.GetString("JobDefinition_NotExists"));
             model = base.Map<JobDefinitionModel>(jobDef);
 
             model.JobTypeSelectList = new MultiSelectList(_service.FindJobTypes());
@@ -83,6 +88,7 @@ namespace AS.Admin.Controllers
             }
             try
             {
+                TempData["ResultModel"] = model;
                 bool isDemo = false;
 
                 if (_settingManager.GetContainer<AppSetting>().Contains("IsDemo"))
@@ -91,7 +97,7 @@ namespace AS.Admin.Controllers
                 }
 
                 if (isDemo)
-                    throw new ASException(ResMan.GetString("ErrorMessage_UnableToUpdate"));
+                    throw new ASException(this._resourceManager.GetString("ErrorMessage_UnableToUpdate"));
 
                 if (model.Id > 0)
                 {
@@ -103,11 +109,11 @@ namespace AS.Admin.Controllers
                     JobDefinition tempJobDef = _service.GetByName(model.Name);
 
                     if (tempJobDef.Id != model.Id)
-                        throw new ASException(ResMan.GetString("JobDefinition_NameExists"));
+                        throw new ASException(this._resourceManager.GetString("JobDefinition_NameExists"));
 
                     _service.UpdateJobDefinition(Map<JobDefinition>(model));
                     TempData["ResultType"] = MessageType.Success;
-                    TempData["ResultMessage"] = string.Format(ResMan.GetString("JobDefinition_UpdateSuccess"),
+                    TempData["ResultMessage"] = string.Format(this._resourceManager.GetString("JobDefinition_UpdateSuccess"),
                         model.Name);
 
                     return RedirectToAction("Result", "Shared");
@@ -115,10 +121,10 @@ namespace AS.Admin.Controllers
                 else
                 {
                     if (_service.GetByName(model.Name) != null)
-                        throw new ASException(ResMan.GetString("JobDefinition_NameExists"));
+                        throw new ASException(this._resourceManager.GetString("JobDefinition_NameExists"));
                     _service.CreateJobDefinition(Map<JobDefinition>(model));
                     TempData["ResultType"] = MessageType.Success;
-                    TempData["ResultMessage"] = string.Format(ResMan.GetString("JobDefinition_NewSucess"),
+                    TempData["ResultMessage"] = string.Format(this._resourceManager.GetString("JobDefinition_NewSucess"),
                         model.Name);
 
                     return RedirectToAction("Result", "Shared");

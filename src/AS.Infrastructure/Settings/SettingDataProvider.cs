@@ -1,6 +1,8 @@
 ﻿using AS.Domain.Entities;
+using AS.Domain.Interfaces;
 using AS.Domain.Settings;
 using AS.Infrastructure.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -24,9 +26,16 @@ namespace AS.Infrastructure
         /// <returns>Setting Values</returns>
         public IEnumerable<SettingValue> FetchSettingValues()
         {
-            using (IDbContext dbContext = this._dbContextFactory.Create())
+            try
             {
-                return dbContext.Set<SettingValue>().Include("SettingDefinition").ToList();
+                using (IDbContext dbContext = this._dbContextFactory.Create())
+                {
+                    return dbContext.Set<SettingValue>().Include("SettingDefinition").ToList();
+                }
+            }
+            catch
+            {
+                return null;
             }
         }
     }

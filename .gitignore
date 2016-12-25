@@ -252,3 +252,4 @@ paket-files/
 *.sln.iml
 src/TODO.xlsx
 BuildProcessTemplates/
+src/AS.Admin/App_Data/ASConfiguration.xml

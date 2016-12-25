@@ -16,17 +16,17 @@ namespace AS.Admin.Controllers
         private const int DefaultRecaptchaDisplayCount = 3;
 
         private readonly IContextProvider _contextProvider;
-        private readonly IResourceService _resourceService;
         private readonly IMembershipService _service;
         private readonly ISettingManager _settingManager;
+        private readonly IResourceManager _resourceManager;
 
         public IdentityController(IMembershipService service,
             IContextProvider contextProvider,
-            IResourceService resourceService,
+            IResourceManager resourceManager,
             ISettingManager settingManager)
         {
             this._service = service;
-            this._resourceService = resourceService;
+            this._resourceManager = resourceManager;
             this._contextProvider = contextProvider;
             this._settingManager = settingManager;
         }
@@ -81,7 +81,7 @@ namespace AS.Admin.Controllers
             {
                 _service.ResetPassword(model.Token, model.NewPassword);
                 TempData["ResultType"] = MessageType.Success;
-                TempData["ResultMessage"] = ResMan.GetString("ResetPassword_Successful");
+                TempData["ResultMessage"] = this._resourceManager.GetString("ResetPassword_Successful");
             }
             catch (ASException ex)
             {
@@ -125,7 +125,7 @@ namespace AS.Admin.Controllers
             {
                 _service.StartForgotPasswordProcess(model.UserNameOrEmail);
                 TempData["ResultType"] = MessageType.Info;
-                TempData["ResultMessage"] = ResMan.GetString("ForgotPassword_Success");
+                TempData["ResultMessage"] = this._resourceManager.GetString("ForgotPassword_Success");
             }
             catch (ASException ex)
             {

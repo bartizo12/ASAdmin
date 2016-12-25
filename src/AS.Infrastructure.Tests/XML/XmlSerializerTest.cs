@@ -1,5 +1,8 @@
-﻿using AS.Domain.Interfaces;
+﻿using AS.Domain.Entities;
+using AS.Domain.Interfaces;
 using System;
+using System.Text;
+using System.Xml.Serialization;
 using Xunit;
 
 namespace AS.Infrastructure.Tests
@@ -21,15 +24,9 @@ namespace AS.Infrastructure.Tests
                       CreatedOn == customer.CreatedOn &&
                        ModifiedOn == customer.ModifiedOn;
             }
-        }
-
-        public class DummyClass
-        {
-            public DateTime CreatedOn { get; set; }
-        }
-
+        }    
         [Fact]
-        public void Serialize_Should_Equal_After_Deserialize()
+        public void Serialized_Object_Should_Equal_Deserialized_Object()
         {
             var customer = new Customer()
             {

@@ -1,6 +1,5 @@
 ﻿using AS.Domain.Entities;
 using AS.Domain.Interfaces;
-using AS.Domain.Settings;
 using AS.Infrastructure.Data;
 using AS.Infrastructure.Identity;
 using AS.Services.Interfaces;
@@ -24,7 +23,7 @@ namespace AS.Services
         private readonly IDbContextFactory _dbContextFactory;
         private readonly ILogger _logger;
         private readonly IDatabase _database;
-        private readonly IStorageManager<Configuration> _configurationStorageManager;
+        private readonly Func<ASConfiguration> _configurationFactory;
         private readonly IEncryptionProvider _encryptionProvider;
 
         public InstallerService(ISchedulerService schedulerService,
@@ -34,7 +33,7 @@ namespace AS.Services
             IDbContextFactory dbContextFactory,
             IDatabase database,
             IEncryptionProvider encryptionProvider,
-            IStorageManager<Configuration> configurationStorageManager)
+            Func<ASConfiguration> configurationFactory)
         {
             this._appManager = appManager;
             this._schedulerService = schedulerService;
@@ -43,17 +42,17 @@ namespace AS.Services
             this._logger = logger;
             this._database = database;
             this._encryptionProvider = encryptionProvider;
-            this._configurationStorageManager = configurationStorageManager;
+            this._configurationFactory = configurationFactory;
         }
 
         private bool IsDemo
         {
-            get { return this._configurationStorageManager.Read().First().IsDemo; }
+            get { return this._configurationFactory().IsDemo; }
         }
 
         public void Install()
         {
-            if (!_configurationStorageManager.CheckIfExists())
+            if (_configurationFactory() == null)
                 return;
 
             lock (_lockObj)
@@ -64,7 +63,7 @@ namespace AS.Services
                     _dbContext.AuditLoggingEnabled = false;
                     _dbContext.AutoDetectChangesEnabled = false;
                     _dbContext.ValidateOnSaveEnabled = false;
-                    Configuration config = _configurationStorageManager.Read().First();
+                    ASConfiguration config = _configurationFactory();
 
                     Stopwatch sw = Stopwatch.StartNew();
 
@@ -392,7 +391,7 @@ namespace AS.Services
                         Field5 = config.SMTPEnableSsl.ToString(),
                         Field6 = config.SMTPDefaultCredentials.ToString(),
                         Field7 = config.SMTPUserName,
-                        Field8 = _encryptionProvider.Encrypt(config.SMTPPassword, config.SymmetricKey),
+                        Field8 = config.SMTPPassword, 
                         Field9 = config.SMTPFromDisplayName,
                         Field10 = config.SMTPFromAddress,
                         Field11 = string.Empty,

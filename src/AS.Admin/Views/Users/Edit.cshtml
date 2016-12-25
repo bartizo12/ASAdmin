@@ -12,7 +12,7 @@
     @Html.FormLineEditorFor(m => m.PasswordRepeat)
     @Html.FormLineEditorFor(m => m.Email)
     @Html.FormLineDropDownListFor(model => model.Roles, Model.RoleSelectList,
-       new { size = 5, style = "width:100%;" })
+     new { @class = "selectpicker", size = 5, style = "width:100%;" })
 
     <div class="form-group">
         <div class="col-sm-2"></div>

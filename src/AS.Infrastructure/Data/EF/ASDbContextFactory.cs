@@ -1,5 +1,6 @@
-﻿using AS.Domain.Interfaces;
-using AS.Domain.Settings;
+﻿using AS.Domain.Entities;
+using AS.Domain.Interfaces;
+using System;
 using System.Data.Entity;
 
 namespace AS.Infrastructure.Data.EF
@@ -15,19 +16,19 @@ namespace AS.Infrastructure.Data.EF
         private readonly IContextProvider _contextProvider;
         private readonly ITypeFinder _typeFinder;
         private readonly IDatabaseInitializer<ASDbContext> _dbInitializer;
-        private readonly IStorageManager<Configuration> _configurationStorageManager;
+        private readonly Func<DbConnectionConfiguration> _dbConnectionConfigurationFactory;
 
         public ASDbContextFactory(IXmlSerializer xmlSerializer,
             IContextProvider contextProvider,
             IDatabaseInitializer<ASDbContext> dbInitializer,
             ITypeFinder typeFinder,
-            IStorageManager<Configuration> configurationStorageManager)
+            Func<DbConnectionConfiguration> dbConnectionConfigurationFactory)
         {
             this._xmlSerializer = xmlSerializer;
             this._contextProvider = contextProvider;
             this._typeFinder = typeFinder;
             this._dbInitializer = dbInitializer;
-            this._configurationStorageManager = configurationStorageManager;
+            this._dbConnectionConfigurationFactory = dbConnectionConfigurationFactory;
         }
 
         public IDbContext Create()
@@ -36,7 +37,7 @@ namespace AS.Infrastructure.Data.EF
                 _contextProvider,
                 _dbInitializer,
                 _typeFinder,
-                _configurationStorageManager);
+                _dbConnectionConfigurationFactory);
         }
     }
 }

@@ -1853,7 +1853,7 @@ namespace AS.Services
                 CreatedBy = "Installer",
                 CultureCode = "en-US",
                 Name = "Roles_UpdateSuccess",
-                Value = "Roles is succesfully updated."
+                Value = "Role is succesfully updated."
             });
             resourceList.Add(new StringResource()
             {
@@ -1917,7 +1917,7 @@ namespace AS.Services
                 CreatedBy = "Installer",
                 CultureCode = "en-US",
                 Name = "DataTables_DeleteConfirmMessage",
-                Value = "Are you sure to delete this item?"
+                Value = "Are you sure to delete this record?"
             });
             resourceList.Add(new StringResource()
             {
@@ -2285,7 +2285,7 @@ namespace AS.Services
                 CreatedBy = "Installer",
                 CultureCode = "en-US",
                 Name = "Users_UserRoleRequired",
-                Value = "User must have a role"
+                Value = "User must have at least one role"
             });
             resourceList.Add(new StringResource()
             {
@@ -2502,6 +2502,38 @@ namespace AS.Services
                 CultureCode = "en-US",
                 Name = "DataTable_SortDescending",
                 Value = ": activate to sort column descending"
+            });
+            resourceList.Add(new StringResource()
+            {
+                AvailableOnClientSide = true,
+                CreatedBy = "Installer",
+                CultureCode = "en-US",
+                Name = "DataTable_Next",
+                Value = "Next"
+            });
+            resourceList.Add(new StringResource()
+            {
+                AvailableOnClientSide = true,
+                CreatedBy = "Installer",
+                CultureCode = "en-US",
+                Name = "DataTable_Previous",
+                Value = "Prev"
+            });
+            resourceList.Add(new StringResource()
+            {
+                AvailableOnClientSide = true,
+                CreatedBy = "Installer",
+                CultureCode = "en-US",
+                Name = "DataTable_First",
+                Value = "First"
+            });
+            resourceList.Add(new StringResource()
+            {
+                AvailableOnClientSide = true,
+                CreatedBy = "Installer",
+                CultureCode = "en-US",
+                Name = "DataTable_Last",
+                Value = "Last"
             });
             resourceList.Add(new StringResource()
             {
@@ -2897,7 +2929,7 @@ namespace AS.Services
                 CreatedBy = "Installer",
                 CultureCode = "en-US",
                 Name = "RecaptchaInvalidResponse",
-                Value = "Invalid validation code"
+                Value = "Please verify that you are not a robot"
             });
             resourceList.Add(new StringResource()
             {
@@ -5512,7 +5544,38 @@ namespace AS.Services
                 Name = "PasswordCannotBeEmpty",
                 Value = "Lütfen parola giriniz"
             });
-
+            resourceList.Add(new StringResource()
+            {
+                AvailableOnClientSide = true,
+                CreatedBy = "Installer",
+                CultureCode = "tr-TR",
+                Name = "DataTable_Next",
+                Value = "Sonraki"
+            });
+            resourceList.Add(new StringResource()
+            {
+                AvailableOnClientSide = true,
+                CreatedBy = "Installer",
+                CultureCode = "tr-TR",
+                Name = "DataTable_Previous",
+                Value = "Önceki"
+            });
+            resourceList.Add(new StringResource()
+            {
+                AvailableOnClientSide = true,
+                CreatedBy = "Installer",
+                CultureCode = "tr-TR",
+                Name = "DataTable_First",
+                Value = "İlk"
+            });
+            resourceList.Add(new StringResource()
+            {
+                AvailableOnClientSide = true,
+                CreatedBy = "Installer",
+                CultureCode = "tr-TR",
+                Name = "DataTable_Last",
+                Value = "Son"
+            });
             #endregion tr-TR
 
             return resourceList;

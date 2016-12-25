@@ -64,7 +64,6 @@
     <Compile Include="Types\MembershipSetting.cs" />
     <Compile Include="Types\SettingBase.cs" />
     <Compile Include="Converters\AppSettingTypeConverter.cs" />
-    <Compile Include="Types\Configuration.cs" />
     <Compile Include="Types\EMailAddress.cs" />
     <Compile Include="Types\EMailSetting.cs" />
     <Compile Include="Types\HTMLTemplate.cs" />

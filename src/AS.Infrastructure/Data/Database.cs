@@ -1,11 +1,11 @@
-﻿using AS.Domain.Interfaces;
-using AS.Domain.Settings;
+﻿using AS.Domain.Entities;
+using AS.Domain.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using System.Linq;
 
 namespace AS.Infrastructure.Data
 {
@@ -14,20 +14,20 @@ namespace AS.Infrastructure.Data
     /// </summary>
     public class Database : IDatabase
     {
-        private readonly IStorageManager<Configuration> _configStorageManager;
+        private readonly Func<DbConnectionConfiguration> _dbConnectionConfigurationFactory;
 
-        public Database(IStorageManager<Configuration> configStorageManager)
+        public Database(Func<DbConnectionConfiguration> dbConnectionConfigurationFactory)
         {
-            this._configStorageManager = configStorageManager;
+            this._dbConnectionConfigurationFactory = dbConnectionConfigurationFactory;
         }
-
         [SuppressMessage("Microsoft.Security", "CA2100:ReviewSqlQueriesForSecurityVulnerabilities")]
         public int ExecuteNonQuery(string command, CommandType commandType, Dictionary<string, object> parameters)
         {
-            if (!_configStorageManager.CheckIfExists())
-                throw new FileNotFoundException("Config file does not exist");
+            var config = this._dbConnectionConfigurationFactory();
 
-            Configuration config = _configStorageManager.Read().First();
+            if (config == null)
+                throw new FileNotFoundException("Database connection configuration is missing");
+
             var factory = DbProviderFactories.GetFactory(config.DataProvider);
 
             using (IDbConnection connection = factory.CreateConnection())

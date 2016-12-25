@@ -1,4 +1,5 @@
 ﻿using AS.Admin.Models;
+using AS.Domain.Interfaces;
 using AS.Domain.Settings;
 using AS.Infrastructure.Web;
 using AS.Infrastructure.Web.Mvc;
@@ -13,9 +14,13 @@ namespace AS.Admin.Controllers
     {
         private readonly ISettingManager _settingManager;
         private readonly IStatisticsProvider _statisticsProvider;
+        private readonly IResourceManager _resourceManager;
+
         public HomeController(IStatisticsProvider statisticsProvider,
+            IResourceManager resourceManager,
             ISettingManager settingManager)
         {
+            this._resourceManager = resourceManager;
             this._statisticsProvider = statisticsProvider;
             this._settingManager = settingManager;
         }
@@ -26,11 +31,11 @@ namespace AS.Admin.Controllers
 
             if (_settingManager.GetContainer<EMailSetting>().Default == null)
             {
-                notifications.Add(ResMan.GetString("Admin_EMailSettingMissingNotification"));
+                notifications.Add(this._resourceManager.GetString("Admin_EMailSettingMissingNotification"));
             }
             if (!_settingManager.GetContainer<AppSetting>().Contains("IPInfoDbApiKey"))
             {
-                notifications.Add(ResMan.GetString("Admin_IPQueryApiKeyMissing"));
+                notifications.Add(this._resourceManager.GetString("Admin_IPQueryApiKeyMissing"));
             }
             return new JsonNetResult(notifications);
         }

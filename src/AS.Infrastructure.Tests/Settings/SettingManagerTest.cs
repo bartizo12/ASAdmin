@@ -1,5 +1,4 @@
 ﻿using AS.Domain.Entities;
-using AS.Domain.Interfaces;
 using AS.Domain.Settings;
 using AS.Infrastructure.Reflection;
 using Moq;
@@ -15,14 +14,10 @@ namespace AS.Infrastructure.Tests.Settings
         {
             TypeFinder typeFinder = new TypeFinder();
             Mock<ISettingDataProvider> mockSettingDataProvider = new Mock<ISettingDataProvider>();
-            Mock<IStorageManager<Configuration>> mockConfigurationStorageManager = new Mock<IStorageManager<Configuration>>();
             mockSettingDataProvider.Setup(m => m.FetchSettingValues())
                 .Returns(this.GenerateSettingValues());
-            mockConfigurationStorageManager.Setup(m => m.CheckIfExists())
-                .Returns(true);
 
-            SettingManager manager = new SettingManager(mockSettingDataProvider.Object,
-                typeFinder, mockConfigurationStorageManager.Object);
+            SettingManager manager = new SettingManager(mockSettingDataProvider.Object,typeFinder);
             var container = manager.GetContainer<AppSetting>();
             Assert.NotNull(container);
             Assert.True(container.Contains("Test"));
