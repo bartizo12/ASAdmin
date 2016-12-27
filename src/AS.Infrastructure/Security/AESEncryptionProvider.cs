@@ -95,15 +95,17 @@ namespace AS.Infrastructure
                 cipherTextBytes = cipherTextBytes.Skip(16).ToArray();
 
                 // Create a decrytor to perform the stream transform.
-                ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
-                // Create the streams used for decryption.
-                using (MemoryStream msDecrypt = new MemoryStream(cipherTextBytes))
+                using (ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV))
                 {
-                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                    // Create the streams used for decryption.
+                    using (MemoryStream msDecrypt = new MemoryStream(cipherTextBytes))
                     {
-                        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                        using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
                         {
-                            plaintext = srDecrypt.ReadToEnd();
+                            using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                            {
+                                plaintext = srDecrypt.ReadToEnd();
+                            }
                         }
                     }
                 }

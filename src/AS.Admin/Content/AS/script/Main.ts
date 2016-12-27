@@ -4,7 +4,7 @@
         radioClass: 'iradio_square-blue',
         increaseArea: '20%' // optional
     });
-    new DomManager().initializeDocument();
+    Helper.InitializeDocument();
 });
 $(document).ajaxError(function (evt: any, xhr: any, opts: any): any {
     BootstrapDialog.show({
@@ -22,7 +22,7 @@ $(document).ajaxError(function (evt: any, xhr: any, opts: any): any {
     });
 });
 $(document).ajaxComplete(function () {
-    new DomManager().initializeDocument();
+    Helper.InitializeDocument();
 });
 $.ajaxSetup({
     headers: { 'ClientTimeZone': new Date().getTimezoneOffset() }

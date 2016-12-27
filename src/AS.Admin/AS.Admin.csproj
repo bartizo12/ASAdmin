@@ -126,6 +126,14 @@
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MiniProfiler, Version=3.2.0.157, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
+      <HintPath>..\packages\MiniProfiler.3.2.0.157\lib\net40\MiniProfiler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MiniProfiler.EntityFramework6, Version=3.0.11.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
+      <HintPath>..\packages\MiniProfiler.EF6.3.0.11\lib\net40\MiniProfiler.EntityFramework6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
       <Private>True</Private>
@@ -4028,7 +4036,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Content\AS\script\DomManager.ts" />
+    <TypeScriptCompile Include="Content\AS\script\Helper.ts" />
     <TypeScriptCompile Include="Content\AS\script\FormInputType.ts" />
     <TypeScriptCompile Include="Content\AS\script\UI\BackTop.ts" />
     <TypeScriptCompile Include="Content\AS\script\Dialog.ts" />

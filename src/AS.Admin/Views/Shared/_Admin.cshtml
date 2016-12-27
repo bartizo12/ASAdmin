@@ -70,12 +70,12 @@
                                 <li><a href="~/Settings/List"><i class="fa fa-circle-o"></i> @ResMan.GetString("Others")</a></li>
                             </ul>
                         </li>
-                        <li><a href="~/StringResources"><i class="fa fa-globe"></i> <span>@ResMan.GetString("StringResources")</span></a></li>
-                        <li><a href="~/Roles"><i class="fa fa-user-plus"></i> <span>@ResMan.GetString("Roles")</span></a></li>
-                        <li><a href="~/Users"><i class="fa fa-users"></i> <span>@ResMan.GetString("Users")</span></a></li>
-                        <li><a href="~/Scheduler"><i class="fa fa-clock-o"></i> <span>@ResMan.GetString("ScheduledJobs")</span></a></li>
-                        <li><a href="~/Email"><i class="fa fa-envelope-o"></i> <span>@ResMan.GetString("Emails")</span></a></li>
-                        <li><a href="~/AppLog"><i class="fa fa-book"></i> <span>@ResMan.GetString("ApplicationLogs")</span></a></li>
+                        <li><a href="~/StringResources/List"><i class="fa fa-globe"></i> <span>@ResMan.GetString("StringResources")</span></a></li>
+                        <li><a href="~/Roles/List"><i class="fa fa-user-plus"></i> <span>@ResMan.GetString("Roles")</span></a></li>
+                        <li><a href="~/Users/List"><i class="fa fa-users"></i> <span>@ResMan.GetString("Users")</span></a></li>
+                        <li><a href="~/Scheduler/List"><i class="fa fa-clock-o"></i> <span>@ResMan.GetString("ScheduledJobs")</span></a></li>
+                        <li><a href="~/Email/List"><i class="fa fa-envelope-o"></i> <span>@ResMan.GetString("Emails")</span></a></li>
+                        <li><a href="~/AppLog/List"><i class="fa fa-book"></i> <span>@ResMan.GetString("ApplicationLogs")</span></a></li>
                     </ul>
                 </section>
             </aside>
@@ -96,6 +96,7 @@
         </div>
     }
     <a id="backTop" class="btn btn-back-top bg-teal"></a>
+    @StackExchange.Profiling.MiniProfiler.RenderIncludes()
 </body>
 </html>
 <script type="text/javascript">

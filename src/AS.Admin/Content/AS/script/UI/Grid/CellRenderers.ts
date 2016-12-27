@@ -1,7 +1,7 @@
 ﻿module CellRenderers {
     export var DateTimeRenderer: DataTables.FunctionColumnRender = function (data: any, t: string, row: any, meta: DataTables.CellMetaSettings): string {
         if (data != null) {
-            return new Date(data).toLocaleString(navigator.languages[0]);
+            return new Date(data).toLocaleString(Helper.GetLanguage());
         }
         else {
             return "";

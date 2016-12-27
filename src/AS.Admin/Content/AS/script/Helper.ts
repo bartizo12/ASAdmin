@@ -1,5 +1,11 @@
-﻿class DomManager {
-    initializeDocument() {
+﻿module Helper {
+    export function GetLanguage(): string {
+        if (navigator.userLanguage !== undefined) {
+            return navigator.userLanguage;
+        }
+        return navigator.languages[0];
+    }
+    export function InitializeDocument() {
         $.each($('.input-validation-error'), function (key, item) {
             $(item).parents('.form-group').addClass('has-error');
         });
@@ -22,7 +28,8 @@
                 var dateStr = item[item.value !== undefined ? "value" : "innerHTML"];
                 var date = new Date(dateStr);
                 date.setMinutes(date.getMinutes() + -date.getTimezoneOffset());
-                item[item.value !== undefined ? "value" : "innerHTML"] = new Date(date.toISOString()).toLocaleString(navigator.languages[0]);
+                
+                item[item.value !== undefined ? "value" : "innerHTML"] = new Date(date.toISOString()).toLocaleString(Helper.GetLanguage());
             }
             catch (e) {
                 console.log(e);

@@ -11,7 +11,7 @@
         if (value !== undefined && value != null) {
             if (moment(value).diff(new Date(0)) != 0) {
                 value.setMinutes(value.getMinutes() + -value.getTimezoneOffset());
-                $(this._selector).html(new Date(value.toISOString()).toLocaleString(navigator.languages[0]));
+                $(this._selector).html(new Date(value.toISOString()).toLocaleString(Helper.GetLanguage()));
             }
             else {
                 $(this._selector).html('-');
@@ -26,6 +26,6 @@
         setInterval(() => this.display(this._selector), 1000);
     }
     display(selector) {
-        $(selector).html(new Date().toLocaleString(navigator.languages[0]));
+        $(selector).html(new Date().toLocaleString(Helper.GetLanguage()));
     }
 }

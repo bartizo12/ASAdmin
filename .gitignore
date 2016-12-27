@@ -253,3 +253,6 @@ paket-files/
 src/TODO.xlsx
 BuildProcessTemplates/
 src/AS.Admin/App_Data/ASConfiguration.xml
+src/AS.Admin/Content/AS/script/asframe.js
+src/AS.Admin/Content/AS/script/asframe.js.map
+*.bowerrc

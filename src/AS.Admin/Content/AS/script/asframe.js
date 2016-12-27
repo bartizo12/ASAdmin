@@ -311,10 +311,27 @@ function InitDialog() {
 $(document).ready(function () {
     InitDialog();
 });
-var DomManager = (function () {
-    function DomManager() {
+var FormInputType;
+(function (FormInputType) {
+    FormInputType[FormInputType["Text"] = 0] = "Text";
+    FormInputType[FormInputType["Email"] = 1] = "Email";
+    FormInputType[FormInputType["Url"] = 2] = "Url";
+    FormInputType[FormInputType["MultiLine"] = 3] = "MultiLine";
+    FormInputType[FormInputType["Checkbox"] = 4] = "Checkbox";
+    FormInputType[FormInputType["Password"] = 5] = "Password";
+    FormInputType[FormInputType["DigitOnly"] = 6] = "DigitOnly";
+    FormInputType[FormInputType["Html"] = 7] = "Html";
+})(FormInputType || (FormInputType = {}));
+var Helper;
+(function (Helper) {
+    function GetLanguage() {
+        if (navigator.userLanguage !== undefined) {
+            return navigator.userLanguage;
+        }
+        return navigator.languages[0];
     }
-    DomManager.prototype.initializeDocument = function () {
+    Helper.GetLanguage = GetLanguage;
+    function InitializeDocument() {
         $.each($('.input-validation-error'), function (key, item) {
             $(item).parents('.form-group').addClass('has-error');
         });
@@ -336,26 +353,15 @@ var DomManager = (function () {
                 var dateStr = item[item.value !== undefined ? "value" : "innerHTML"];
                 var date = new Date(dateStr);
                 date.setMinutes(date.getMinutes() + -date.getTimezoneOffset());
-                item[item.value !== undefined ? "value" : "innerHTML"] = new Date(date.toISOString()).toLocaleString(navigator.languages[0]);
+                item[item.value !== undefined ? "value" : "innerHTML"] = new Date(date.toISOString()).toLocaleString(Helper.GetLanguage());
             }
             catch (e) {
                 console.log(e);
             }
         });
-    };
-    return DomManager;
-}());
-var FormInputType;
-(function (FormInputType) {
-    FormInputType[FormInputType["Text"] = 0] = "Text";
-    FormInputType[FormInputType["Email"] = 1] = "Email";
-    FormInputType[FormInputType["Url"] = 2] = "Url";
-    FormInputType[FormInputType["MultiLine"] = 3] = "MultiLine";
-    FormInputType[FormInputType["Checkbox"] = 4] = "Checkbox";
-    FormInputType[FormInputType["Password"] = 5] = "Password";
-    FormInputType[FormInputType["DigitOnly"] = 6] = "DigitOnly";
-    FormInputType[FormInputType["Html"] = 7] = "Html";
-})(FormInputType || (FormInputType = {}));
+    }
+    Helper.InitializeDocument = InitializeDocument;
+})(Helper || (Helper = {}));
 var JobStatus;
 (function (JobStatus) {
     JobStatus[JobStatus["Queued"] = 0] = "Queued";
@@ -369,7 +375,7 @@ $(document).ready(function () {
         radioClass: 'iradio_square-blue',
         increaseArea: '20%' // optional
     });
-    new DomManager().initializeDocument();
+    Helper.InitializeDocument();
 });
 $(document).ajaxError(function (evt, xhr, opts) {
     BootstrapDialog.show({
@@ -387,7 +393,7 @@ $(document).ajaxError(function (evt, xhr, opts) {
     });
 });
 $(document).ajaxComplete(function () {
-    new DomManager().initializeDocument();
+    Helper.InitializeDocument();
 });
 $.ajaxSetup({
     headers: { 'ClientTimeZone': new Date().getTimezoneOffset() }
@@ -417,7 +423,7 @@ var DateTimeRenderer = (function () {
         if (value !== undefined && value != null) {
             if (moment(value).diff(new Date(0)) != 0) {
                 value.setMinutes(value.getMinutes() + -value.getTimezoneOffset());
-                $(this._selector).html(new Date(value.toISOString()).toLocaleString(navigator.languages[0]));
+                $(this._selector).html(new Date(value.toISOString()).toLocaleString(Helper.GetLanguage()));
             }
             else {
                 $(this._selector).html('-');
@@ -433,7 +439,7 @@ var DateTimeRenderer = (function () {
         setInterval(function () { return _this.display(_this._selector); }, 1000);
     };
     DateTimeRenderer.prototype.display = function (selector) {
-        $(selector).html(new Date().toLocaleString(navigator.languages[0]));
+        $(selector).html(new Date().toLocaleString(Helper.GetLanguage()));
     };
     return DateTimeRenderer;
 }());
@@ -441,7 +447,7 @@ var CellRenderers;
 (function (CellRenderers) {
     CellRenderers.DateTimeRenderer = function (data, t, row, meta) {
         if (data != null) {
-            return new Date(data).toLocaleString(navigator.languages[0]);
+            return new Date(data).toLocaleString(Helper.GetLanguage());
         }
         else {
             return "";

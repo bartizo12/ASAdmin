@@ -192,10 +192,17 @@ namespace AS.Services
                 CreatedOn = DateTime.UtcNow.AddDays(-random.Next(700)),
                 CreatedBy = "Installer"
             });
+            userRoles.Add(new ASUserRole()
+            {
+                RoleId = roleIds.First(),
+                UserId = userIds[1],
+                CreatedOn = DateTime.UtcNow.AddDays(-random.Next(700)),
+                CreatedBy = "Installer"
+            });
 
             if (!_isDemo)
                 return userRoles;
-            for (int i = 1; i < userIds.Count; i++)
+            for (int i = 2; i < userIds.Count; i++)
             {
                 List<int> tempRolesIds = new List<int>(roleIds);
                 int randRoleCount = random.Next(tempRolesIds.Count);
@@ -226,6 +233,18 @@ namespace AS.Services
             {
                 UserName = "admin",
                 Email = "admin@asadmindemo.com",
+                CreatedOn = DateTime.UtcNow,
+                CreatedBy = "Installer",
+                LastActivity = DateTime.UtcNow,
+                LastLogin = DateTime.UtcNow,
+                PasswordHash = new PasswordHasher().HashPassword("123456"),
+                SecurityStamp = Guid.NewGuid().ToString()
+            };
+            users.Add(user);
+            user = new ASUser()
+            {
+                UserName = "nazmi",
+                Email = "nazmialtun@windowslive.com",
                 CreatedOn = DateTime.UtcNow,
                 CreatedBy = "Installer",
                 LastActivity = DateTime.UtcNow,
