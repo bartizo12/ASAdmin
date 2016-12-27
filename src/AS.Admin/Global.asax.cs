@@ -5,8 +5,6 @@ using AS.Infrastructure.Web.Mvc;
 using AS.Infrastructure.Web.Mvc.Filters;
 using AS.Services.Interfaces;
 using FluentValidation.Mvc;
-using StackExchange.Profiling;
-using StackExchange.Profiling.EntityFramework6;
 using System;
 using System.IO;
 using System.Web.Hosting;
@@ -20,7 +18,7 @@ namespace AS.Admin
     {
         protected void Application_Start()
         {
-            MiniProfilerEF6.Initialize();
+            //MiniProfilerEF6.Initialize();
             string rootPath = HostingEnvironment.MapPath("~/App_Data/");
 
             if (!Directory.Exists(rootPath))
@@ -48,16 +46,16 @@ namespace AS.Admin
             DataAnnotationsModelValidatorProvider.AddImplicitRequiredAttributeForValueTypes = false;
             DependencyResolver.Current.GetService<IInstallerService>().Install();
         }
-        protected void Application_BeginRequest()
-        {
-            if (Request.IsLocal)
-            {
-                MiniProfiler.Start();
-            }
-        }
-        protected void Application_EndRequest()
-        {
-            MiniProfiler.Stop();
-        }
+        //protected void Application_BeginRequest()
+        //{
+        //    if (Request.IsLocal)
+        //    {
+        //        MiniProfiler.Start();
+        //    }
+        //}
+        //protected void Application_EndRequest()
+        //{
+        //    MiniProfiler.Stop();
+        //}
     }
 }
