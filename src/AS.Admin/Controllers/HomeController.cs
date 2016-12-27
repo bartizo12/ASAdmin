@@ -33,10 +33,6 @@ namespace AS.Admin.Controllers
             {
                 notifications.Add(this._resourceManager.GetString("Admin_EMailSettingMissingNotification"));
             }
-            if (!_settingManager.GetContainer<AppSetting>().Contains("IPInfoDbApiKey"))
-            {
-                notifications.Add(this._resourceManager.GetString("Admin_IPQueryApiKeyMissing"));
-            }
             return new JsonNetResult(notifications);
         }
 

@@ -15,7 +15,6 @@ namespace AS.Domain.Entities
         {
         }
         public bool IsDemo { get; set; }
-        public string IPQueryApiKey { get; set; }
         public string RecaptchaPrivateKey { get; set; }
         public string RecaptchaPublicKey { get; set; }
         /// <summary>

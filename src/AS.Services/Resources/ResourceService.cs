@@ -196,22 +196,6 @@ namespace AS.Services
                 AvailableOnClientSide = false,
                 CreatedBy = "Installer",
                 CultureCode = "en-US",
-                Name = "ConfigurationModel_IPQueryApiKey",
-                Value = "IpInfoDb API Key"
-            });
-            resourceList.Add(new StringResource()
-            {
-                AvailableOnClientSide = false,
-                CreatedBy = "Installer",
-                CultureCode = "en-US",
-                Name = "ConfigurationModel_IPQueryApiKey_Hint",
-                Value = "API key is used to query clients country by IP address via IpInfoDb service. You can get one from IpInfoDb's web-site.Country info will be added to logs if this key is provided."
-            });
-            resourceList.Add(new StringResource()
-            {
-                AvailableOnClientSide = false,
-                CreatedBy = "Installer",
-                CultureCode = "en-US",
                 Name = "ConfigurationModel_IsDemo",
                 Value = "Is Demo Application"
             });

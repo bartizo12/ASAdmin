@@ -359,14 +359,6 @@ namespace AS.Services
                 AvailableOnClientSide = false,
                 CreatedBy = "Installer",
                 CultureCode = "en-US",
-                Name = "Admin_IPQueryApiKeyMissing",
-                Value = "IPInfoDbApiKey  value is missing in config AppSettings. Client country info will not be provided until this key is provided."
-            });
-            resourceList.Add(new StringResource()
-            {
-                AvailableOnClientSide = false,
-                CreatedBy = "Installer",
-                CultureCode = "en-US",
                 Name = "Admin_MenuTitle",
                 Value = "Main Menu"
             });
@@ -513,22 +505,6 @@ namespace AS.Services
                 CultureCode = "en-US",
                 Name = "ConfigurationModel_DataProvider",
                 Value = "Data Provider"
-            });
-            resourceList.Add(new StringResource()
-            {
-                AvailableOnClientSide = false,
-                CreatedBy = "Installer",
-                CultureCode = "en-US",
-                Name = "ConfigurationModel_IPQueryApiKey",
-                Value = "IpInfoDb API Key"
-            });
-            resourceList.Add(new StringResource()
-            {
-                AvailableOnClientSide = false,
-                CreatedBy = "Installer",
-                CultureCode = "en-US",
-                Name = "ConfigurationModel_IPQueryApiKey_Hint",
-                Value = "API key to be used to query clients country by its IP address via IpInfoDb service. Application  logs clients country info if this key is provided."
             });
             resourceList.Add(new StringResource()
             {
@@ -3016,14 +2992,6 @@ namespace AS.Services
                 AvailableOnClientSide = false,
                 CreatedBy = "Installer",
                 CultureCode = "tr-TR",
-                Name = "Admin_IPQueryApiKeyMissing",
-                Value = "AppSettings  ayarlarında   IPInfoDbApiKey  değeri eksik. Bu değer sağlanmadığı takdirde sisteme bağlanan kullanıcıların ülke bilgisi kaydedilemez."
-            });
-            resourceList.Add(new StringResource()
-            {
-                AvailableOnClientSide = false,
-                CreatedBy = "Installer",
-                CultureCode = "tr-TR",
                 Name = "Admin_MenuTitle",
                 Value = "Ana Menü"
             });
@@ -3170,22 +3138,6 @@ namespace AS.Services
                 CultureCode = "tr-TR",
                 Name = "ConfigurationModel_DataProvider",
                 Value = "Veritabanı Tedarikçisi"
-            });
-            resourceList.Add(new StringResource()
-            {
-                AvailableOnClientSide = false,
-                CreatedBy = "Installer",
-                CultureCode = "tr-TR",
-                Name = "ConfigurationModel_IPQueryApiKey",
-                Value = "IpInfoDb API anahtarı"
-            });
-            resourceList.Add(new StringResource()
-            {
-                AvailableOnClientSide = false,
-                CreatedBy = "Installer",
-                CultureCode = "tr-TR",
-                Name = "ConfigurationModel_IPQueryApiKey_Hint",
-                Value = "IPInfoDb servisine gönderilecek API anahtarı. IPInfoDb sitesinden temin edebilirsiniz. Uygulamaya bağlanan kullanıcıların ülke bilgisini almak için kullanacağız."
             });
             resourceList.Add(new StringResource()
             {

@@ -16,9 +16,6 @@ namespace AS.Admin.Models
         public bool IsDemo { get; set; }
 
         [Optional]
-        public string IPQueryApiKey { get; set; }
-
-        [Optional]
         public string RecaptchaPrivateKey { get; set; }
 
         [Optional]

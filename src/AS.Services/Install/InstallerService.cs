@@ -261,15 +261,6 @@ namespace AS.Services
                     _dbContext.Set<SettingValue>().Add(settingVal);
                     settingVal = new SettingValue()
                     {
-                        Field1 = "IPInfoDbApiKey",
-                        Field2 = config.IPQueryApiKey,
-                        Field3 = "API key to be used to query country info by IP address at IPINFODB website.",
-                        IsHiddenFromUser = true,
-                        SettingDefinitionID = appSettingDef.Id
-                    };
-                    _dbContext.Set<SettingValue>().Add(settingVal);
-                    settingVal = new SettingValue()
-                    {
                         Field1 = "RecaptchaPublickey",
                         Field2 = config.RecaptchaPublicKey,
                         Field3 = "Public API Key for recaptcha component.",
@@ -324,7 +315,7 @@ namespace AS.Services
                     settingVal = new SettingValue()
                     {
                         Field1 = "IPCountryQueryUrl",
-                        Field2 = "http://api.ipinfodb.com/v3/ip-country/?key={{apiKey}}&amp;ip={{ip}}",
+                        Field2 = "http://ip-api.com/json/{{ip}}",
                         Field3 = "URL that we use for fetching country of the client by the ip adress." +
                         "API key must also be provided at 'Configuration' step when application run for the first time",
                         SettingDefinitionID = urlAddressSettingDef.Id

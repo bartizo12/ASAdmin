@@ -1,6 +1,7 @@
 ﻿using AS.Domain.Entities;
 using AS.Domain.Interfaces;
 using AS.Domain.Settings;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Net;
 
@@ -31,26 +32,25 @@ namespace AS.Infrastructure
                 return countryInfo;
 
             var urlAddresses = this._settingManager.GetContainer<UrlAddress>();
-            var appSettings = this._settingManager.GetContainer<AppSetting>();
 
             if (!urlAddresses.Contains("IPCountryQueryUrl") ||
-                string.IsNullOrEmpty(urlAddresses["IPCountryQueryUrl"].Address) ||
-                !appSettings.Contains("IPInfoDbApiKey") ||
-                string.IsNullOrEmpty(appSettings["IPInfoDbApiKey"].Value))
+                string.IsNullOrEmpty(urlAddresses["IPCountryQueryUrl"].Address))
             {
                 return countryInfo;
             }
             using (WebClient client = new WebClient())
             {
                 string urlFormat = urlAddresses["IPCountryQueryUrl"].Address;
-                string url = urlFormat.Replace("{{apiKey}}", appSettings["IPInfoDbApiKey"].Value).Replace("{{ip}}", ipAddress);
-                string queryResult = client.DownloadString(url);
-                string[] parts = queryResult.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+                string url = urlFormat.Replace("{{ip}}", ipAddress);
+                string jsonResult = client.DownloadString(url);
+                JObject ipCountryInfo = JObject.Parse(jsonResult);
 
-                if (parts.Length > 1 && parts[0] == "ERROR")
-                    throw new ASException(parts[1]);
+                if (ipCountryInfo != null && ipCountryInfo["status"].ToString() == "fail")
+                    throw new ASException(ipCountryInfo["message"].ToString());
 
-                countryInfo = new Country(parts[parts.GetLength(0) - 2], parts[parts.GetLength(0) - 1]);
+                string code = ipCountryInfo["countryCode"].ToString();
+                string country = ipCountryInfo["country"].ToString();
+                countryInfo = new Country(code, country);
             }
             return countryInfo;
         }
