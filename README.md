@@ -1,5 +1,6 @@
 # ASAdmin
 [![Build status](https://ci.appveyor.com/api/projects/status/5o16sha9dq29sofm?svg=true)](https://ci.appveyor.com/project/NazmiAltun/asadmin)
+[![Code Climate](https://codeclimate.com/github/NazmiAltun/ASAdmin.png)](https://codeclimate.com/github/NazmiAltun/ASAdmin)
 
 ASAdmin is an open source ASP.NET MVC  admin panel. The aim of the project is to make applications easy to manage and monitor.
 Demo is avaliable at : [http://asadmindemo.com/](http://asadmindemo.com/)
