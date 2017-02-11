@@ -371,6 +371,7 @@ namespace AS.Admin.Controllers
             model.ApplicationDefaultTitle = appSettings["ApplicationDefaultTitle"].Value;
             model.BundlingEnabled = bool.Parse(appSettings["BundlingEnabled"].Value);
             model.DbQueryLogEnable = bool.Parse(appSettings["DbQueryLogEnable"].Value);
+            model.RequestLoggingEnabled = bool.Parse(appSettings["RequestLoggingEnabled"].Value);
             model.LogLevels = new MultiSelectList(LogLevels.All);
             model.MetaDescription = appSettings["MetaDescription"].Value;
             model.MetaKeywords = appSettings["MetaKeywords"].Value;

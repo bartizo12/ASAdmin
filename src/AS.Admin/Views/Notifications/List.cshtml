@@ -1,0 +1,46 @@
+﻿@model NotificationListModel
+
+@{
+    Model.Header.Title = ResMan.GetString("Notifications");
+    Model.Header.Icon = "fa fa-bell-o";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+<style type="text/css">
+    tr.clickable-row {
+        cursor: pointer;
+    }
+</style>
+<div>
+    <table class="table table-responsive table-hover">
+        <tbody>
+            @{
+                foreach (var notification in Model.Notifications)
+                {
+                    <tr class='clickable-row' data-href='@notification.Url'>
+                        <td style="width:170px">
+                            @notification.CreatedOn
+                        </td>
+                        <td>
+                            @if (!notification.IsSeen)
+                            {
+                                <b>@notification.Message</b>
+                            }
+                            else
+                            {
+                                <span>@notification.Message</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $(".clickable-row").click(function () {
+            window.document.location = $(this).data("href");
+        });
+    });
+</script>

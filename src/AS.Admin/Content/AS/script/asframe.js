@@ -516,6 +516,9 @@ var Grid = (function () {
         this._cellSelectable = true;
         this._responsive = false;
         this._idColumnName = idColumnName;
+        this._gridButtons = [];
+        this._gridButtons.push(GridButtons.ColumnVisibility());
+        this._gridButtons.push(GridButtons.Reload());
     }
     Object.defineProperty(Grid.prototype, "Responsive", {
         /* Getters/Setters */
@@ -633,11 +636,18 @@ var Grid = (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(Grid.prototype, "GridButtons", {
+        get: function () {
+            return this._gridButtons;
+        },
+        set: function (value) {
+            this._gridButtons = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     /* Functions */
     Grid.prototype.render = function () {
-        this._gridButtons = [];
-        this._gridButtons.push(GridButtons.ColumnVisibility());
-        this._gridButtons.push(GridButtons.Reload());
         if (this._hasDeleteButton) {
             var col = new GridColumn("", this._idColumnName, CellRenderers.DeleteButtonRenderer);
             col.Orderable = false;

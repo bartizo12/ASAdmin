@@ -65,8 +65,8 @@ namespace AS.Infrastructure.Web.Module
             if (StaticResourceExtensions.Contains(extension))
                 return;
 
-            if (!_settingManager.GetContainer<AppSetting>().Contains("REQUEST_LOGGING_DISABLED")
-                || !bool.Parse(_settingManager.GetContainer<AppSetting>()["REQUEST_LOGGING_DISABLED"].Value))
+            if (_settingManager.GetContainer<AppSetting>().Contains("RequestLoggingEnabled")
+                && bool.Parse(_settingManager.GetContainer<AppSetting>()["RequestLoggingEnabled"].Value))
             {
                 Stopwatch stopwatch = new Stopwatch();
                 _httpContextProvider.Items["Stopwatch"] = stopwatch;
@@ -81,8 +81,8 @@ namespace AS.Infrastructure.Web.Module
             if (StaticResourceExtensions.Contains(extension))
                 return;
 
-            if (!_settingManager.GetContainer<AppSetting>().Contains("REQUEST_LOGGING_DISABLED") ||
-                !bool.Parse(_settingManager.GetContainer<AppSetting>()["REQUEST_LOGGING_DISABLED"].Value))
+            if (_settingManager.GetContainer<AppSetting>().Contains("RequestLoggingEnabled") &&
+                bool.Parse(_settingManager.GetContainer<AppSetting>()["RequestLoggingEnabled"].Value))
             {
                 Stopwatch stopwatch = (Stopwatch)_httpContextProvider.Items["Stopwatch"];
                 if (stopwatch == null)

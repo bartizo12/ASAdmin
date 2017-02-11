@@ -2763,6 +2763,22 @@ namespace AS.Services
                 AvailableOnClientSide = false,
                 CreatedBy = "Installer",
                 CultureCode = "en-US",
+                Name = "ApplicationSettingsModel_RequestLoggingEnabled",
+                Value = "Log Http Traffic"
+            });
+            resourceList.Add(new StringResource()
+            {
+                AvailableOnClientSide = false,
+                CreatedBy = "Installer",
+                CultureCode = "en-US",
+                Name = "ApplicationSettingsModel_RequestLoggingEnabled_Hint",
+                Value = "Check the box if you want to enable server HTTP traffic(request/response) logging"
+            });
+            resourceList.Add(new StringResource()
+            {
+                AvailableOnClientSide = false,
+                CreatedBy = "Installer",
+                CultureCode = "en-US",
                 Name = "ApplicationSettingsModel_MinLogLevel",
                 Value = "Minimum Logging Level"
             });
@@ -2942,7 +2958,22 @@ namespace AS.Services
                 Name = "RecaptchaSystemError",
                 Value = "An unexpected error occured while validating the code.Please contact to the system admin"
             });
-
+            resourceList.Add(new StringResource()
+            {
+                AvailableOnClientSide = false,
+                CreatedBy = "Installer",
+                CultureCode = "en-US",
+                Name = "ViewAll",
+                Value = "View All"
+            });
+            resourceList.Add(new StringResource()
+            {
+                AvailableOnClientSide = false,
+                CreatedBy = "Installer",
+                CultureCode = "en-US",
+                Name = "NewNotificationInfo",
+                Value = "You have {0} new notification(s)"
+            });
             #endregion EN-US
 
             #region tr-TR
@@ -5304,6 +5335,22 @@ namespace AS.Services
                 AvailableOnClientSide = false,
                 CreatedBy = "Installer",
                 CultureCode = "tr-TR",
+                Name = "ApplicationSettingsModel_RequestLoggingEnabled",
+                Value = "İstek Loglama"
+            });
+            resourceList.Add(new StringResource()
+            {
+                AvailableOnClientSide = false,
+                CreatedBy = "Installer",
+                CultureCode = "tr-TR",
+                Name = "ApplicationSettingsModel_RequestLoggingEnabled_Hint",
+                Value = "Sunuya gelen HTTP isteklerini loglamaya açmak için kutuyu işaretleyin"
+            });
+            resourceList.Add(new StringResource()
+            {
+                AvailableOnClientSide = false,
+                CreatedBy = "Installer",
+                CultureCode = "tr-TR",
                 Name = "ApplicationSettingsModel_BundlingEnabled",
                 Value = "Kaynak Sıkıştırma"
             });
@@ -5546,6 +5593,22 @@ namespace AS.Services
                 CultureCode = "tr-TR",
                 Name = "DataTable_Last",
                 Value = "Son"
+            });
+            resourceList.Add(new StringResource()
+            {
+                AvailableOnClientSide = false,
+                CreatedBy = "Installer",
+                CultureCode = "tr-TR",
+                Name = "ViewAll",
+                Value = "Tümünü Gör"
+            });
+            resourceList.Add(new StringResource()
+            {
+                AvailableOnClientSide = false,
+                CreatedBy = "Installer",
+                CultureCode = "tr-TR",
+                Name = "NewNotificationInfo",
+                Value = "{0} yeni bildiriminiz bulunmaktadır"
             });
             #endregion tr-TR
 

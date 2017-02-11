@@ -18,7 +18,6 @@ namespace AS.Domain.Entities
         {
             this.IsSeen = false;
         }
-
         public Notification(int userId, string message, string url)
         {
             this.IsSeen = false;

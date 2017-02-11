@@ -1,10 +1,11 @@
 ﻿using AS.Domain.Interfaces;
+using AS.Infrastructure.Web.Mvc;
 using System.Web.Mvc;
 
 namespace AS.Admin.Controllers
 {
     [AllowAnonymous]
-    public class LanguageController : Controller
+    public class LanguageController : ASControllerBase
     {
         private readonly IContextProvider _contextProvider;
 

@@ -19,6 +19,12 @@ namespace AS.Admin
                 "Login",
                 "Login/",
                 new { controller = "Identity", action = "Login" });
+
+            routes.MapRoute(
+                name: "Google API Sign-in",
+                url: "login-google",
+                defaults: new { controller = "Identity", action = "GoogleLoginCallbackRedirect" });
+
             routes.MapRoute(
                 "Logout",
                 "Logout/",

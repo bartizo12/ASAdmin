@@ -195,5 +195,10 @@ namespace AS.Admin.Controllers
 
             return View(model);
         }
+        [AllowAnonymous]
+        public ActionResult GoogleLoginCallbackRedirect(string returnUrl)
+        {
+            return RedirectPermanent("/Account/ExternalLoginCallback");
+        }
     }
 }

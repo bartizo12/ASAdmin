@@ -15,32 +15,65 @@
         </a>
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
-            <span id="userName">@ResMan.GetString("Panel_Top_UserWelcome") <strong>@User.Identity.Name</strong></span>
-            <span style="padding-left:15px;padding-right:15px;">|</span>
-            <span>@ResMan.GetString("Header_SessionTime")<strong id="sessionTime"></strong></span>
-            <span style="padding-left:15px;">|</span>
-            <select name="Language" data-width="fit" id="Language" class="selectpicker" data-style="btn-primary">
-                @foreach (var language in Model.Header.LanguageList)
-                {
-                    <option @(language.Selected == true ? "selected" : "")
-                            data-content="<img src='@Url.Content("~/Content/images/" + language.Value + ".png")'> @language.Text" value="@language.Value" />
-                }
-            </select>
-            <span style="padding-left:30px;">|</span>
-            <a class="btn btn-info" href="~/Logout">@ResMan.GetString("Logout")</a>
+            <ul class="nav navbar-nav">
+                <li class="dropdown notifications-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-bell-o"></i>
+                        <span class="label label-warning"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li id="notificationCount" class="header">@ResMan.GetString("NewNotificationInfo")</li>
+                        <li class="footer"><a href="~/Notifications/List">@ResMan.GetString("ViewAll")</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">@ResMan.GetString("Panel_Top_UserWelcome") <strong>@User.Identity.Name</strong></a>
+                    <ul class="dropdown-menu">
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                <a href="#" class="btn btn-default btn-flat">@ResMan.GetString("Profile")</a>
+                            </div>
+                            <div class="pull-right">
+                                <a href="~/Logout" class="btn btn-default btn-flat">@ResMan.GetString("Logout")</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">@ResMan.GetString("Header_SessionTime")<strong id="sessionTime"></strong></a>
+                </li>
+                <li>
+                    <div style="padding-top:8px;">
+                        <select name="Language" data-width="fit" id="Language" class="selectpicker menu-item" data-style="btn-primary">
+                            @foreach (var language in Model.Header.LanguageList)
+                            {
+                                <option @(language.Selected == true ? "selected" : "")
+                                        data-content="<img src='@Url.Content("~/Content/images/" + language.Value + ".png")'> @language.Text" value="@language.Value" />
+                            }
+                        </select>
+                    </div>
+                </li>
+            </ul>
         </div>
     </nav>
 </header>
 <script type="text/javascript">
-    new DateTimeRenderer("#sessionTime");
-    $("#Language").change(function () {
-        $.ajax({
-            type: "POST",
-            url: '@Url.Action("Set", "Language")',
-            data: { languageCode: $("#Language").val() },
-            success: function (result) {
-                location.reload();
-            }
+    $(document).ready(function () {
+        new DateTimeRenderer("#sessionTime");
+        $.get('@Url.Action("GetUnseenCount", "Notifications")', function (data) {
+            $(".notifications-menu .label-warning").html(data);
+            var notificationStr = $("#notificationCount").text().replace('{0}', data);
+            $("#notificationCount").text(notificationStr);
+        });
+        $("#Language").change(function () {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Set", "Language")',
+                data: { languageCode: $("#Language").val() },
+                success: function (result) {
+                    location.reload();
+                }
+            });
         });
     });
 </script>

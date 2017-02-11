@@ -77,15 +77,8 @@ namespace AS.Services
                     }
 
                     DataGenerator dataGenerator = new DataGenerator(this.IsDemo);
-
-                    #region StringResources
-
-                    foreach (StringResource stringResource in dataGenerator.GenerateStringResources())
-                    {
-                        _dbContext.Set<StringResource>().Add(stringResource);
-                    }
-
-                    #endregion StringResources
+                    //String Resources
+                    _dbContext.Set<StringResource>().AddRange(dataGenerator.GenerateStringResources());
 
                     #region Setting Definitions
 
@@ -306,6 +299,14 @@ namespace AS.Services
                     _dbContext.Set<SettingValue>().Add(settingVal);
                     settingVal = new SettingValue()
                     {
+                        Field1 = "RequestLoggingEnabled",
+                        Field2 = bool.TrueString,
+                        Field3 = "Flat for enabling/disabling HTTP request logging",
+                        SettingDefinitionID = appSettingDef.Id
+                    };
+                    _dbContext.Set<SettingValue>().Add(settingVal);
+                    settingVal = new SettingValue()
+                    {
                         Field1 = "MinLogLevel",
                         Field2 = "Debug",
                         Field3 = "Minimum Logging Level",
@@ -410,15 +411,6 @@ namespace AS.Services
 
                     #endregion Setting Values
 
-                    #region EMail
-
-                    foreach (EMail email in dataGenerator.GenerateEMails())
-                    {
-                        _dbContext.Set<EMail>().Add(email);
-                    }
-
-                    #endregion EMail
-
                     #region Scheduled Jobs
 
                     JobDefinition jobDef = new JobDefinition();
@@ -451,52 +443,24 @@ namespace AS.Services
                     _dbContext.Set<JobDefinition>().Add(jobDef);
 
                     #endregion Scheduled Jobs
-
-                    #region Roles
-
-                    foreach (ASRole role in dataGenerator.GenerateRoles())
-                    {
-                        _dbContext.Set<ASRole>().Add(role);
-                    }
-
-                    #endregion Roles
-
-                    #region Users
-
-                    foreach (ASUser user in dataGenerator.GenerateUsers())
-                    {
-                        _dbContext.Set<ASUser>().Add(user);
-                    }
-
-                    #endregion Users
-
+                    
+                    // E-Mails
+                    _dbContext.Set<EMail>().AddRange(dataGenerator.GenerateEMails());
+                    //Roles
+                    _dbContext.Set<ASRole>().AddRange(dataGenerator.GenerateRoles());
+                    // Users
+                    _dbContext.Set<ASUser>().AddRange(dataGenerator.GenerateUsers());
                     _dbContext.SaveChanges();
 
-                    List<int> roleIdList = new List<int>();
-                    List<int> userIdList = new List<int>();
+                    List<int> roleIdList = new List<int>(_dbContext.Set<ASRole>().Select(a => a.Id));
+                    List<int> userIdList = new List<int>(_dbContext.Set<ASUser>().Select(a => a.Id));
 
-                    foreach (ASRole role in _dbContext.Set<ASRole>())
-                        roleIdList.Add(role.Id);
-                    foreach (ASUser user in _dbContext.Set<ASUser>())
-                        userIdList.Add(user.Id);
-
-                    #region ASUserRole
-
-                    foreach (ASUserRole userRole in dataGenerator.GenerateUserRoles(roleIdList, userIdList))
-                    {
-                        _dbContext.Set<ASUserRole>().Add(userRole);
-                    }
-
-                    #endregion ASUserRole
-
-                    #region UserActivity
-
-                    foreach (UserActivity act in dataGenerator.GenerateActivities(userIdList))
-                    {
-                        _dbContext.Set<UserActivity>().Add(act);
-                    }
-
-                    #endregion UserActivity
+                    //User Roles
+                    _dbContext.Set<ASUserRole>().AddRange(dataGenerator.GenerateUserRoles(roleIdList, userIdList));
+                    // UserActivities
+                    _dbContext.Set<UserActivity>().AddRange(dataGenerator.GenerateActivities(userIdList));
+                    // Notifications
+                    _dbContext.Set<Notification>().AddRange(dataGenerator.GenerateNotifications(userIdList));
 
                     _dbContext.SaveChanges();
                     this._schedulerService.Initialize();

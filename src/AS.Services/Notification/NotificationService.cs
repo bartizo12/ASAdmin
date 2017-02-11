@@ -28,7 +28,7 @@ namespace AS.Services
         public int GetUnseenCount(int userId)
         {
             var query = this._dbContext.Set<Notification>().AsNoTracking() as IQueryable<Notification>;
-            query = query.Where(notification => !notification.IsSeen);
+            query = query.Where(notification => notification.IsSeen == false);
             query = query.Where(notification => notification.UserId == userId);
 
             return query.Count();

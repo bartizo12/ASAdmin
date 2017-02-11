@@ -256,3 +256,5 @@ src/AS.Admin/App_Data/ASConfiguration.xml
 src/AS.Admin/Content/AS/script/asframe.js
 src/AS.Admin/Content/AS/script/asframe.js.map
 *.bowerrc
+src/AS.Admin/App_Data/Log.txt
+src/AS.Admin/App_Data/_ASConfiguration.xml

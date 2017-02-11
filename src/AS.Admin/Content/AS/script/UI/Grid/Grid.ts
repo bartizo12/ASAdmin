@@ -74,18 +74,24 @@
     get Columns(): GridColumn[] {
         return this._columns;
     }
+    set GridButtons(value: DataTables.DataTableButton[]) {
+        this._gridButtons = value;
+    }
+    get GridButtons(): DataTables.DataTableButton[] {
+        return this._gridButtons;
+    }
     /* Constructor */
     constructor()
     constructor(idColumnName: string)
     constructor(idColumnName?: string) {
         this._idColumnName = idColumnName;
-    }
-    /* Functions */
-    render() {
+
         this._gridButtons = [];
         this._gridButtons.push(GridButtons.ColumnVisibility());
         this._gridButtons.push(GridButtons.Reload());
-
+    }
+    /* Functions */
+    render() {
         if (this._hasDeleteButton) {
             let col: GridColumn = new GridColumn("", this._idColumnName, CellRenderers.DeleteButtonRenderer);
             col.Orderable = false;

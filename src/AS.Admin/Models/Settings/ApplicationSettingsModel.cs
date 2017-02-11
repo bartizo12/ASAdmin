@@ -11,6 +11,7 @@ namespace AS.Admin.Models
         public int RecaptchaDisplayCount { get; set; }
         public bool DbQueryLogEnable { get; set; }
         public bool BundlingEnabled { get; set; }
+        public bool RequestLoggingEnabled { get; set; }
         public string MinLogLevel { get; set; }
         public MultiSelectList LogLevels { get; set; }
     }
