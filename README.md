@@ -5,7 +5,11 @@
 ASAdmin is an open source ASP.NET MVC  admin panel. The aim of the project is to make applications easy to manage and monitor.
 Demo is avaliable at : [http://asadmindemo.com/](http://asadmindemo.com/)
 
-For now ; MySql , Microsoft Sql Server  and  Sql CE database providers are supported. In the future, others will be added.
+So far project supports ;
+   * MySql
+   * Microsoft Sql Server
+   * SQL CE
+databases. In the future, other database providers may be supported. 
 
 ### 
 
@@ -18,8 +22,7 @@ For now ; MySql , Microsoft Sql Server  and  Sql CE database providers are suppo
 
 ![ASAdmin Configuration](https://raw.githubusercontent.com/NazmiAltun/ASAdmin/master/Images/Install_2.PNG)
 
-Make sure you have tested the connections before getting the next step in configuration. Once you have configured your application. 
-You are good to go.
+Make sure you have tested the connections before getting the next step in configuration. Once you have configured your application, you are good to go.
 
 ## Support
 Please [open an issue](https://github.com/NazmiAltun/ASAdmin/issues/new) for support.
