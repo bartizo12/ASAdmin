@@ -24,6 +24,8 @@ databases. In the future, other database providers may be supported.
 
 Make sure you have tested the connections before getting the next step in configuration. Once you have configured your application, you are good to go.
 
+![ASAdmin Configuration](https://raw.githubusercontent.com/NazmiAltun/ASAdmin/master/Images/Install_3.PNG)
+
 ## Support
 Please [open an issue](https://github.com/NazmiAltun/ASAdmin/issues/new) for support.
 
