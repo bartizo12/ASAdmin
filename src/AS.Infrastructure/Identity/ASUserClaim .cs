@@ -9,5 +9,7 @@ namespace AS.Infrastructure.Identity
     [Serializable]
     public class ASUserClaim : IdentityUserClaim<int>
     {
+        public ASUserClaim() { }
+
     }
 }

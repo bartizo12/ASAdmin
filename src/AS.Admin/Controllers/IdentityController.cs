@@ -6,7 +6,11 @@ using AS.Infrastructure.Web;
 using AS.Infrastructure.Web.Mvc;
 using AS.Infrastructure.Web.Mvc.Filters;
 using AS.Services.Interfaces;
+using System.Threading.Tasks;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using AS.Infrastructure.Web.Identity;
 
 namespace AS.Admin.Controllers
 {
@@ -19,16 +23,22 @@ namespace AS.Admin.Controllers
         private readonly IMembershipService _service;
         private readonly ISettingManager _settingManager;
         private readonly IResourceManager _resourceManager;
+        private readonly IAuthenticationManager _authenticationManager;
+        private readonly ASSignInManager _signInManager;
 
         public IdentityController(IMembershipService service,
             IContextProvider contextProvider,
             IResourceManager resourceManager,
-            ISettingManager settingManager)
+            ISettingManager settingManager,
+            IAuthenticationManager authenticationManager,
+            ASSignInManager signInManager)
         {
             this._service = service;
             this._resourceManager = resourceManager;
             this._contextProvider = contextProvider;
             this._settingManager = settingManager;
+            this._authenticationManager = authenticationManager;
+            this._signInManager = signInManager;
         }
 
         private short RecaptchaDisplayCount
@@ -152,7 +162,6 @@ namespace AS.Admin.Controllers
 
             return View(model);
         }
-
         public ActionResult SetLanguageCode(string languageCode)
         {
             _contextProvider.LanguageCode = languageCode;
@@ -195,10 +204,35 @@ namespace AS.Admin.Controllers
 
             return View(model);
         }
+        [HttpPost]
         [AllowAnonymous]
-        public ActionResult GoogleLoginCallbackRedirect(string returnUrl)
+        [ValidateAntiForgeryToken]
+        public ActionResult ExternalLogin(string provider, string returnUrl)
         {
-            return RedirectPermanent("/Account/ExternalLoginCallback");
+            // Request a redirect to the external login provider
+            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Identity", new { ReturnUrl = returnUrl }));
+        }
+        [AllowAnonymous]
+        public ActionResult ExternalLoginCallbackRedirect(string returnUrl)
+        {
+            return RedirectPermanent("/Identity/ExternalLoginCallback");
+        }
+        [AllowAnonymous]
+        public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
+        {
+            var loginInfo = await this._authenticationManager.GetExternalLoginInfoAsync();
+            if (loginInfo == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            // Sign in the user with this external login provider if the user already has a login
+            bool result = _service.LoginExternal(loginInfo.Email, loginInfo.Login.LoginProvider, loginInfo.Login.ProviderKey);
+
+            if(result)
+                return RedirectToAction(string.Empty, "Home");
+            else
+                return RedirectToAction("Login", "Identity");
         }
     }
 }

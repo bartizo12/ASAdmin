@@ -244,7 +244,7 @@ namespace AS.Services
             user = new ASUser()
             {
                 UserName = "nazmi",
-                Email = "nazmialtun@windowslive.com",
+                Email = "nazmialtun88@gmail.com",
                 CreatedOn = DateTime.UtcNow,
                 CreatedBy = "Installer",
                 LastActivity = DateTime.UtcNow,
@@ -529,6 +529,22 @@ namespace AS.Services
                 CultureCode = "en-US",
                 Name = "ConfigurationModel_RecaptchaPublicKey",
                 Value = "ReCaptcha Public Key"
+            });
+            resourceList.Add(new StringResource()
+            {
+                AvailableOnClientSide = false,
+                CreatedBy = "Installer",
+                CultureCode = "en-US",
+                Name = "ConfigurationModel_GooglePlusClientId",
+                Value = "Google+ Client ID"
+            });
+            resourceList.Add(new StringResource()
+            {
+                AvailableOnClientSide = false,
+                CreatedBy = "Installer",
+                CultureCode = "en-US",
+                Name = "ConfigurationModel_GooglePlusClientSecret",
+                Value = "Google+ Client Secret Key"
             });
             resourceList.Add(new StringResource()
             {
@@ -2974,6 +2990,22 @@ namespace AS.Services
                 Name = "NewNotificationInfo",
                 Value = "You have {0} new notification(s)"
             });
+            resourceList.Add(new StringResource()
+            {
+                AvailableOnClientSide = false,
+                CreatedBy = "Installer",
+                CultureCode = "en-US",
+                Name = "Google+IdDoesNotExist",
+                Value = "Google+ account '{0}' is not registered"
+            });
+            resourceList.Add(new StringResource()
+            {
+                AvailableOnClientSide = false,
+                CreatedBy = "Installer",
+                CultureCode = "en-US",
+                Name = "Register_Title",
+                Value = "User Register"
+            });
             #endregion EN-US
 
             #region tr-TR
@@ -3193,6 +3225,22 @@ namespace AS.Services
                 CultureCode = "tr-TR",
                 Name = "ConfigurationModel_RecaptchaPublicKey",
                 Value = "ReCaptcha Açık Anahtarı"
+            });
+            resourceList.Add(new StringResource()
+            {
+                AvailableOnClientSide = false,
+                CreatedBy = "Installer",
+                CultureCode = "tr-TR",
+                Name = "ConfigurationModel_GooglePlusClientId",
+                Value = "Google+ Client ID"
+            });
+            resourceList.Add(new StringResource()
+            {
+                AvailableOnClientSide = false,
+                CreatedBy = "Installer",
+                CultureCode = "tr-TR",
+                Name = "ConfigurationModel_GooglePlusClientSecret",
+                Value = "Google+ Client Secret Key"
             });
             resourceList.Add(new StringResource()
             {
@@ -4832,7 +4880,7 @@ namespace AS.Services
                 CreatedBy = "Installer",
                 CultureCode = "tr-TR",
                 Name = "UserModel_PasswordRepeat",
-                Value = "Retype Password"
+                Value = "Parola Tekrar"
             });
             resourceList.Add(new StringResource()
             {
@@ -5609,6 +5657,22 @@ namespace AS.Services
                 CultureCode = "tr-TR",
                 Name = "NewNotificationInfo",
                 Value = "{0} yeni bildiriminiz bulunmaktadır"
+            });
+            resourceList.Add(new StringResource()
+            {
+                AvailableOnClientSide = false,
+                CreatedBy = "Installer",
+                CultureCode = "tr-TR",
+                Name = "Google+IdDoesNotExist",
+                Value = "{0} e-posta adresi kayıtlı değil"
+            });
+            resourceList.Add(new StringResource()
+            {
+                AvailableOnClientSide = false,
+                CreatedBy = "Installer",
+                CultureCode = "tr-TR",
+                Name = "Register_Title",
+                Value = "Kullanıcı Kaydı"
             });
             #endregion tr-TR
 

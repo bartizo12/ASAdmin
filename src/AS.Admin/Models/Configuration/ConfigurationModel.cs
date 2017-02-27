@@ -17,8 +17,11 @@ namespace AS.Admin.Models
 
         [Optional]
         public string RecaptchaPrivateKey { get; set; }
-
         [Optional]
         public string RecaptchaPublicKey { get; set; }
+        [Optional]
+        public string GooglePlusClientId { get; set; }
+        [Optional]
+        public string GooglePlusClientSecret { get; set; }
     }
 }

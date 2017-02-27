@@ -7,8 +7,11 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Google;
 using Owin;
 using System;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace AS.Admin
@@ -18,8 +21,9 @@ namespace AS.Admin
         public void Configuration(IAppBuilder app)
         {
             var dbContext = DependencyResolver.Current.GetService<IDbContext>();
-            var membershipSettings = DependencyResolver.Current.GetService<ISettingManager>()
-                .GetContainer<MembershipSetting>();
+            var settingManager = DependencyResolver.Current.GetService<ISettingManager>();
+            var membershipSettings = settingManager.GetContainer<MembershipSetting>();
+            var applicationSettings = settingManager.GetContainer<AppSetting>();
 
             if (dbContext != null && dbContext.IsInitialized)
             {
@@ -44,6 +48,37 @@ namespace AS.Admin
                     )
                 }
             });
+            app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+
+            if (applicationSettings.Contains("GooglePlusClientId") &&
+                applicationSettings.Contains("GooglePlusClientSecret"))
+            {
+                app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions
+                {
+                    ClientId = applicationSettings["GooglePlusClientId"].Value,
+                    ClientSecret = applicationSettings["GooglePlusClientSecret"].Value,
+                    CallbackPath = new PathString("/signin-google"),
+                    Provider = new GoogleOAuth2AuthenticationProvider()
+                    {
+                        OnAuthenticated = context =>
+                        {
+                            context.Identity.AddClaim(new Claim("Google_AccessToken", context.AccessToken));
+
+                            if (context.RefreshToken != null)
+                            {
+                                context.Identity.AddClaim(new Claim("GoogleRefreshToken", context.RefreshToken));
+                            }
+                            context.Identity.AddClaim(new Claim("GoogleUserId", context.Id));
+                            context.Identity.AddClaim(new Claim("GoogleTokenIssuedAt", DateTime.Now.ToBinary().ToString()));
+                            var expiresInSec = (long)(context.ExpiresIn.Value.TotalSeconds);
+                            context.Identity.AddClaim(new Claim("GoogleTokenExpiresIn", expiresInSec.ToString()));
+
+                            return Task.FromResult(0);
+                        }
+                    },
+                    SignInAsAuthenticationType = DefaultAuthenticationTypes.ExternalCookie
+                });
+            }
         }
     }
 }

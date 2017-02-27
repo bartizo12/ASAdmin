@@ -272,6 +272,24 @@ namespace AS.Services
                     _dbContext.Set<SettingValue>().Add(settingVal);
                     settingVal = new SettingValue()
                     {
+                        Field1 = "GooglePlusClientId",
+                        Field2 = config.GooglePlusClientId,
+                        Field3 = "Google Plust OAuth Client ID",
+                        IsHiddenFromUser = true,
+                        SettingDefinitionID = appSettingDef.Id
+                    };
+                    _dbContext.Set<SettingValue>().Add(settingVal);
+                    settingVal = new SettingValue()
+                    {
+                        Field1 = "GooglePlusClientSecret",
+                        Field2 = config.GooglePlusClientSecret,
+                        Field3 = "Google Plust OAuth Client Secret",
+                        IsHiddenFromUser = true,
+                        SettingDefinitionID = appSettingDef.Id
+                    };
+                    _dbContext.Set<SettingValue>().Add(settingVal);
+                    settingVal = new SettingValue()
+                    {
                         Field1 = "RecaptchaDisplayCount",
                         Field2 = "3",
                         Field3 = "Invalid trial limit to activate captcha verification.",

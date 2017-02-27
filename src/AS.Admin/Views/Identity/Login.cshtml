@@ -8,9 +8,6 @@
         $('#btnFacebookLogin').on('click', function () {
             alert('@Html.Raw(ResMan.GetString("Login_FacebookLoginNotSupported"))');
         });
-        $('#btnGooglePlusLogin').on('click', function () {
-            alert('@Html.Raw(ResMan.GetString("Login_GooglePlusLoginNotSupported"))');
-        });
         $("#Language").change(function () {
             $.ajax({
                 type: "POST",
@@ -38,10 +35,10 @@
         @Html.ValidationMessageFor(m => m.Password)
     </div>
     <div class="form-group">
-        <select  name="Language" id="Language" class="selectpicker form-control">
+        <select name="Language" id="Language" class="selectpicker form-control">
             @foreach (var language in Model.Header.LanguageList)
             {
-                <option @(language.Selected == true? "selected" : "")
+                <option @(language.Selected == true ? "selected" : "")
                         data-content="<img src='@Url.Content("~/Content/images/" + language.Value + ".png")'> @language.Text" value="@language.Value" />
             }
         </select>
@@ -69,12 +66,15 @@
     </div>
 }
 <div class="social-auth-links text-center">
-    <p>- @ResMan.GetString("OR") -</p>
-    <a href="#" id="btnFacebookLogin" class="btn btn-block btn-social btn-facebook btn-flat">
-        <i class="fa fa-facebook"></i>@ResMan.GetString("Login_LoginWithFb")
-    </a>
-    <a href="#" id="btnGooglePlusLogin" class="btn btn-block btn-social btn-google btn-flat">
-        <i class="fa fa-google-plus"></i>@ResMan.GetString("Login_LoginWithGooglePlus")
-    </a>
+    @using (Html.BeginForm("ExternalLogin", "Identity", new { ReturnUrl = Model.ReturnUrl })) {
+        @Html.AntiForgeryToken()
+        <p>- @ResMan.GetString("OR") -</p>
+        <a href="#" id="btnFacebookLogin" class="btn btn-block btn-social btn-facebook btn-flat">
+            <i class="fa fa-facebook"></i>@ResMan.GetString("Login_LoginWithFb")
+        </a>
+        <button type="submit" name="provider" id="Google" value="Google" class="btn btn-block btn-social btn-google btn-flat">
+            <i class="fa fa-google-plus"></i>@ResMan.GetString("Login_LoginWithGooglePlus")
+        </button>
+    }
 </div>
 <a href="~/ForgotPassword">@ResMan.GetString("Login_ForgotPassword")</a><br>

@@ -94,7 +94,11 @@ namespace AS.Infrastructure.Web.Module
                 requestLog.AbsolutePath = _httpContextProvider.Url.AbsolutePath;
                 requestLog.BrowserType = _httpContextProvider.BrowserType;
                 requestLog.ClientIP = _httpContextProvider.ClientIP;
-                requestLog.CountryCode = ((Country)_httpContextProvider.Items["CountryInfo"]).Key;
+
+                if (_httpContextProvider.Items.Contains("CountryInfo") && _httpContextProvider.Items["CountryInfo"] != null)
+                {
+                    requestLog.CountryCode = ((Country)_httpContextProvider.Items["CountryInfo"]).Key;
+                }
                 requestLog.CreatedBy = _httpContextProvider.UserName;
                 requestLog.Duration = (int)ts.TotalMilliseconds;
                 requestLog.HttpMethod = _httpContextProvider.HttpMethod;

@@ -58,7 +58,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.Mvc5.4.0.0\lib\net451\Autofac.Integration.Mvc.dll</HintPath>
+      <HintPath>..\packages\Autofac.Mvc5.4.0.1\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -3662,6 +3662,14 @@
     <Content Include="Content\AS\css\pace.css" />
     <Content Include="Content\pace\pace.js" />
     <Content Include="Content\pace\pace.min.js" />
+    <Content Include="Content\react\react-dom-server.js" />
+    <Content Include="Content\react\react-dom-server.min.js" />
+    <Content Include="Content\react\react-dom.js" />
+    <Content Include="Content\react\react-dom.min.js" />
+    <Content Include="Content\react\react-with-addons.js" />
+    <Content Include="Content\react\react-with-addons.min.js" />
+    <Content Include="Content\react\react.js" />
+    <Content Include="Content\react\react.min.js" />
     <Content Include="Content\respond\dest\respond.matchmedia.addListener.min.js" />
     <Content Include="Content\respond\dest\respond.matchmedia.addListener.src.js" />
     <Content Include="Content\respond\dest\respond.min.js" />
@@ -3833,6 +3841,10 @@
     <Content Include="Content\datatables.net-buttons-bs\bower.json" />
     <Content Include="Content\datatables.net-buttons-bs\Readme.md" />
     <Content Include="Views\Notifications\List.cshtml" />
+    <Content Include="Content\react\.bower.json" />
+    <Content Include="Content\react\bower.json" />
+    <Content Include="Content\react\LICENSE" />
+    <Content Include="Content\react\PATENTS" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -3873,7 +3885,9 @@
     </Content>
     <Content Include="Templates\ForgotPassword.html" />
     <Content Include="Templates\NewUser.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
     <None Include="_bin_deployableAssemblies\x86\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
   </ItemGroup>

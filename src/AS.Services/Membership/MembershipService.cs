@@ -210,6 +210,7 @@ namespace AS.Services
             if (!iResult.Succeeded)
                 throw new ASException(string.Join(";", iResult.Errors));
 
+
             foreach (string role in roles)
             {
                 iResult = _userManager.AddToRole(user.Id, role);
@@ -322,6 +323,14 @@ namespace AS.Services
                 _dbContext.SaveChanges();
                 throw new ASException(this._resourceManager.GetString("Membership_LoginFailed"));
             }
+            ProcessAfterLogin(isPersistent, user);
+
+            return true;
+        }
+        private void ProcessAfterLogin(bool isPersistent,ASUser user)
+        {
+            UserActivity activity;
+
             var identity = this._userManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
             this._signInManager.AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, identity);
 
@@ -334,10 +343,39 @@ namespace AS.Services
             _dbContext.Set<UserActivity>().Add(activity);
             _dbContext.SaveChanges();
             _contextProvider.LoginAttemptCount = 0;
-
-            return true;
         }
+        public bool LoginExternal(string email, string loginProvider, string providerKey)
+        {
+            ExternalLoginInfo loginInfo = new ExternalLoginInfo();
+            loginInfo.Email = email;
+            loginInfo.Login = new UserLoginInfo(loginProvider, providerKey);
 
+            var result = _signInManager.ExternalSignInAsync(loginInfo, true).Result;
+            ASUser user = _userManager.FindByEmail(loginInfo.Email);
+
+            if (result == SignInStatus.Success)
+            {
+                ProcessAfterLogin(true, user);
+                return true;
+            }        
+
+            if (user != null)
+            {
+                IdentityResult addLoginResult = _userManager.AddLogin(user.Id, loginInfo.Login);
+
+                if (!addLoginResult.Succeeded)
+                {
+                    throw new ASException(string.Join(";", addLoginResult.Errors));
+                }
+                bool signInResult =  _signInManager.ExternalSignInAsync(loginInfo, isPersistent: true).Result == SignInStatus.Success;
+
+                if(signInResult)
+                    ProcessAfterLogin(true, user);
+
+                return signInResult;
+            }
+            return false;
+        }
         public Domain.Entities.IUser GetUserByUsername(string userName)
         {
             return _userManager.FindByName(userName);

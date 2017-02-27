@@ -22,8 +22,8 @@ namespace AS.Admin
 
             routes.MapRoute(
                 name: "Google API Sign-in",
-                url: "login-google",
-                defaults: new { controller = "Identity", action = "GoogleLoginCallbackRedirect" });
+                url: "signin-google",
+                defaults: new { controller = "Identity", action = "ExternalLoginCallbackRedirect" });
 
             routes.MapRoute(
                 "Logout",

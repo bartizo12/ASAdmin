@@ -220,6 +220,22 @@ namespace AS.Services
                 AvailableOnClientSide = false,
                 CreatedBy = "Installer",
                 CultureCode = "en-US",
+                Name = "ConfigurationModel_GooglePlusClientId",
+                Value = "Google+ Client ID"
+            });
+            resourceList.Add(new StringResource()
+            {
+                AvailableOnClientSide = false,
+                CreatedBy = "Installer",
+                CultureCode = "en-US",
+                Name = "ConfigurationModel_GooglePlusClientSecret",
+                Value = "Google+ Client Secret Key"
+            });
+            resourceList.Add(new StringResource()
+            {
+                AvailableOnClientSide = false,
+                CreatedBy = "Installer",
+                CultureCode = "en-US",
                 Name = "Installer_CannotConnectDatabase",
                 Value = "Database connection could not be established.Please verify and test your connection.Error : {0}"
             });

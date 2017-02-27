@@ -48,6 +48,8 @@ namespace AS.Services.Interfaces
 
         bool Login(string userNameOrEmail, string password, bool isPersistent);
 
+        bool LoginExternal(string email, string loginProvider, string providerKey);
+
         void LogOut();
 
         IUser GetUserByUsername(string userName);

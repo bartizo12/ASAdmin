@@ -17,6 +17,8 @@ namespace AS.Domain.Entities
         public bool IsDemo { get; set; }
         public string RecaptchaPrivateKey { get; set; }
         public string RecaptchaPublicKey { get; set; }
+        public string GooglePlusClientId { get; set; }
+        public string GooglePlusClientSecret { get; set; }
         /// <summary>
         /// Symmetric encryption algorithm key
         /// </summary>

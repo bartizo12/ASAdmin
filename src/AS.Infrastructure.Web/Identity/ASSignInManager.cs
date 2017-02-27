@@ -1,4 +1,5 @@
 ﻿using AS.Infrastructure.Identity;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System.Security.Claims;
@@ -32,6 +33,6 @@ namespace AS.Infrastructure.Web.Identity
         {
             return new ASSignInManager(ServiceLocator.Current.Resolve<ASUserManager>(),
                 ServiceLocator.Current.Resolve<IAuthenticationManager>());
-        }
+        }       
     }
 }
